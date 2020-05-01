@@ -1,26 +1,34 @@
 import { createStore } from 'redux'
 
-const INITIAL_STATE =  {
-    'life': 3,
-    'time': Date.now() + 100000
+const STATE =  {
+    'school_filter': 0,
+    'subway_station_filter': 0,
+    'shopping_mall_filer': 0,
+    'bank_filter': 0,
+    'gas_station_filter': 0,
+    'gym_filter': 0,
 }
 
-function courses(state=INITIAL_STATE, action) {
+function filters(state=STATE, action) {
 
     switch (action.type) {
-        case 'ADD_LIFE':
-            return {...state, life : state.life + Number(action.size)}
-        case 'REMOVE_LIFE':
-            return {...state, life : state.life - Number(action.size)}
-        case 'ADD_TIME':
-            return {...state, time : Date.now() - (Number(action.size) * 1000)}
-        case 'REMOVE_TIME':
-            return {...state, time : Date.now() - (Number(action.size) * 1000)}
+        case 'school_filter':
+            return {...state, school_filter : state.school_filter == 0 ? 1 : 0}
+        case 'subway_station_filter':
+            return {...state, subway_station_filter : state.subway_station_filter == 0 ? 1 : 0}
+        case 'shopping_mall_filter':
+            return {...state, shopping_mall_filter : state.shopping_mall_filter == 0 ? 1 : 0}
+        case 'bank_filter':
+            return {...state, bank_filter : state.bank_filter == 0 ? 1 : 0}
+        case 'gas_station_filter':
+            return {...state, gas_station_filter : state.gas_station_filter == 0 ? 1 : 0}
+        case 'gym_filter':
+            return {...state, gym_filter : state.gym_filter == 0 ? 1 : 0}
         default:
             return state
     }
 }
 
-const store = createStore(courses)
+const store = createStore(filters)
 
 export default store

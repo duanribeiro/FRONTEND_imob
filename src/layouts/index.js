@@ -1,5 +1,6 @@
 import React from 'react'
-import { Topbar } from './components'
+import { Topbar, Sidebar } from './components'
+
 import Grid from '@material-ui/core/Grid'
 
 
@@ -11,13 +12,18 @@ export default function Minimal(props) {
       <Topbar/>
 
       <Grid
-      style={{"paddingTop": "80px"}}
+      style={{"paddingTop": "38px"}}
       container
       direction="row"
       justify="center"
       alignItems="center"
       >
-        {children}
+        <Grid
+        item
+        xs={12}
+        >
+          {children}
+        </Grid>
       </Grid>
     </>
   )

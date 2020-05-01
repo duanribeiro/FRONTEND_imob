@@ -3,52 +3,64 @@ import 'leaflet/dist/leaflet.css'
 import "./styles.scss"
 import { LeafletMap } from './make_map'
 import axios from 'axios'
+import Sidebar from './../../layouts/components/Sidebar'
+import {useSelector, useDispatch} from 'react-redux'
 
 
 export default function MapChart() {
   const [map, setMap] = React.useState()
-  const [results, setResults] = React.useState({
-    "bank": [],
-    "gas_station": [],
-    "gym": [],
-    "school": [],
-    "shopping_mall": [],
-    "subway_station": [],
-  })
+  const [results, setResults] = React.useState()
 
+  const filters = useSelector(state => state)
 
   const callAPI = () => {
-    axios.get(`http://127.0.0.1:5000/api/v1/auth/get_district`)
+
+    axios.post(`http://127.0.0.1:5000/api/v1/auth/get_district`, {
+        "district_name": "bela vista",
+        "filters": filters
+      })
       .then(response => {
         setResults(response.data)
       })
   }
 
   React.useEffect(() => {
-    results["school"].forEach(element => {
-      map.makeIcon([
-        element["geometry"]["location"]["lat"],
-        element["geometry"]["location"]["lng"]
-        ],
-        'red')
-    })
-
-    results["subway_station"].forEach(element => {
-      map.makeIcon([
-        element["geometry"]["location"]["lat"],
-        element["geometry"]["location"]["lng"]
-        ],
-        'blue')
-    })
+    if (map) {map.clearMap()}
+    console.log(results)
+    if (results != null) {
+      for (var key in results) {
+        if (results.hasOwnProperty(key)) {           
+          results[key].forEach(element => {
+            map.makeIcon([
+              element["geometry"]["location"]["lat"],
+              element["geometry"]["location"]["lng"]
+              ],
+              'red')
+          })
+        }
+    }
+  
+  }
   }, [results])
 
   React.useEffect(() => {
     setMap(new LeafletMap([-23.564942, -46.647168], 15))
+    
     callAPI()
   }, [])
 
+  React.useEffect(() => {
+    callAPI()
+  }, [filters])
+
   return (
-    <div className="map" id="map"/>
+    <>
+      <div className="map" id="map"/>
+
+      <div id="refreshButton">
+        <Sidebar/>
+      </div>
+    </>
   );
 }
 
