@@ -16,7 +16,7 @@ export default function MapChart() {
   const callAPI = () => {
 
     axios.post(`http://127.0.0.1:5000/api/v1/auth/get_district`, {
-        "district_name": "bela vista",
+        "district_name": filters.active_district,
         "filters": filters
       })
       .then(response => {
@@ -26,16 +26,16 @@ export default function MapChart() {
 
   React.useEffect(() => {
     if (map) {map.clearMap()}
-    console.log(results)
+
     if (results != null) {
       for (var key in results) {
-        if (results.hasOwnProperty(key)) {           
+        if (results.hasOwnProperty(key)) {  
           results[key].forEach(element => {
             map.makeIcon([
               element["geometry"]["location"]["lat"],
               element["geometry"]["location"]["lng"]
               ],
-              'red')
+              key)
           })
         }
     }

@@ -3,10 +3,11 @@ import { createStore } from 'redux'
 const STATE =  {
     'school_filter': 0,
     'subway_station_filter': 0,
-    'shopping_mall_filer': 0,
+    'shopping_mall_filter': 0,
     'bank_filter': 0,
     'gas_station_filter': 0,
     'gym_filter': 0,
+    'active_district': ['bela vista']
 }
 
 function filters(state=STATE, action) {

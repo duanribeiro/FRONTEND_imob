@@ -18,16 +18,24 @@ export class LeafletMap {
     makeIcon(icon_position, icon) {
       let LeafIcon = L.Icon.extend({
         options: {
-          iconSize: [30, 30],
+          iconSize: [30, 33],
           iconAnchor: [10, 33]
         }
       })
     
       let icon_url = ''
-      if (icon == 'red'){
-        icon_url = 'http://icons.veryicon.com/128/System/Small%20%26%20Flat/map%20marker.png'
-      } else if (icon == 'blue') {
-        icon_url = 'https://image.flaticon.com/icons/svg/2642/2642502.svg'
+      if (icon == 'school'){
+        icon_url = 'https://icons-maps-google.s3.amazonaws.com/university.png'
+      } else if (icon == 'subway_station') {
+        icon_url = 'https://icons-maps-google.s3.amazonaws.com/underground.png'
+      } else if (icon == 'shopping_mall') {
+        icon_url = 'https://icons-maps-google.s3.amazonaws.com/mall.png'
+      } else if (icon == 'bank') {
+        icon_url = 'https://icons-maps-google.s3.amazonaws.com/bank_euro.png'
+      } else if (icon == 'gas_station') {
+        icon_url = 'https://icons-maps-google.s3.amazonaws.com/fillingstation.png'
+      } else if (icon == 'gym') {
+        icon_url = 'https://icons-maps-google.s3.amazonaws.com/weights.png'
       }
 
       let myIcon = new LeafIcon({iconUrl: icon_url})
