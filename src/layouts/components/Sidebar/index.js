@@ -137,8 +137,8 @@ export default function Sidebar() {
   return (
     <div>
         <React.Fragment key='left'>
-          <Button variant={"contained"} onClick={toggleDrawer(true)} style={{"fontWeight": "bold"}}>Filtros</Button>
-          <Drawer anchor='left' open={open} onClose={toggleDrawer(false)}         BackdropProps={{ invisible: true }}>
+          <Button variant={"contained"} onClick={toggleDrawer(true)} style={{"fontWeight": "bold", "width": "100px"}}>Filtros</Button>
+          <Drawer anchor='left' open={open} onClose={toggleDrawer(false)} BackdropProps={{ invisible: true }}>
             {list()}
           </Drawer>
         </React.Fragment>

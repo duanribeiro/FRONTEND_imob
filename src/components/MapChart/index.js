@@ -5,6 +5,7 @@ import { LeafletMap } from './make_map'
 import axios from 'axios'
 import Sidebar from './../../layouts/components/Sidebar'
 import {useSelector, useDispatch} from 'react-redux'
+import DrawerDistricts from './../DrawerDistricts'
 
 
 export default function MapChart() {
@@ -14,9 +15,7 @@ export default function MapChart() {
   const filters = useSelector(state => state)
 
   const callAPI = () => {
-
     axios.post(`http://127.0.0.1:5000/api/v1/auth/get_district`, {
-        "district_name": filters.active_district,
         "filters": filters
       })
       .then(response => {
@@ -25,17 +24,20 @@ export default function MapChart() {
   }
 
   React.useEffect(() => {
-    if (map) {map.clearMap()}
+    if (map) {
+      map.clearMap()
+      map.makePolygon(filters.active_districts)
+    }
 
     if (results != null) {
       for (var key in results) {
         if (results.hasOwnProperty(key)) {  
           results[key].forEach(element => {
-            map.makeIcon([
-              element["geometry"]["location"]["lat"],
-              element["geometry"]["location"]["lng"]
-              ],
-              key)
+            map.makeIcon(
+              element["name"],
+              [element["geometry"]["location"]["lat"], element["geometry"]["location"]["lng"]],
+              key
+            )
           })
         }
     }
@@ -53,13 +55,19 @@ export default function MapChart() {
     callAPI()
   }, [filters])
 
+
   return (
     <>
       <div className="map" id="map"/>
 
-      <div id="refreshButton">
+      <div id="filters_button">
         <Sidebar/>
       </div>
+
+      <div id="districts_button">
+        <DrawerDistricts/>
+      </div>
+      
     </>
   );
 }

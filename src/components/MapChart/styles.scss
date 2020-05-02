@@ -3,10 +3,16 @@
     height: 560px;
 }
 
-#refreshButton {
+#filters_button {
     position: absolute;
     top: 120px;
     left: 10px;
     z-index: 400;
-    
+  }
+
+  #districts_button {
+    position: absolute;
+    top: 160px;
+    left: 10px;
+    z-index: 400;
   }
