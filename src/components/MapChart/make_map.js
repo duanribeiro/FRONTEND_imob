@@ -56,6 +56,10 @@ export class LeafletMap {
         icon_url = 'https://icons-maps-google.s3.amazonaws.com/weights.png'
       }
 
+      else if (icon == 'rent_house') {
+        icon_url = 'https://icons-maps-google.s3.amazonaws.com/home-2.png'
+      }
+
       let myIcon = new LeafIcon({iconUrl: icon_url})
       L.marker(icon_position,  {icon: myIcon}).bindPopup(name).addTo(this.layer_group)
     }

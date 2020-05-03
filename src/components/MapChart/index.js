@@ -10,7 +10,9 @@ import DrawerDistricts from './../DrawerDistricts'
 
 export default function MapChart() {
   const [map, setMap] = React.useState()
+  const [rentHouses, setRentHouses] = React.useState()
   const [results, setResults] = React.useState()
+
 
   const filters = useSelector(state => state)
 
@@ -23,10 +25,27 @@ export default function MapChart() {
       })
   }
 
+  const callRentHouse = () => {
+    axios.get(`http://127.0.0.1:5000/api/v1/auth/get_rent_houses`)
+      .then(response => {
+        setRentHouses(response.data)
+      })
+  }
+
   React.useEffect(() => {
     if (map) {
       map.clearMap()
       map.makePolygon(filters.active_districts)
+    }
+
+    if (rentHouses != null) {
+      rentHouses.forEach(element => {
+        map.makeIcon(
+          `R$ ${element["rent"]}/mês`,
+          [element["latitude"], element["longitude"]],
+          "rent_house"
+        )
+      })
     }
 
     if (results != null) {
@@ -40,14 +59,15 @@ export default function MapChart() {
             )
           })
         }
+      }
     }
+  }, [results, rentHouses ])
+
   
-  }
-  }, [results])
 
   React.useEffect(() => {
     setMap(new LeafletMap([-23.564942, -46.647168], 15))
-    
+    callRentHouse()
     callAPI()
   }, [])
 
