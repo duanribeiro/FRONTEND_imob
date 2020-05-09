@@ -33,7 +33,7 @@ export default function DrawerDistricts() {
     setOpen(open)
   };
 
-  const districts =  ['bela vista', 'consolação']
+  const districts =  ['bela vista', 'consolação', 'liberdade', 'santa cecília', 'cambuci', 'bom retiro', 'sé']
   const districts_list = districts.map((district, idx) => {
     return (
       <>

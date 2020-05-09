@@ -1,6 +1,14 @@
 import L from 'leaflet'
-import { bela_vista_polygon, consolacao_polygon } from './../../maps/sao_paulo_districts'
-import {useSelector, useDispatch} from 'react-redux'
+import { 
+  bela_vista_polygon, 
+  consolacao_polygon, 
+  liberdade_polygon, 
+  santa_cecilia_polygon,
+  republica_polygon,
+  cambuci_polygon,
+  bom_retiro_polygon,
+  se_polygon
+} from './../../maps/sao_paulo_districts'
 
 
 export class LeafletMap {
@@ -12,25 +20,37 @@ export class LeafletMap {
       this.map = L.map('map', {attributionControl: false}).setView(initial_position, initial_zoom)
 
       L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png').addTo(this.map)
-      this.layer_group = L.layerGroup().addTo(this.map);
+      this.layer_group = L.layerGroup().addTo(this.map)
 
-      // var circle = L.circle([-23.551260, -46.6510], {
+      // var circle = L.circle([-23.552, -46.633], {
       //   color: 'red',
       //   fillColor: '#f03',
       //   fillOpacity: 0.5,
-      //   radius: 1400
+      //   radius: 720
       // }).addTo(this.map);
     }
 
     makePolygon(active_districts) {
-
-      active_districts.forEach(element => {
-        if (element == 'bela vista') {
-          L.polygon(bela_vista_polygon).addTo(this.layer_group)
-        } else if (element == 'consolação') {
-          L.polygon(consolacao_polygon).addTo(this.layer_group)
-        }
-      });
+      active_districts.forEach(district => {
+        switch (district) {
+          case 'bela vista':
+            L.polygon(bela_vista_polygon).addTo(this.layer_group)
+          case 'consolação':
+            L.polygon(consolacao_polygon).addTo(this.layer_group)
+          case 'liberdade':
+            L.polygon(liberdade_polygon).addTo(this.layer_group)    
+          case 'santa cecília':
+            L.polygon(santa_cecilia_polygon).addTo(this.layer_group)    
+          case 'república':
+            L.polygon(republica_polygon).addTo(this.layer_group)  
+          case 'cambuci':
+            L.polygon(cambuci_polygon).addTo(this.layer_group)  
+          case 'bom retiro':
+            L.polygon(bom_retiro_polygon).addTo(this.layer_group)  
+          case 'sé':
+            L.polygon(se_polygon).addTo(this.layer_group)  
+          }
+      })
     }
     
     makeIcon(name, icon_position, icon) {

@@ -1,19 +1,17 @@
 import React from "react";
-import 'leaflet/dist/leaflet.css'
-import "./styles.scss"
 import { LeafletMap } from './make_map'
 import axios from 'axios'
 import Sidebar from './../../layouts/components/Sidebar'
-import {useSelector, useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
 import DrawerDistricts from './../DrawerDistricts'
+import 'leaflet/dist/leaflet.css'
+import "./styles.scss"
 
 
 export default function MapChart() {
   const [map, setMap] = React.useState()
   const [rentHouses, setRentHouses] = React.useState()
   const [results, setResults] = React.useState()
-
-
   const filters = useSelector(state => state)
 
   const callAPI = () => {
@@ -26,7 +24,9 @@ export default function MapChart() {
   }
 
   const callRentHouse = () => {
-    axios.get(`http://127.0.0.1:5000/api/v1/auth/get_rent_houses`)
+    axios.post(`http://127.0.0.1:5000/api/v1/auth/get_rent_houses`, {
+        "filters": filters
+      })
       .then(response => {
         setRentHouses(response.data)
       })
@@ -73,6 +73,7 @@ export default function MapChart() {
 
   React.useEffect(() => {
     callAPI()
+    callRentHouse()
   }, [filters])
 
 

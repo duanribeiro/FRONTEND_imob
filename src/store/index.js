@@ -5,9 +5,9 @@ const STATE =  {
     'subway_station_filter': 0,
     'shopping_mall_filter': 0,
     'bank_filter': 0,
-    'gas_station_filter': 0,
+    'gas_station_filter': 1,
     'gym_filter': 0,
-    'active_districts': ['bela vista', 'consolação']
+    'active_districts': ['sé']
 }
 
 function filters(state=STATE, action) {
