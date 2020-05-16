@@ -1,13 +1,13 @@
 import { createStore } from 'redux'
 
 const STATE =  {
-    'school_filter': 0,
+    'school_filter': 1,
     'subway_station_filter': 0,
     'shopping_mall_filter': 0,
     'bank_filter': 0,
-    'gas_station_filter': 1,
+    'gas_station_filter': 0,
     'gym_filter': 0,
-    'active_districts': ['sé']
+    'active_districts': []
 }
 
 function filters(state=STATE, action) {
@@ -26,10 +26,12 @@ function filters(state=STATE, action) {
             return {...state, gym_filter: state.gym_filter == 0 ? 1 : 0}
 
         case 'active_district':
+            // Se existir ele adiciona
             if (state.active_districts.includes(action.district)) {
                 const new_active_districts = state.active_districts.filter(item => ![action.district].includes(item))
                 return {...state, active_districts: new_active_districts}
-
+                
+            // Se não ele retira
             } else {
                 state.active_districts.push(action.district)
                 return {...state, active_districts: state.active_districts}

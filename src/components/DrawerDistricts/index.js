@@ -10,6 +10,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import {useSelector, useDispatch} from 'react-redux'
+import Typography from '@material-ui/core/Typography';
 
 
 const useStyles = makeStyles({
@@ -33,12 +34,14 @@ export default function DrawerDistricts() {
     setOpen(open)
   };
 
-  const districts =  ['bela vista', 'consolação', 'liberdade', 'santa cecília', 'cambuci', 'bom retiro', 'sé']
+  const districts = ['bela vista', 'consolação', 'liberdade', 'santa cecília', 'cambuci', 'bom retiro', 'sé', 'barra funda', 'brás', 'pari', 'república']
+  
   const districts_list = districts.map((district, idx) => {
     return (
       <>
         <ListItemIcon key={`listicon_${idx}`}>
           <FormControlLabel
+          style={{"height": "10px" }}
           key={`formcontrol_${idx}`}
           control={
               <Checkbox
@@ -48,7 +51,7 @@ export default function DrawerDistricts() {
               checked={filters.active_districts.includes(district) ? true : false}
               />
             }
-          label={district}
+          label={<Typography variant="body2" color="textSecondary">{district}</Typography>}
           />
         </ListItemIcon>
         <br/>
@@ -65,17 +68,28 @@ export default function DrawerDistricts() {
     onKeyDown={toggleDrawer(false)}
     >
       <List
-        component="nav"
-        aria-labelledby="nested-list-subheader"
-        subheader={
-          <ListSubheader component="div" id="nested-list-subheader">
-            Bairros
-          </ListSubheader>
-        }
-        className={classes.root}
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+      subheader={
+        <ListSubheader component="div" id="nested-list-subheader">
+          Bairros
+        </ListSubheader>
+      }
+      className={classes.root}
       >
-          {districts_list}
+          <List
+          component="nav"
+          subheader={
+            <ListSubheader component="div" id="nested-list-subheader-2">
+              Centro
+            </ListSubheader>
+          }
+          className={classes.root}
+          >
+              {districts_list}
       </List>
+      </List>
+      
     <Divider />
     </div>
   );
