@@ -1,5 +1,6 @@
 import L from 'leaflet'
 
+// CENTER
 export const bela_vista_polygon = [
     new L.LatLng(-23.575009, -46.641456),
     new L.LatLng(-23.572146, -46.643023),
@@ -59,7 +60,6 @@ export const liberdade_polygon = [
     new L.LatLng(-23.575110, -46.641909),
 ]
 
-
 export const santa_cecilia_polygon = [
     new L.LatLng(-23.544322, -46.655190),
     new L.LatLng(-23.540683, -46.661505),
@@ -80,7 +80,6 @@ export const santa_cecilia_polygon = [
     new L.LatLng(-23.541524, -46.654874),
 ]
 
-
 export const republica_polygon = [
     new L.LatLng(-23.541769, -46.636654),
     new L.LatLng(-23.543097, -46.638727),
@@ -98,7 +97,6 @@ export const republica_polygon = [
     new L.LatLng(-23.541756, -46.641093),
     new L.LatLng(-23.539602, -46.638285),
 ]
-
 
 export const cambuci_polygon = [
     new L.LatLng(-23.576936, -46.627654),
@@ -255,4 +253,308 @@ export const pari_polygon = [
     new L.LatLng(-23.522401, -46.610934),
     new L.LatLng(-23.522658, -46.609658),
     new L.LatLng(-23.522378, -46.607158),
+]
+
+
+// NORTH
+export const santana_polygon = [
+    new L.LatLng(-23.518834, -46.623329),
+    new L.LatLng(-23.518716, -46.628415),
+    new L.LatLng(-23.518041, -46.628358),
+    new L.LatLng(-23.514548, -46.626363),
+    new L.LatLng(-23.512905, -46.626288),
+    new L.LatLng(-23.514391, -46.628294),
+    new L.LatLng(-23.515353, -46.628956),
+    new L.LatLng(-23.515254, -46.630136),
+    new L.LatLng(-23.514310, -46.630576),
+    new L.LatLng(-23.513503, -46.629803),
+    new L.LatLng(-23.504275, -46.628709),
+    new L.LatLng(-23.503704, -46.636595),
+    new L.LatLng(-23.507689, -46.641605),
+    new L.LatLng(-23.507512, -46.642646),
+    new L.LatLng(-23.506449, -46.643322),
+    new L.LatLng(-23.505461, -46.642080),
+    new L.LatLng(-23.505275, -46.642243),
+    new L.LatLng(-23.504557, -46.641438),
+    new L.LatLng(-23.503062, -46.642415),
+    new L.LatLng(-23.499566, -46.637678),
+    new L.LatLng(-23.496644, -46.637162),
+    new L.LatLng(-23.495253, -46.635963),
+    new L.LatLng(-23.494806, -46.635080),
+    new L.LatLng(-23.493027, -46.633772),
+    new L.LatLng(-23.492332, -46.633853),
+    new L.LatLng(-23.491529, -46.634963),
+    new L.LatLng(-23.490098, -46.635721),
+    new L.LatLng(-23.488509, -46.634719),
+    new L.LatLng(-23.488449, -46.633889),
+    new L.LatLng(-23.484909, -46.633968),
+    new L.LatLng(-23.484114, -46.633573),
+    new L.LatLng(-23.482838, -46.633228),
+    new L.LatLng(-23.482464, -46.631034),
+    new L.LatLng(-23.482715, -46.630006),
+    new L.LatLng(-23.485512, -46.626226),
+    new L.LatLng(-23.486074, -46.626163),
+    new L.LatLng(-23.486058, -46.624124),
+    new L.LatLng(-23.487320, -46.623768),
+    new L.LatLng(-23.491586, -46.624722),
+    new L.LatLng(-23.493015, -46.623219),
+    new L.LatLng(-23.496052, -46.621842),
+    new L.LatLng(-23.498170, -46.622023),
+    new L.LatLng(-23.498289, -46.621764),
+    new L.LatLng(-23.499570, -46.615128),
+    new L.LatLng(-23.500446, -46.614642),
+    new L.LatLng(-23.502164, -46.616783),
+    new L.LatLng(-23.502740, -46.619462),
+    new L.LatLng(-23.507157, -46.624737),
+    new L.LatLng(-23.508848, -46.624632),
+    new L.LatLng(-23.508908, -46.623838),
+    new L.LatLng(-23.510122, -46.623871),
+    new L.LatLng(-23.510790, -46.621356),
+    new L.LatLng(-23.513946, -46.621389),
+    new L.LatLng(-23.514917, -46.622845),
+    new L.LatLng(-23.513339, -46.624830),
+    new L.LatLng(-23.516980, -46.624930),
+]
+
+export const vila_guilherme_polygon = [
+    new L.LatLng(-23.527120, -46.594619),
+    new L.LatLng(-23.522190, -46.604868),
+    new L.LatLng(-23.522620, -46.610751),
+    new L.LatLng(-23.518451, -46.618798),
+    new L.LatLng(-23.518914, -46.623453),
+    new L.LatLng(-23.516962, -46.625077),
+    new L.LatLng(-23.513024, -46.624861),
+    new L.LatLng(-23.514712, -46.622695),
+    new L.LatLng(-23.513719, -46.621396),
+    new L.LatLng(-23.511237, -46.621432),
+    new L.LatLng(-23.508887, -46.615694),
+    new L.LatLng(-23.508987, -46.612988),
+    new L.LatLng(-23.509338, -46.608997),
+    new L.LatLng(-23.503581, -46.605910),
+    new L.LatLng(-23.502996, -46.604761),
+    new L.LatLng(-23.503535, -46.603638),
+    new L.LatLng(-23.504541, -46.602745),
+    new L.LatLng(-23.504845, -46.598535),
+    new L.LatLng(-23.506834, -46.595396),
+    new L.LatLng(-23.508121, -46.594631),
+    new L.LatLng(-23.508188, -46.595263),
+    new L.LatLng(-23.520436, -46.594957),
+    new L.LatLng(-23.521971, -46.595858),
+]
+
+export const vila_maria_polygon = [
+    new L.LatLng(-23.527103, -46.594661),
+    new L.LatLng(-23.521702, -46.595958),
+    new L.LatLng(-23.520304, -46.595099),
+    new L.LatLng(-23.508023, -46.595344),
+    new L.LatLng(-23.513826, -46.586106),
+    new L.LatLng(-23.512662, -46.585201),
+    new L.LatLng(-23.515570, -46.581135),
+    new L.LatLng(-23.515917, -46.581074),
+    new L.LatLng(-23.516418, -46.580421),
+    new L.LatLng(-23.527132, -46.589506),
+]
+
+export const casa_verde_polygon = [
+    new L.LatLng(-23.516783, -46.649873),
+    new L.LatLng(-23.515010, -46.664540),
+    new L.LatLng(-23.509881, -46.663276),
+    new L.LatLng(-23.510146, -46.662158),
+    new L.LatLng(-23.512462, -46.662645),
+    new L.LatLng(-23.512561, -46.662230),
+    new L.LatLng(-23.507453, -46.661476),
+    new L.LatLng(-23.506008, -46.659856),
+    new L.LatLng(-23.505660, -46.658111),
+    new L.LatLng(-23.506273, -46.654727),
+    new L.LatLng(-23.504005, -46.653862),
+    new L.LatLng(-23.503031, -46.655122),
+    new L.LatLng(-23.502905, -46.653938),
+    new L.LatLng(-23.503838, -46.652770),
+    new L.LatLng(-23.506412, -46.651450),  
+    new L.LatLng(-23.509041, -46.651738),
+    new L.LatLng(-23.509799, -46.650519),
+    new L.LatLng(-23.510060, -46.650930),
+]
+
+export const limao_polygon = [
+    new L.LatLng(-23.514232, -46.670814),
+    new L.LatLng(-23.513694, -46.674769),
+    new L.LatLng(-23.510839, -46.674922),
+    new L.LatLng(-23.510582, -46.674310),
+    new L.LatLng(-23.509716, -46.674565),
+    new L.LatLng(-23.509341, -46.673544),
+    new L.LatLng(-23.507774, -46.673774),
+    new L.LatLng(-23.504217, -46.672706),
+    new L.LatLng(-23.503775, -46.675782),
+    new L.LatLng(-23.501522, -46.675707),
+    new L.LatLng(-23.500328, -46.674016),
+    new L.LatLng(-23.500460, -46.673689),
+    new L.LatLng(-23.505481, -46.670363),
+    new L.LatLng(-23.505680, -46.668691),
+    new L.LatLng(-23.507201, -46.670235),
+]
+
+export const freguesia_do_o_polygon = [
+    new L.LatLng(-23.507829, -46.693349),
+    new L.LatLng(-23.507579, -46.697992),
+    new L.LatLng(-23.505353, -46.698295),
+    new L.LatLng(-23.505130, -46.700359),
+    new L.LatLng(-23.505353, -46.698417),
+    new L.LatLng(-23.505186, -46.700389),
+    new L.LatLng(-23.504304, -46.700465),
+    new L.LatLng(-23.504088, -46.703082),
+    new L.LatLng(-23.502179, -46.703447),
+    new L.LatLng(-23.501828, -46.702567),
+    new L.LatLng(-23.499768, -46.697173),
+    new L.LatLng(-23.499142, -46.697491),
+    new L.LatLng(-23.498003, -46.696210),
+    new L.LatLng(-23.498267, -46.695687),
+    new L.LatLng(-23.500132, -46.695641),
+    new L.LatLng(-23.504775, -46.693595),
+]
+
+export const pirituba_polygon = [
+    new L.LatLng(-23.486957, -46.737043),
+    new L.LatLng(-23.485676, -46.740066),
+    new L.LatLng(-23.484262, -46.742089),
+    new L.LatLng(-23.484245, -46.743610),
+    new L.LatLng(-23.484854, -46.744768),
+    new L.LatLng(-23.484339, -46.745756),
+    new L.LatLng(-23.482730, -46.744853),
+    new L.LatLng(-23.482418, -46.746744),
+    new L.LatLng(-23.480824, -46.746778),
+    new L.LatLng(-23.480293, -46.747220),
+    new L.LatLng(-23.479762, -46.747067),
+    new L.LatLng(-23.479385, -46.746598),
+    new L.LatLng(-23.480307, -46.744895),
+    new L.LatLng(-23.479682, -46.744333),
+    new L.LatLng(-23.478729, -46.745746),
+    new L.LatLng(-23.478698, -46.747858),
+    new L.LatLng(-23.475480, -46.747637),
+    new L.LatLng(-23.474574, -46.749817),
+    new L.LatLng(-23.471106, -46.750924),
+    new L.LatLng(-23.470262, -46.749050),
+    new L.LatLng(-23.473496, -46.747432),
+    new L.LatLng(-23.474839, -46.745746),
+    new L.LatLng(-23.476198, -46.742391),
+    new L.LatLng(-23.477464, -46.740024),
+    new L.LatLng(-23.479947, -46.738201),
+    new L.LatLng(-23.483431, -46.737486),
+]
+
+export const sao_domingos_polygon = [
+    new L.LatLng(-23.514229, -46.726300),
+    new L.LatLng(-23.512988, -46.726878),
+    new L.LatLng(-23.511747, -46.726950),
+    new L.LatLng(-23.509596, -46.729314),
+    new L.LatLng(-23.508471, -46.732525),
+    new L.LatLng(-23.508554, -46.733319),
+    new L.LatLng(-23.507925, -46.741836),
+    new L.LatLng(-23.507297, -46.743911),
+    new L.LatLng(-23.505818, -46.742974),
+    new L.LatLng(-23.504720, -46.742727),
+    new L.LatLng(-23.502719, -46.741770),
+    new L.LatLng(-23.500192, -46.742025),
+    new L.LatLng(-23.499782, -46.742459),
+    new L.LatLng(-23.496752, -46.742446),
+    new L.LatLng(-23.497021, -46.740852),
+    new L.LatLng(-23.496400, -46.741285),
+    new L.LatLng(-23.495734, -46.743556),
+    new L.LatLng(-23.494891, -46.743059),
+    new L.LatLng(-23.495078, -46.741528),
+    new L.LatLng(-23.493698, -46.740252),
+    new L.LatLng(-23.493417, -46.738785),
+    new L.LatLng(-23.493842, -46.737850),
+    new L.LatLng(-23.495969, -46.736025),
+    new L.LatLng(-23.497281, -46.735353),
+    new L.LatLng(-23.498132, -46.735353),
+    new L.LatLng(-23.501056, -46.732882),
+    new L.LatLng(-23.504277, -46.732771),
+    new L.LatLng(-23.504337, -46.732175),
+    new L.LatLng(-23.505026, -46.731976),
+    new L.LatLng(-23.506626, -46.728486),
+    new L.LatLng(-23.505796, -46.726079),
+    new L.LatLng(-23.505694, -46.724312),
+    new L.LatLng(-23.506991, -46.723119),
+    new L.LatLng(-23.511588, -46.722722),
+]
+
+export const vila_medeiros_polygon = [
+    new L.LatLng(-23.500544, -46.592323),
+    new L.LatLng(-23.499481, -46.594254),
+    new L.LatLng(-23.492161, -46.589690),
+    new L.LatLng(-23.488555, -46.594107),
+    new L.LatLng(-23.483128, -46.590678),
+    new L.LatLng(-23.480048, -46.585684),
+    new L.LatLng(-23.485114, -46.580097),
+    new L.LatLng(-23.489584, -46.574611),
+    new L.LatLng(-23.492720, -46.574560),
+    new L.LatLng(-23.494147, -46.576091),
+    new L.LatLng(-23.495598, -46.577137),
+    new L.LatLng(-23.495153, -46.584741),
+    new L.LatLng(-23.498851, -46.588314),
+]
+
+export const tucuruvi_polygon = [
+    new L.LatLng(-23.478051, -46.609800),
+    new L.LatLng(-23.474063, -46.614078),
+    new L.LatLng(-23.470992, -46.612447),
+    new L.LatLng(-23.469313, -46.607337),
+    new L.LatLng(-23.472148, -46.609315),
+    new L.LatLng(-23.473907, -46.607960),
+    new L.LatLng(-23.476019, -46.609210),
+    new L.LatLng(-23.476776, -46.608591),
+]
+
+export const mandaqui_polygon = [
+    new L.LatLng(-23.487376, -46.623824),
+    new L.LatLng(-23.486068, -46.626328),
+    new L.LatLng(-23.482686, -46.631137),
+    new L.LatLng(-23.479082, -46.628118),
+    new L.LatLng(-23.479917, -46.624219),
+    new L.LatLng(-23.481729, -46.621952),
+    new L.LatLng(-23.486181, -46.622991),
+]
+
+
+export const cachoerinha_polygon = [
+    new L.LatLng(-23.477768, -46.662558),
+    new L.LatLng(-23.474280, -46.667432),
+    new L.LatLng(-23.469342, -46.664804),
+    new L.LatLng(-23.469505, -46.659088),
+    new L.LatLng(-23.471916, -46.650692),
+    new L.LatLng(-23.473897, -46.649648),
+    new L.LatLng(-23.475787, -46.650334),
+    new L.LatLng(-23.474212, -46.654454),
+    new L.LatLng(-23.477322, -46.659604),
+]
+
+
+export const brasilandia_polygon = [
+    new L.LatLng(-23.474793, -46.686396),
+    new L.LatLng(-23.474653, -46.690250),
+    new L.LatLng(-23.467528, -46.695348),
+    new L.LatLng(-23.461237, -46.691585),
+    new L.LatLng(-23.462513, -46.688676),
+    new L.LatLng(-23.464921, -46.688600),
+    new L.LatLng(-23.466062, -46.687234),
+    new L.LatLng(-23.473466, -46.684185),
+]
+
+export const jaragua_polygon = [
+    new L.LatLng(-23.475709, -46.736679),
+    new L.LatLng(-23.467189, -46.756430),
+    new L.LatLng(-23.455859, -46.753061),
+    new L.LatLng(-23.452582, -46.742599),
+    new L.LatLng(-23.455344, -46.738108),
+    new L.LatLng(-23.475288, -46.734842),
+]
+
+export const tremembe_polygon = [
+    new L.LatLng(-23.476213, -46.619577),
+    new L.LatLng(-23.472316, -46.627859),
+    new L.LatLng(-23.467120, -46.631164),
+    new L.LatLng(-23.457041, -46.626915),
+    new L.LatLng(-23.457356, -46.619191),
+    new L.LatLng(-23.466017, -46.615671),
 ]

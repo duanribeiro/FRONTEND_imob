@@ -1,17 +1,5 @@
 import L from 'leaflet'
-import { 
-  bela_vista_polygon, 
-  consolacao_polygon, 
-  liberdade_polygon, 
-  santa_cecilia_polygon,
-  republica_polygon,
-  cambuci_polygon,
-  bom_retiro_polygon,
-  se_polygon,
-  barra_funda_polygon,
-  bras_polygon,
-  pari_polygon
-} from './../../maps/sao_paulo_districts'
+import {dict_polygon_names, dict_polygon_colors} from './polygon_dicts'
 
 
 export class LeafletMap {
@@ -27,50 +15,17 @@ export class LeafletMap {
       
 
       // RASCUNHO DO CÍRCULO
-      // var circle = L.circle([-23.5275, -46.612333], {
-      //   color: 'red',
-      //   fillColor: '#f03',
+      // L.circle([-23.4662, -46.623439], {
+      //   radius: 1200,
+      //   color: 'green',
+      //   fillColor: 'light green',
       //   fillOpacity: 0.5,
-      //   radius: 820
-      // }).addTo(this.map);
+      // }).addTo(this.map)
     }
 
     makePolygon(active_districts) {
       active_districts.forEach(district => {
-        console.log(district)
-        if (district == 'bela vista') {
-          L.polygon(bela_vista_polygon).addTo(this.layer_group)
-        }
-        if (district == 'consolação') {
-          L.polygon(consolacao_polygon).addTo(this.layer_group)
-        }
-        if (district == 'liberdade') {
-          L.polygon(liberdade_polygon).addTo(this.layer_group)
-        }
-        if (district == 'santa cecília') {
-          L.polygon(santa_cecilia_polygon).addTo(this.layer_group)
-        }
-        if (district == 'república') {
-          L.polygon(republica_polygon).addTo(this.layer_group)
-        }
-        if (district == 'cambuci') {
-          L.polygon(cambuci_polygon).addTo(this.layer_group)
-        }
-        if (district == 'bom retiro') {
-          L.polygon(bom_retiro_polygon).addTo(this.layer_group)
-        }
-        if (district == 'sé') {
-          L.polygon(se_polygon).addTo(this.layer_group)
-        }
-        if (district == 'barra funda') {
-          L.polygon(barra_funda_polygon).addTo(this.layer_group)
-        }
-        if (district == 'brás') {
-          L.polygon(bras_polygon).addTo(this.layer_group)
-        }
-        if (district == 'pari') {
-          L.polygon(pari_polygon).addTo(this.layer_group)
-        }
+        L.polygon(dict_polygon_names[district], {'color': dict_polygon_colors[district]}).addTo(this.layer_group)
       })
     }
     
