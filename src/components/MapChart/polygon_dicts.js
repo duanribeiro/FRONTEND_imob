@@ -9,9 +9,6 @@ import {
     bom_retiro_polygon,
     se_polygon,
     barra_funda_polygon,
-    bras_polygon,
-    pari_polygon,
-
     // North
     santana_polygon,
     vila_guilherme_polygon,
@@ -28,6 +25,21 @@ import {
     brasilandia_polygon,
     jaragua_polygon,
     tremembe_polygon,
+    //East
+    pari_polygon,
+    bras_polygon,
+    belem_polygon,
+    mooca_polygon,
+    tatuape_polygon,
+    agua_rasa_polygon,
+    vila_prudente_polygon,
+    cangaiba_polygon,
+    penha_polygon,
+    vila_matilde_polygon,
+    carrao_polygon,
+    vila_formosa_polygon,
+    artur_alvim_polygon,
+    cidade_lider_polygon,
   } from '../../maps/sao_paulo_districts'
 
   
@@ -42,9 +54,6 @@ export const dict_polygon_names = {
     'bom retiro': bom_retiro_polygon,
     'sé': se_polygon,
     'barra funda': barra_funda_polygon,
-    'brás': bras_polygon,
-    'pari': pari_polygon,
-
     // North
     'santana': santana_polygon,
     'vila guilherme': vila_guilherme_polygon,
@@ -61,7 +70,21 @@ export const dict_polygon_names = {
     'brasilândia': brasilandia_polygon,
     'jaraguá': jaragua_polygon,
     'tremembé': tremembe_polygon,
-    
+    //East
+    'pari': pari_polygon,
+    'brás': bras_polygon,
+    'belém': belem_polygon,
+    'mooca': mooca_polygon,
+    'tatuapé': tatuape_polygon,
+    'água rasa': agua_rasa_polygon,
+    'vila prudente': vila_prudente_polygon,
+    'cangaiba': cangaiba_polygon,
+    'penha': penha_polygon,
+    'vila matilde': vila_matilde_polygon,
+    'carrão': carrao_polygon,
+    'vila formosa': vila_formosa_polygon,
+    'artur alvim': artur_alvim_polygon,
+    'cidade líder': cidade_lider_polygon,
 }
 
 
@@ -76,9 +99,6 @@ export const dict_polygon_colors = {
     'bom retiro': 'blue',
     'sé': 'blue',
     'barra funda': 'blue',
-    'brás': 'blue',
-    'pari': 'blue',
-
      // North
     'santana': 'red',
     'vila guilherme': 'red',
@@ -95,6 +115,19 @@ export const dict_polygon_colors = {
     'brasilândia': 'red',
     'jaraguá': 'red',
     'tremembé': 'red',
-
-
+    // East
+    'pari': 'yellow',
+    'brás': 'yellow',
+    'belém': 'yellow',
+    'mooca': 'yellow',
+    'tatuapé': 'yellow',
+    'água rasa': 'yellow',
+    'vila prudente': 'yellow',
+    'cangaiba': 'yellow',
+    'penha': 'yellow',
+    'vila matilde': 'yellow',
+    'carrão': 'yellow',
+    'vila formosa': 'yellow',
+    'artur alvim': 'yellow',
+    'cidade líder': 'yellow'
 }

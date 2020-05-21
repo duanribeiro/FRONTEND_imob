@@ -15,12 +15,12 @@ export class LeafletMap {
       
 
       // RASCUNHO DO CÍRCULO
-      // L.circle([-23.4662, -46.623439], {
-      //   radius: 1200,
-      //   color: 'green',
-      //   fillColor: 'light green',
-      //   fillOpacity: 0.5,
-      // }).addTo(this.map)
+      L.circle([-23.555, -46.4775], {
+        radius: 1700,
+        color: 'green',
+        fillColor: 'light green',
+        fillOpacity: 0.5,
+      }).addTo(this.map)
     }
 
     makePolygon(active_districts) {

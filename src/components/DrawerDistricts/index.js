@@ -34,12 +34,15 @@ export default function DrawerDistricts() {
     setOpen(open)
   }
 
+  const east_districts = ['pari', 'brás', 'belém', 'mooca', 'tatuapé', 'água rasa', 'vila prudente', 'cangaiba', 
+    'penha', 'vila matilde', 'carrão', 'vila formosa', 'artur alvim', 'cidade líder']
+
   const center_districts = ['bela vista', 'consolação', 'liberdade', 'santa cecília', 'cambuci',
-    'bom retiro', 'sé', 'barra funda', 'brás', 'pari', 'república']
+    'bom retiro', 'sé', 'barra funda', 'república']
   
   const north_districts = ['santana', 'vila guilherme', 'vila maria', 'casa verde', 'limão', 'freguesia do ó', 'pirituba',
     'são domingos', 'vila medeiros', 'tucuruvi', 'mandaqui', 'cachoerinha', 'brasilândia', 'jaraguá', 'tremembé']
-  
+
   const make_districts_checkbox = districts => districts.map((district, idx) => {
     return (
       <>
@@ -71,31 +74,42 @@ export default function DrawerDistricts() {
     role="presentation"
     onKeyDown={toggleDrawer(false)}
     >
+      <List
+      component="nav"
+      subheader={
+        <ListSubheader component="div">
+          Zona Leste
+        </ListSubheader>
+      }
+      className={classes.root}
+      >
+          {make_districts_checkbox(east_districts)}
+      </List>
 
-        <List
-        component="nav"
-        subheader={
-          <ListSubheader component="div" id="nested-list-subheader-2">
-            Centro
-          </ListSubheader>
-        }
-        className={classes.root}
-        >
-            {make_districts_checkbox(center_districts)}
-        </List>
+      <List
+      component="nav"
+      subheader={
+        <ListSubheader component="div">
+          Centro
+        </ListSubheader>
+      }
+      className={classes.root}
+      >
+          {make_districts_checkbox(center_districts)}
+      </List>
 
-        <List
-        component="nav"
-        subheader={
-          <ListSubheader component="div" id="nested-list-subheader-2">
-            Zona Norte
-          </ListSubheader>
-        }
-        className={classes.root}
-        >
-            {make_districts_checkbox(north_districts)}
-        </List>
-    <Divider />
+      <List
+      component="nav"
+      subheader={
+        <ListSubheader component="div">
+          Zona Norte
+        </ListSubheader>
+      }
+      className={classes.root}
+      >
+          {make_districts_checkbox(north_districts)}
+      </List>
+      <Divider />
     </div>
   );
 
