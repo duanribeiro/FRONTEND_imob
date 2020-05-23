@@ -40,6 +40,16 @@ import {
     vila_formosa_polygon,
     artur_alvim_polygon,
     cidade_lider_polygon,
+    sao_mateus_polygon,
+    vila_jacui_polygon,
+    itaquera_polygon,
+    sao_rafael_polygon,
+    jose_bonifacio_polygon,
+    iguatemi_polygon,
+    jardim_helena_polygon,
+    vila_curuca_polygon,
+    guaianases_polygon,
+    cidade_tiradentes_polygon,
   } from '../../maps/sao_paulo_districts'
 
   
@@ -85,6 +95,16 @@ export const dict_polygon_names = {
     'vila formosa': vila_formosa_polygon,
     'artur alvim': artur_alvim_polygon,
     'cidade líder': cidade_lider_polygon,
+    'são mateus': sao_mateus_polygon,
+    'vila jacuí': vila_jacui_polygon,
+    'itaquera': itaquera_polygon,
+    'são rafael': sao_rafael_polygon,
+    'josé bonifácio': jose_bonifacio_polygon,
+    'iguatemi': iguatemi_polygon,
+    'jardim helena': jardim_helena_polygon,
+    'vila curuçá': vila_curuca_polygon,
+    'guaianases': guaianases_polygon,
+    'cidade tiradentes': cidade_tiradentes_polygon,
 }
 
 
@@ -99,7 +119,7 @@ export const dict_polygon_colors = {
     'bom retiro': 'blue',
     'sé': 'blue',
     'barra funda': 'blue',
-     // North
+    // North
     'santana': 'red',
     'vila guilherme': 'red',
     'vila maria': 'red',
@@ -129,5 +149,15 @@ export const dict_polygon_colors = {
     'carrão': 'yellow',
     'vila formosa': 'yellow',
     'artur alvim': 'yellow',
-    'cidade líder': 'yellow'
+    'cidade líder': 'yellow',
+    'são mateus': 'yellow',
+    'vila jacuí': 'yellow',
+    'itaquera': 'yellow',
+    'são rafael': 'yellow',
+    'josé bonifácio': 'yellow',
+    'iguatemi': 'yellow',
+    'jardim helena': 'yellow',
+    'vila curuçá': 'yellow',
+    'guaianases': 'yellow',
+    'cidade tiradentes': 'yellow',
 }

@@ -35,13 +35,16 @@ export default function DrawerDistricts() {
   }
 
   const east_districts = ['pari', 'brás', 'belém', 'mooca', 'tatuapé', 'água rasa', 'vila prudente', 'cangaiba', 
-    'penha', 'vila matilde', 'carrão', 'vila formosa', 'artur alvim', 'cidade líder']
+    'penha', 'vila matilde', 'carrão', 'vila formosa', 'artur alvim', 'cidade líder','são mateus', 'vila jacuí',
+    'itaquera', 'são rafael', 'josé bonifácio', 'iguatemi', 'jardim helena', 'vila curuçá', 'guaianases',
+    'cidade tiradentes']
 
-  const center_districts = ['bela vista', 'consolação', 'liberdade', 'santa cecília', 'cambuci',
-    'bom retiro', 'sé', 'barra funda', 'república']
+  const center_districts = ['bela vista', 'consolação', 'liberdade', 'santa cecília', 'cambuci', 'bom retiro', 'sé',
+    'barra funda', 'república']
   
-  const north_districts = ['santana', 'vila guilherme', 'vila maria', 'casa verde', 'limão', 'freguesia do ó', 'pirituba',
-    'são domingos', 'vila medeiros', 'tucuruvi', 'mandaqui', 'cachoerinha', 'brasilândia', 'jaraguá', 'tremembé']
+  const north_districts = ['santana', 'vila guilherme', 'vila maria', 'casa verde', 'limão', 'freguesia do ó',
+    'pirituba', 'são domingos', 'vila medeiros', 'tucuruvi', 'mandaqui', 'cachoerinha', 'brasilândia', 'jaraguá',
+    'tremembé']
 
   const make_districts_checkbox = districts => districts.map((district, idx) => {
     return (

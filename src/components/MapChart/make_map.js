@@ -15,8 +15,8 @@ export class LeafletMap {
       
 
       // RASCUNHO DO CÍRCULO
-      L.circle([-23.555, -46.4775], {
-        radius: 1700,
+      L.circle([-23.612488, -46.4095], {
+        radius: 4200,
         color: 'green',
         fillColor: 'light green',
         fillOpacity: 0.5,
