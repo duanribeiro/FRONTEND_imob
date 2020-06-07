@@ -34,6 +34,9 @@ export default function DrawerDistricts() {
     setOpen(open)
   }
 
+  const south_districts = ['vila mariana', 'ipiranga', 'saúde', 'sacomã', 'vila andrade', 'santo amaro', 'campo belo',
+    'jabaquara', 'capão redondo', 'socorro']
+
   const east_districts = ['pari', 'brás', 'belém', 'mooca', 'tatuapé', 'água rasa', 'vila prudente', 'cangaiba', 
     'penha', 'vila matilde', 'carrão', 'vila formosa', 'artur alvim', 'cidade líder','são mateus', 'vila jacuí',
     'itaquera', 'são rafael', 'josé bonifácio', 'iguatemi', 'jardim helena', 'vila curuçá', 'guaianases',
@@ -77,6 +80,18 @@ export default function DrawerDistricts() {
     role="presentation"
     onKeyDown={toggleDrawer(false)}
     >
+      <List
+      component="nav"
+      subheader={
+        <ListSubheader component="div">
+          Zona Sul
+        </ListSubheader>
+      }
+      className={classes.root}
+      >
+          {make_districts_checkbox(south_districts)}
+      </List>
+      
       <List
       component="nav"
       subheader={

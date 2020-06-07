@@ -25,7 +25,7 @@ import {
     brasilandia_polygon,
     jaragua_polygon,
     tremembe_polygon,
-    //East
+    // East
     pari_polygon,
     bras_polygon,
     belem_polygon,
@@ -50,6 +50,17 @@ import {
     vila_curuca_polygon,
     guaianases_polygon,
     cidade_tiradentes_polygon,
+    // South
+    vila_mariana_polygon,
+    ipiranga_polygon,
+    saude_polygon,
+    sacoma_polygon,
+    vila_andrade_polygon,
+    santo_amaro_polygon,
+    campo_belo_polygon,
+    jabaquara_polygon,
+    capao_redondo_polygon,
+    socorro_polygon,
   } from '../../maps/sao_paulo_districts'
 
   
@@ -80,7 +91,7 @@ export const dict_polygon_names = {
     'brasilândia': brasilandia_polygon,
     'jaraguá': jaragua_polygon,
     'tremembé': tremembe_polygon,
-    //East
+    // East
     'pari': pari_polygon,
     'brás': bras_polygon,
     'belém': belem_polygon,
@@ -105,6 +116,17 @@ export const dict_polygon_names = {
     'vila curuçá': vila_curuca_polygon,
     'guaianases': guaianases_polygon,
     'cidade tiradentes': cidade_tiradentes_polygon,
+    // South
+    'vila mariana': vila_mariana_polygon,
+    'ipiranga': ipiranga_polygon,
+    'saúde': saude_polygon,
+    'sacomã': sacoma_polygon,
+    'vila andrade': vila_andrade_polygon,
+    'santo amaro': santo_amaro_polygon,
+    'campo belo': campo_belo_polygon,
+    'jabaquara': jabaquara_polygon,
+    'capão redondo': capao_redondo_polygon,
+    'socorro': socorro_polygon,
 }
 
 
@@ -160,4 +182,15 @@ export const dict_polygon_colors = {
     'vila curuçá': 'yellow',
     'guaianases': 'yellow',
     'cidade tiradentes': 'yellow',
+    // South
+    'vila mariana': 'purple',
+    'ipiranga': 'purple',
+    'saúde': 'purple',
+    'sacomã': 'purple',
+    'vila andrade': 'purple',
+    'santo amaro': 'purple',
+    'campo belo': 'purple',
+    'jabaquara': 'purple',
+    'capão redondo': 'purple',
+    'socorro': 'purple'
 }
