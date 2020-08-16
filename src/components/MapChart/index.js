@@ -24,12 +24,12 @@ export default function MapChart() {
   }
 
   const callRentHouse = () => {
-    // axios.post(`http://127.0.0.1:5000/api/v1/auth/get_rent_houses`, {
-    //     "filters": filters
-    //   })
-    //   .then(response => {
-    //     setRentHouses(response.data)
-    //   })
+    axios.post(`http://127.0.0.1:5000/api/v1/auth/get_rent_houses`, {
+        "filters": filters
+      })
+      .then(response => {
+        setRentHouses(response.data)
+      })
   }
 
   React.useEffect(() => {

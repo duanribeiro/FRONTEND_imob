@@ -1225,3 +1225,75 @@ export const socorro_polygon = [
     new L.LatLng(-23.665756, -46.709901),
     new L.LatLng(-23.678176, -46.702348),
 ]
+
+export const cidade_ademar_polygon = [
+    new L.LatLng(-23.675171, -46.654914),
+    new L.LatLng(-23.673599, -46.656223),
+    new L.LatLng(-23.674621, -46.657510),
+    new L.LatLng(-23.674189, -46.658433),
+    new L.LatLng(-23.673324, -46.658368),
+    new L.LatLng(-23.671651, -46.660720),
+    new L.LatLng(-23.670401, -46.660416),
+    new L.LatLng(-23.670401, -46.660416),
+    new L.LatLng(-23.666398, -46.658262),
+    new L.LatLng(-23.665786, -46.657276),
+    new L.LatLng(-23.666523, -46.655486),
+    new L.LatLng(-23.668440, -46.656457),
+    new L.LatLng(-23.673985, -46.654014),
+    new L.LatLng(-23.675264, -46.654484),
+    new L.LatLng(-23.675111, -46.654894),
+    new L.LatLng(-23.673540, -46.656260),
+]
+
+export const perdizes_polygon = [
+    new L.LatLng(-23.545398, -46.676637),
+    new L.LatLng(-23.541196, -46.676276),
+    new L.LatLng(-23.539497, -46.678884),
+    new L.LatLng(-23.540456, -46.67954),
+    new L.LatLng(-23.539497, -46.681691),
+    new L.LatLng(-23.540596, -46.682533),
+    new L.LatLng(-23.537602, -46.684294),
+    new L.LatLng(-23.529986, -46.679215),
+    new L.LatLng(-23.529565, -46.677327),
+    new L.LatLng(-23.532934, -46.669467),
+    new L.LatLng(-23.529986, -46.667222),
+    new L.LatLng(-23.532513, -46.662118),
+    new L.LatLng(-23.537800, -46.664823),
+    new L.LatLng(-23.537285, -46.665640),
+    new L.LatLng(-23.543602, -46.670386),
+    new L.LatLng(-23.545473, -46.676255),
+]
+
+export const jardim_paulista_polygon = [
+    new L.LatLng(-23.587589, -46.664106),
+    new L.LatLng(-23.585205, -46.670605),
+    new L.LatLng(-23.576789, -46.671217),
+    new L.LatLng(-23.571286, -46.663509),
+    new L.LatLng(-23.569181, -46.665703),
+    new L.LatLng(-23.560951, -46.657057),
+    new L.LatLng(-23.567707, -46.648904),
+    new L.LatLng(-23.580576, -46.663873),
+    new L.LatLng(-23.581600, -46.663338),
+]
+
+export const pinheiros_polygon = [
+    new L.LatLng(-23.574554, -46.697326),
+    new L.LatLng(-23.571879, -46.701747),
+    new L.LatLng(-23.563737, -46.705523),
+    new L.LatLng(-23.558308, -46.698743),
+    new L.LatLng(-23.558903, -46.69230),
+    new L.LatLng(-23.556124, -46.687112),
+    new L.LatLng(-23.557580, -46.686155),
+    new L.LatLng(-23.554966, -46.681645),
+    new L.LatLng(-23.553246, -46.682673),
+    new L.LatLng(-23.552634, -46.681933),
+    new L.LatLng(-23.549506, -46.683285),
+    new L.LatLng(-23.549487, -46.680163),
+    new L.LatLng(-23.553709, -46.671496),
+    new L.LatLng(-23.556168, -46.674929),
+    new L.LatLng(-23.560298, -46.671753),
+]
+
+// export const pinheiros_polygon = [
+//     new L.LatLng(-23.574554, -46.697326),
+// ]

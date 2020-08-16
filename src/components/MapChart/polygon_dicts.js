@@ -61,6 +61,10 @@ import {
     jabaquara_polygon,
     capao_redondo_polygon,
     socorro_polygon,
+    cidade_ademar_polygon,
+    perdizes_polygon,
+    jardim_paulista_polygon,
+    pinheiros_polygon,
   } from '../../maps/sao_paulo_districts'
 
   
@@ -74,7 +78,6 @@ export const dict_polygon_names = {
     'liberdade': liberdade_polygon,
     'bom retiro': bom_retiro_polygon,
     'sé': se_polygon,
-    'barra funda': barra_funda_polygon,
     // North
     'santana': santana_polygon,
     'vila guilherme': vila_guilherme_polygon,
@@ -127,6 +130,12 @@ export const dict_polygon_names = {
     'jabaquara': jabaquara_polygon,
     'capão redondo': capao_redondo_polygon,
     'socorro': socorro_polygon,
+    'cidade ademar': cidade_ademar_polygon,
+    // West
+    'perdizes': perdizes_polygon,
+    'barra funda': barra_funda_polygon,
+    'jardim paulista': jardim_paulista_polygon,
+    'pinheiros': pinheiros_polygon,
 }
 
 
@@ -140,7 +149,6 @@ export const dict_polygon_colors = {
     'liberdade': 'blue',
     'bom retiro': 'blue',
     'sé': 'blue',
-    'barra funda': 'blue',
     // North
     'santana': 'red',
     'vila guilherme': 'red',
@@ -192,5 +200,11 @@ export const dict_polygon_colors = {
     'campo belo': 'purple',
     'jabaquara': 'purple',
     'capão redondo': 'purple',
-    'socorro': 'purple'
+    'socorro': 'purple',
+    'cidade ademar': 'purple',
+    // West
+    'barra funda': 'green',
+    'perdizes': 'green',
+    'jardim paulista': 'green',
+    'pinheiros': 'green',
 }
