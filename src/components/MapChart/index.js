@@ -38,15 +38,15 @@ export default function MapChart() {
       map.makePolygon(filters.active_districts)
     }
 
-    if (rentHouses != null) {
-      rentHouses.forEach(element => {
-        map.makeIcon(
-          `R$ ${element["rent"]}/mês`,
-          [element["latitude"], element["longitude"]],
-          "rent_house"
-        )
-      })
-    }
+    // if (rentHouses != null) {
+    //   rentHouses.forEach(element => {
+    //     map.makeIcon(
+    //       `R$ ${element["rent"]}/mês`,
+    //       [element["latitude"], element["longitude"]],
+    //       "rent_house"
+    //     )
+    //   })
+    // }
 
     if (filterResults != null) {
       for (var key in filterResults) {
@@ -79,19 +79,15 @@ export default function MapChart() {
 
   return (
     <>
-      <div className="map" id="map"/>
+      <div 
+        style={{height: window.innerHeight * 0.93}}
+        className="map"
+        id="map"
+      />
 
       <div id="filters_button">
         <Sidebar/>
       </div>
-      <div id="filters_button">
-        <Sidebar/>
-      </div>
-      <div id="filters_button">
-        <Sidebar/>
-      </div>
-
-
       <div id="districts_button">
         <DrawerDistricts/>
       </div>

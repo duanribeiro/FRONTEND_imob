@@ -57,12 +57,12 @@ export default function DrawerDistricts() {
       <>
         <ListItemIcon key={`listicon_${idx}`}>
           <FormControlLabel
-          style={{"height": "10px" }}
           key={`formcontrol_${idx}`}
           control={
               <Checkbox
               key={`checkbox_${idx}`}
-              style={{"marginLeft": "20px"}}
+              size="small"
+              style={{margin: "0 0 0 20px", width: 10, height: 1 }}
               onClick={() => dispatch({"type": "active_district", "district": district})}
               checked={filters.active_districts.includes(district) ? true : false}
               />
@@ -83,45 +83,17 @@ export default function DrawerDistricts() {
     role="presentation"
     onKeyDown={toggleDrawer(false)}
     >
+      {/* <Button 
+        variant={"outlined"}
+        className="button_all"
+        color="primary"
+        style={{"fontWeight": "bold", "width": "100%"}}>
+          Selecionar Todos
+      </Button> */}
       <List
       component="nav"
       subheader={
-        <ListSubheader component="div">
-          Zona Oeste
-        </ListSubheader>
-      }
-      className={classes.root}
-      >
-          {make_districts_checkbox(west_districts)}
-      </List>
-      <List
-      component="nav"
-      subheader={
-        <ListSubheader component="div">
-          Zona Sul
-        </ListSubheader>
-      }
-      className={classes.root}
-      >
-          {make_districts_checkbox(south_districts)}
-      </List>
-      
-      <List
-      component="nav"
-      subheader={
-        <ListSubheader component="div">
-          Zona Leste
-        </ListSubheader>
-      }
-      className={classes.root}
-      >
-          {make_districts_checkbox(east_districts)}
-      </List>
-
-      <List
-      component="nav"
-      subheader={
-        <ListSubheader component="div">
+        <ListSubheader component="div" style={{backgroundColor: "white"}}>
           Centro
         </ListSubheader>
       }
@@ -129,26 +101,64 @@ export default function DrawerDistricts() {
       >
           {make_districts_checkbox(center_districts)}
       </List>
-
+      <List
+        component="nav"
+        subheader={
+          <ListSubheader component="div" style={{backgroundColor: "white"}}>
+            Zona Norte
+          </ListSubheader>
+        }
+        className={classes.root}
+        >
+            {make_districts_checkbox(north_districts)}
+        </List>
       <List
       component="nav"
       subheader={
-        <ListSubheader component="div">
-          Zona Norte
+        <ListSubheader component="div" style={{backgroundColor: "white"}}>
+          Zona Sul
         </ListSubheader>
       }
       className={classes.root}
       >
-          {make_districts_checkbox(north_districts)}
+          {make_districts_checkbox(south_districts)}
+      </List>
+      <List
+      component="nav"
+      subheader={
+        <ListSubheader component="div" style={{backgroundColor: "white"}}>
+          Zona Oeste
+        </ListSubheader>
+      }
+      className={classes.root}
+      >
+          {make_districts_checkbox(west_districts)}
+      </List>
+
+      <List
+      component="nav"
+      subheader={
+        <ListSubheader component="div" style={{backgroundColor: "white"}}>
+          Zona Leste
+        </ListSubheader>
+      }
+      className={classes.root}
+      >
+          {make_districts_checkbox(east_districts)}
       </List>
       <Divider />
-    </div>
+     </div>
   );
 
   return (
     <div>
         <React.Fragment key='left'>
-          <Button variant={"contained"} onClick={toggleDrawer(true)} style={{"fontWeight": "bold", "width": "100px"}}>Bairros</Button>
+          <Button 
+            variant={"contained"}
+            onClick={toggleDrawer(true)}
+            style={{"fontWeight": "bold", "width": "100px"}}>
+              Bairros
+            </Button>
           <Drawer anchor='left' open={open} onClose={toggleDrawer(false)} BackdropProps={{ invisible: true }}>
             {list()}
           </Drawer>

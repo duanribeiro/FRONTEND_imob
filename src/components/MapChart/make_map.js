@@ -50,9 +50,7 @@ export class LeafletMap {
         icon_url = 'https://icons-maps-google.s3.amazonaws.com/fillingstation.png'
       } else if (icon == 'gym') {
         icon_url = 'https://icons-maps-google.s3.amazonaws.com/weights.png'
-      }
-
-      else if (icon == 'rent_house') {
+      } else if (icon == 'rent_house') {
         icon_url = 'https://icons-maps-google.s3.amazonaws.com/home-2.png'
       }
 
