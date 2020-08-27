@@ -15,12 +15,12 @@ export class LeafletMap {
       
 
       // RASCUNHO DO CÍRCULO
-      L.circle([-23.561754, -46.686988], {
-        radius: 1900,
-        color: 'green',
-        fillColor: 'light green',
-        fillOpacity: 0.5,
-      }).addTo(this.map)
+      //   L.circle([-23.5962, -46.732088], {
+      //     radius: 900,
+      //     color: 'green',
+      //     fillColor: 'light green',
+      //     fillOpacity: 0.5,
+      //   }).addTo(this.map)
     }
 
     makePolygon(active_districts) {
@@ -33,7 +33,7 @@ export class LeafletMap {
       let LeafIcon = L.Icon.extend({
         options: {
           iconSize: [30, 33],
-          // iconAnchor: [1, 33]
+          iconAnchor: [1, 33]
         }
       })
     

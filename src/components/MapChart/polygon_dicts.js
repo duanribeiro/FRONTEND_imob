@@ -64,7 +64,18 @@ import {
     cidade_ademar_polygon,
     perdizes_polygon,
     jardim_paulista_polygon,
+    // West
     pinheiros_polygon,
+    itaim_bibi_polygon,
+    lapa_polygon,
+    alto_pinheiros_polygon,
+    butanta_polygon,
+    morumbi_polygon,
+    jaguara_polygon,
+    vila_leopoldina_polygon,
+    jaguare_polygon,
+    rio_pequeno_polygon,
+    vila_sonia_polygon
   } from '../../maps/sao_paulo_districts'
 
   
@@ -136,6 +147,16 @@ export const dict_polygon_names = {
     'barra funda': barra_funda_polygon,
     'jardim paulista': jardim_paulista_polygon,
     'pinheiros': pinheiros_polygon,
+    'itaim bibi': itaim_bibi_polygon,
+    'lapa': lapa_polygon,
+    'alto pinheiros': alto_pinheiros_polygon,
+    'butantã': butanta_polygon,
+    'morumbi': morumbi_polygon,
+    'jaguará': jaguara_polygon,
+    'vila leopoldina': vila_leopoldina_polygon,
+    'jaguaré': jaguare_polygon,
+    'rio pequeno': rio_pequeno_polygon,
+    'vila sônia': vila_sonia_polygon
 }
 
 
@@ -207,4 +228,14 @@ export const dict_polygon_colors = {
     'perdizes': 'green',
     'jardim paulista': 'green',
     'pinheiros': 'green',
+    'itaim bibi': 'green',
+    'lapa': 'green',
+    'alto pinheiros': 'green',
+    'butantã': 'green',
+    'morumbi': 'green',
+    'jaguará': 'green',
+    'vila leopoldina': 'green',
+    'jaguaré': 'green',
+    'rio pequeno': 'green',
+    'vila sônia': 'green'
 }

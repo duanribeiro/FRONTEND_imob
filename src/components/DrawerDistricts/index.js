@@ -34,7 +34,8 @@ export default function DrawerDistricts() {
     setOpen(open)
   }
 
-  const west_districts = ['barra funda', 'perdizes', 'jardim paulista', 'pinheiros']
+  const west_districts = ['barra funda', 'perdizes', 'jardim paulista', 'pinheiros', 'itaim bibi', 'lapa', 
+    'alto pinheiros', 'butantã', 'morumbi', 'jaguará', 'vila leopoldina', 'jaguaré', 'rio pequeno', 'vila sônia']
 
   const south_districts = ['vila mariana', 'ipiranga', 'saúde', 'sacomã', 'vila andrade', 'santo amaro', 'campo belo',
     'jabaquara', 'capão redondo', 'socorro', 'cidade ademar']
