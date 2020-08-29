@@ -31,7 +31,9 @@ export default function Sidebar() {
     }
     setOpen(open)
   };
+
   const filters = useSelector(state => state)
+
   const list = () => (
     <div
       className={clsx(classes.list)}
@@ -53,11 +55,11 @@ export default function Sidebar() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={filters.school_filter == 1 ? true : false}
-              onClick={() => dispatch({ type: "school_filter"})}
-              name="school_filter"/>
+              checked={filters.rent_houses ? true : false}
+              onClick={() => dispatch({ type: "rent_houses"})}
+              name="rent_houses"/>
               }
-            label="Escolas"
+            label="Casas em Aluguel"
             />
           </ListItemIcon>
           <br/>
@@ -66,7 +68,7 @@ export default function Sidebar() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={filters.subway_station_filter == 1 ? true : false}
+              checked={filters.subway_station_filter ? true : false}
               onClick={() => dispatch({ type: "subway_station_filter"})}
               name="subway_station_filter"/>
               }
@@ -75,12 +77,24 @@ export default function Sidebar() {
           </ListItemIcon>
           <br/>
 
+          <ListItemIcon>
+            <FormControlLabel control={
+              <Checkbox
+              style={{"marginLeft": "20px"}}
+              checked={filters.school_filter ? true : false}
+              onClick={() => dispatch({ type: "school_filter"})}
+              name="school_filter"/>
+              }
+            label="Escolas"
+            />
+          </ListItemIcon>
+          <br/>
         
           <ListItemIcon>
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={filters.shopping_mall_filter == 1 ? true : false}
+              checked={filters.shopping_mall_filter ? true : false}
               onClick={() => dispatch({ type: "shopping_mall_filter"})}
               name="shopping_mall_filter"/>
               }
@@ -94,7 +108,7 @@ export default function Sidebar() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={filters.bank_filter == 1 ? true : false}
+              checked={filters.bank_filter ? true : false}
               onClick={() => dispatch({ type: "bank_filter"})}
               name="bank_filter"/>
               }
@@ -107,7 +121,7 @@ export default function Sidebar() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={filters.gas_station_filter == 1 ? true : false}
+              checked={filters.gas_station_filter ? true : false}
               onClick={() => dispatch({ type: "gas_station_filter"})}
               name="gas_station_filter"/>
               }
@@ -121,7 +135,7 @@ export default function Sidebar() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={filters.gym_filter == 1 ? true : false}
+              checked={filters.gym_filter ? true : false}
               onClick={() => dispatch({ type: "gym_filter"})}
               name="gym_filter"/>
               }
@@ -137,7 +151,13 @@ export default function Sidebar() {
   return (
     <div>
         <React.Fragment key='left'>
-          <Button variant={"contained"} onClick={toggleDrawer(true)} style={{"fontWeight": "bold", "width": "100px"}}>Filtros</Button>
+          <Button
+          variant={"contained"}
+          onClick={toggleDrawer(true)}
+          style={{"fontWeight": "bold", "width": "100px"}}>
+            Locais
+          </Button>
+
           <Drawer anchor='left' open={open} onClose={toggleDrawer(false)} BackdropProps={{ invisible: true }}>
             {list()}
           </Drawer>
