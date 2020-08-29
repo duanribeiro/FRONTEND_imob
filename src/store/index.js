@@ -7,7 +7,18 @@ const STATE =  {
     'bank_filter': 0,
     'gas_station_filter': 0,
     'gym_filter': 0,
-    'active_districts': []
+    'active_districts': ['barra funda', 'perdizes', 'jardim paulista', 'pinheiros', 'itaim bibi', 'lapa', 
+    'alto pinheiros', 'butantã', 'morumbi', 'jaguará', 'vila leopoldina', 'jaguaré', 'rio pequeno', 'vila sônia',
+    'vila mariana', 'ipiranga', 'saúde', 'sacomã', 'vila andrade', 'santo amaro', 'campo belo',
+    'jabaquara', 'capão redondo', 'socorro', 'cidade ademar','pari', 'brás', 'belém', 'mooca', 'tatuapé', 'água rasa',
+    'vila prudente', 'cangaiba', 
+    'penha', 'vila matilde', 'carrão', 'vila formosa', 'artur alvim', 'cidade líder','são mateus', 'vila jacuí',
+    'itaquera', 'são rafael', 'josé bonifácio', 'iguatemi', 'jardim helena', 'vila curuçá', 'guaianases',
+    'cidade tiradentes','bela vista', 'consolação', 'liberdade', 'santa cecília', 'cambuci', 'bom retiro', 'sé',
+    'república','santana', 'vila guilherme', 'vila maria', 'casa verde', 'limão', 'freguesia do ó',
+    'pirituba', 'são domingos', 'vila medeiros', 'tucuruvi', 'mandaqui', 'cachoerinha', 'brasilândia', 'jaraguá',
+    'tremembé']
+
 }
 
 function filters(state=STATE, action) {
