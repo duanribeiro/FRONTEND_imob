@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch } from 'react-router-dom' 
 import Minimal from './layouts' 
 import PublicRoute from './layouts/components/PublicRoute' 
-import { MainView, StatisticsView } from './views' 
+import { MainView, StatisticsView, RealEstateFundsView } from './views' 
 
 
 const Routes = () => {
@@ -22,6 +22,12 @@ const Routes = () => {
         path="/statistics"
         layout={Minimal}
         component={StatisticsView}
+      />
+        <PublicRoute
+        exact
+        path="/real_estate_funds"
+        layout={Minimal}
+        component={RealEstateFundsView}
       />
     </Switch>
   ) 
