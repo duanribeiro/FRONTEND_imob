@@ -10,10 +10,27 @@ export default function Topbar(props) {
   return (
     <>
       <AppBar id="topbar">
-        <Grid item>
-          <Link to='/'>
-            <Button color="inherit">Home</Button>
-          </Link>
+        <Grid
+          container
+          direction="row"
+          justify="flex-start"
+          alignItems="center"
+        >
+          <Grid item>
+            <Link to='/'>
+              <Button color="inherit">Mapa</Button>
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link to='/statistics'>
+              <Button color="inherit">Estatísticas</Button>
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link to='/real_estate_funds'>
+              <Button color="inherit">Fundos Imobiliários</Button>
+            </Link>
+          </Grid>
         </Grid>
       </AppBar>
     </>

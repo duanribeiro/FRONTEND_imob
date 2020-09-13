@@ -11,20 +11,32 @@ import "./styles.scss"
 export default function MapChart() {
   const [map, setMap] = React.useState()
   const [rentHouses, setRentHouses] = React.useState()
-  const [filterResults, setFilterResults] = React.useState()
   const filters = useSelector(state => state)
+  const [filterResults, setFilterResults] = React.useState()
 
-  const callAPI = () => {
-    // axios.post(`http://127.0.0.1:5000/api/v1/auth/get_district`, {
-    //     "filters": filters
-    //   })
-    //   .then(response => {
-    //     setFilterResults(response.data)
-    //   })
+
+  const callFilterAPI = async () => {
+    await axios.post(`http://127.0.0.1:5000/maps/get_district`, {
+        "filters": filters
+      })
+      .then(response => {
+        setFilterResults(response.data)
+        for (var key in response.data) {
+          if (response.data.hasOwnProperty(key)) {  
+            response.data[key].forEach(element => {
+              map.makeIcon(
+                element["name"],
+                [element["geometry"]["location"]["lat"], element["geometry"]["location"]["lng"]],
+                key
+              )
+            })
+          }
+        }
+      })
   }
 
-  const callRentHouse = () => {
-    axios.post(`http://127.0.0.1:5000/api/v1/auth/get_rent_houses`, {
+  const callRentHouse = async () => {
+    await axios.post(`http://127.0.0.1:5000/maps/get_rent_houses`, {
         "filters": filters
       })
       .then(response => {
@@ -37,50 +49,33 @@ export default function MapChart() {
       map.clearMap()
       map.makePolygon(filters.active_districts)
     }
+    callFilterAPI()
 
-    // if (rentHouses != null) {
-    //   rentHouses.forEach(element => {
-    //     map.makeIcon(
-    //       `R$ ${element["rent"]}/mês`,
-    //       [element["latitude"], element["longitude"]],
-    //       "rent_house"
-    //     )
-    //   })
-    // }
-
-    if (filterResults != null) {
-      for (var key in filterResults) {
-        if (filterResults.hasOwnProperty(key)) {  
-          filterResults[key].forEach(element => {
-            map.makeIcon(
-              element["name"],
-              [element["geometry"]["location"]["lat"], element["geometry"]["location"]["lng"]],
-              key
-            )
-          })
-        }
-      }
+    if (filters.rent_houses) {
+      callRentHouse()
+    }
+    if (rentHouses != null) {
+      rentHouses.forEach(element => {
+        map.makeIcon(
+          `R$ ${element["rent"]}/mês`,
+          [element["latitude"], element["longitude"]],
+          "rent_house"
+        )
+      })
     }
   }, [filters, rentHouses])
 
   
 
   React.useEffect(() => {
-    setMap(new LeafletMap([-23.564942, -46.647168], 12))
-    callRentHouse()
-    callAPI()
+    setMap(new LeafletMap([-23.564942, -46.625], 12))
+    setRentHouses([])
   }, [])
-
-  React.useEffect(() => {
-    callAPI()
-    callRentHouse()
-  }, [filters])
-
 
   return (
     <>
       <div 
-        style={{height: window.innerHeight * 0.93}}
+        style={{height: window.innerHeight * 0.95}}
         className="map"
         id="map"
       />

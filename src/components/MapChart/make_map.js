@@ -26,6 +26,7 @@ export class LeafletMap {
     makePolygon(active_districts) {
       active_districts.forEach(district => {
         L.polygon(dict_polygon_names[district], {'color': dict_polygon_colors[district]}).addTo(this.layer_group)
+        .bindTooltip(district, {direction: 'top'})
       })
     }
     
