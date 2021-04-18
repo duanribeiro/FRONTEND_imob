@@ -4,6 +4,7 @@ import axios from 'axios'
 import Sidebar from './../../layouts/components/Sidebar'
 import {useSelector} from 'react-redux'
 import DrawerDistricts from './../DrawerDistricts'
+
 import 'leaflet/dist/leaflet.css'
 import "./styles.scss"
 
@@ -35,46 +36,38 @@ export default function MapChart() {
       })
   }
 
-  const callRentHouse = () => {
-     axios.post(`http://127.0.0.1:5000/maps/get_rent_houses`, {
-        "filters": filters
-      })
-      .then(response => {
-        if (response.data) {
-          response.data.forEach(element => {
-            map.makeIcon(
-              `R$ ${element["rent"]}/mês`,
-              [element["latitude"], element["longitude"]],
-              "rent_house"
-            )
-          })
-          setRentHouses(response.data)
-        }
-
-      })
-  }
-
-  // React.useEffect(() => {
-  //   if (map) {
-  //     map.clearMap()
-  //     map.makePolygon(filters.active_districts)
-  //   }
-  //   callFilterAPI()
-
-  //   if (filters.rent_houses) {
-  //     callRentHouse()
-  //   }
-  //   if (rentHouses != null) {
-  //     rentHouses.forEach(element => {
-  //       map.makeIcon(
-  //         `R$ ${element["rent"]}/mês`,
-  //         [element["latitude"], element["longitude"]],
-  //         "rent_house"
-  //       )
+  // const callRentHouse = () => {
+  //    axios.post(`http://127.0.0.1:5000/maps/get_rent_houses`, {
+  //       "filters": filters
   //     })
-  //   }
-  // }, [filters, rentHouses])
-
+  //     .then(response => {
+  //       if (response.data) {
+  //         response.data.forEach(element => {
+  //           map.makeIcon(
+  //             `R$ ${element["rent"]}/mês`,
+  //             [element["latitude"], element["longitude"]],
+  //             "rent_house"
+  //           )
+  //         })
+  //       }
+  //     })
+  // }
+  const callRentHouse = () => {
+    axios.post(`http://127.0.0.1:5000/maps/get_rent_houses`, {
+       "filters": filters
+     })
+     .then(response => {
+       if (response.data) {
+         response.data.forEach(element => {
+           map.makeIcon(
+            element,
+             [element["latitude"], element["longitude"]],
+             "rent_house"
+           )
+         })
+       }
+     })
+ }
 
   React.useEffect(() => {
     if (filters.rent_houses) {

@@ -1,5 +1,49 @@
 import L from 'leaflet'
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import ReactDOMServer from "react-dom/server";
 import {dict_polygon_names, dict_polygon_colors} from './polygon_dicts'
+import { makeStyles } from '@material-ui/core/styles';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+
+const RentHousePopup = item => {
+  let house = item["item"]
+
+  let graphData = []
+  for (let i in house["rent"]) {
+    graphData.push({
+      rent: house["rent"][i],
+    })
+  }
+  console.log(house["rent"])
+  
+  return (
+    <Card elevation={0}>
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h2">
+          {house["real_estate"].toUpperCase()}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+          {house["description"]}
+          </Typography>
+      </CardContent>
+      <Divider />
+      <LineChart margin={{ top: 20, left: -20, right: 20, bottom: 20 }} width={250} height={200} data={graphData}>
+        <YAxis ticks={house["rent"]} interval={0} />
+        <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
+        <Line type="monotone" dataKey="rent" stroke="#8884d8" />
+      </LineChart>
+    </Card>
+  );
+};
 
 
 export class LeafletMap {
@@ -28,7 +72,7 @@ export class LeafletMap {
       })
     }
     
-    makeIcon(name, icon_position, icon) {
+    makeIcon(item, icon_position, icon) {
       let LeafIcon = L.Icon.extend({
         options: {
           iconSize: [30, 33],
@@ -54,7 +98,7 @@ export class LeafletMap {
       }
 
       let myIcon = new LeafIcon({iconUrl: icon_url})
-      L.marker(icon_position, {icon: myIcon}).bindPopup(name).addTo(this.layer_group)
+      L.marker(icon_position, {icon: myIcon}).bindPopup(ReactDOMServer.renderToString(<RentHousePopup item={item}/>)).addTo(this.layer_group)
 
     }
 
