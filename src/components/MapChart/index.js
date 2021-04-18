@@ -36,22 +36,7 @@ export default function MapChart() {
       })
   }
 
-  // const callRentHouse = () => {
-  //    axios.post(`http://127.0.0.1:5000/maps/get_rent_houses`, {
-  //       "filters": filters
-  //     })
-  //     .then(response => {
-  //       if (response.data) {
-  //         response.data.forEach(element => {
-  //           map.makeIcon(
-  //             `R$ ${element["rent"]}/mês`,
-  //             [element["latitude"], element["longitude"]],
-  //             "rent_house"
-  //           )
-  //         })
-  //       }
-  //     })
-  // }
+
   const callRentHouse = () => {
     axios.post(`http://127.0.0.1:5000/maps/get_rent_houses`, {
        "filters": filters
@@ -73,6 +58,7 @@ export default function MapChart() {
     if (filters.rent_houses) {
       callRentHouse()
     }
+    callFilterAPI()
 
     if (map){
       map.clearMap()

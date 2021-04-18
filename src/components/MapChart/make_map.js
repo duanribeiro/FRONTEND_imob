@@ -1,18 +1,16 @@
 import L from 'leaflet'
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from "react"
 import ReactDOMServer from "react-dom/server";
 import {dict_polygon_names, dict_polygon_colors} from './polygon_dicts'
-import { makeStyles } from '@material-ui/core/styles';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import Card from '@material-ui/core/Card';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import CardContent from '@material-ui/core/CardContent'
+import Card from '@material-ui/core/Card'
+import Typography from '@material-ui/core/Typography'
+import Divider from '@material-ui/core/Divider'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 
+const formatYAxis = (tickItem) => {
+  return `R$ ${tickItem}`
+}
 
 const RentHousePopup = item => {
   let house = item["item"]
@@ -23,7 +21,7 @@ const RentHousePopup = item => {
       rent: house["rent"][i],
     })
   }
-  console.log(house["rent"])
+  console.log(house)
   
   return (
     <Card elevation={0}>
@@ -36,8 +34,8 @@ const RentHousePopup = item => {
           </Typography>
       </CardContent>
       <Divider />
-      <LineChart margin={{ top: 20, left: -20, right: 20, bottom: 20 }} width={250} height={200} data={graphData}>
-        <YAxis ticks={house["rent"]} interval={0} />
+      <LineChart margin={{ top: 20, left: 0, right: 20, bottom: 20 }} width={300} height={200} data={graphData}>
+        <YAxis ticks={house["rent"]} interval={0} tickFormatter={formatYAxis}/>
         <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
         <Line type="monotone" dataKey="rent" stroke="#8884d8" />
       </LineChart>
@@ -98,7 +96,11 @@ export class LeafletMap {
       }
 
       let myIcon = new LeafIcon({iconUrl: icon_url})
+      if (item["real_estate"]){
       L.marker(icon_position, {icon: myIcon}).bindPopup(ReactDOMServer.renderToString(<RentHousePopup item={item}/>)).addTo(this.layer_group)
+      }
+      L.marker(icon_position, {icon: myIcon}).bindPopup(item["name"]).addTo(this.layer_group)
+
 
     }
 
