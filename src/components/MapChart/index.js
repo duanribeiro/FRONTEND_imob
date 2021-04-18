@@ -35,33 +35,61 @@ export default function MapChart() {
       })
   }
 
-  const callRentHouse =  () => {
-    axios.post(`http://127.0.0.1:5000/maps/get_rent_houses`, {
+  const callRentHouse = () => {
+     axios.post(`http://127.0.0.1:5000/maps/get_rent_houses`, {
         "filters": filters
       })
       .then(response => {
-        setRentHouses(response.data)
+        if (response.data) {
+          response.data.forEach(element => {
+            map.makeIcon(
+              `R$ ${element["rent"]}/mês`,
+              [element["latitude"], element["longitude"]],
+              "rent_house"
+            )
+          })
+          setRentHouses(response.data)
+        }
+
       })
   }
 
-  React.useEffect(() => {
-    callFilterAPI()
-    callRentHouse()
+  // React.useEffect(() => {
+  //   if (map) {
+  //     map.clearMap()
+  //     map.makePolygon(filters.active_districts)
+  //   }
+  //   callFilterAPI()
 
-    if (rentHouses != null) {
-      rentHouses.forEach(element => {
-        map.makeIcon(
-          `R$ ${element["rent"]}/mês`,
-          [element["latitude"], element["longitude"]],
-          "rent_house"
-        )
-      })
+  //   if (filters.rent_houses) {
+  //     callRentHouse()
+  //   }
+  //   if (rentHouses != null) {
+  //     rentHouses.forEach(element => {
+  //       map.makeIcon(
+  //         `R$ ${element["rent"]}/mês`,
+  //         [element["latitude"], element["longitude"]],
+  //         "rent_house"
+  //       )
+  //     })
+  //   }
+  // }, [filters, rentHouses])
+
+
+  React.useEffect(() => {
+    if (filters.rent_houses) {
+      callRentHouse()
+    }
+
+    if (map){
+      map.clearMap()
+      map.makePolygon(filters.active_districts)
     }
   }, [filters])
 
 
   React.useEffect(() => {
-    let map = new LeafletMap([-23.564942, -46.625], 12)
+    let map = new LeafletMap([-23.564942, -46.625], 14)
     setMap(map)
     map.clearMap()
     map.makePolygon(filters.active_districts)
