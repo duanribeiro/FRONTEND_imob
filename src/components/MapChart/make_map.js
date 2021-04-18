@@ -9,7 +9,6 @@ export class LeafletMap {
       this.initial_position = initial_position
       this.initial_zoom = initial_zoom
       this.map = L.map('map', {attributionControl: false}).setView(initial_position, initial_zoom)
-
       L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png').addTo(this.map)
       this.layer_group = L.layerGroup().addTo(this.map)
       
@@ -26,7 +25,6 @@ export class LeafletMap {
     makePolygon(active_districts) {
       active_districts.forEach(district => {
         L.polygon(dict_polygon_names[district], {'color': dict_polygon_colors[district]}).addTo(this.layer_group)
-        .bindTooltip(district, {direction: 'top'})
       })
     }
     
@@ -34,7 +32,7 @@ export class LeafletMap {
       let LeafIcon = L.Icon.extend({
         options: {
           iconSize: [30, 33],
-          iconAnchor: [1, 33]
+          iconAnchor: [15, 5]
         }
       })
     
@@ -56,7 +54,8 @@ export class LeafletMap {
       }
 
       let myIcon = new LeafIcon({iconUrl: icon_url})
-      L.marker(icon_position,  {icon: myIcon}).bindPopup(name).addTo(this.layer_group)
+      L.marker(icon_position, {icon: myIcon}).bindPopup(name).addTo(this.layer_group)
+
     }
 
     clearMap() {

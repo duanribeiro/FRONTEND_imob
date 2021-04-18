@@ -15,7 +15,6 @@ const Routes = () => {
         path="/"
         layout={Minimal}
         component={MainView}
-
       />
       <PublicRoute
         exact

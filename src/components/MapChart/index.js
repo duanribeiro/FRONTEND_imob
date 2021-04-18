@@ -10,13 +10,13 @@ import "./styles.scss"
 
 export default function MapChart() {
   const [map, setMap] = React.useState()
-  const [rentHouses, setRentHouses] = React.useState()
+  const [rentHouses, setRentHouses] = React.useState([])
   const filters = useSelector(state => state)
-  const [filterResults, setFilterResults] = React.useState()
+  const [filterResults, setFilterResults] = React.useState([])
 
 
-  const callFilterAPI = async () => {
-    await axios.post(`http://127.0.0.1:5000/maps/get_district`, {
+  const callFilterAPI = () => {
+    axios.post(`http://127.0.0.1:5000/maps/get_district`, {
         "filters": filters
       })
       .then(response => {
@@ -35,8 +35,8 @@ export default function MapChart() {
       })
   }
 
-  const callRentHouse = async () => {
-    await axios.post(`http://127.0.0.1:5000/maps/get_rent_houses`, {
+  const callRentHouse =  () => {
+    axios.post(`http://127.0.0.1:5000/maps/get_rent_houses`, {
         "filters": filters
       })
       .then(response => {
@@ -45,15 +45,9 @@ export default function MapChart() {
   }
 
   React.useEffect(() => {
-    if (map) {
-      map.clearMap()
-      map.makePolygon(filters.active_districts)
-    }
     callFilterAPI()
+    callRentHouse()
 
-    if (filters.rent_houses) {
-      callRentHouse()
-    }
     if (rentHouses != null) {
       rentHouses.forEach(element => {
         map.makeIcon(
@@ -63,13 +57,14 @@ export default function MapChart() {
         )
       })
     }
-  }, [filters, rentHouses])
+  }, [filters])
 
-  
 
   React.useEffect(() => {
-    setMap(new LeafletMap([-23.564942, -46.625], 12))
-    setRentHouses([])
+    let map = new LeafletMap([-23.564942, -46.625], 12)
+    setMap(map)
+    map.clearMap()
+    map.makePolygon(filters.active_districts)
   }, [])
 
   return (
