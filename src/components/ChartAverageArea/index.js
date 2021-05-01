@@ -6,38 +6,45 @@ import "./styles.scss"
 import axios from 'axios'
 
 
-export default function ChartAverageRent() {
-  const [data, setData] = React.useState()
-  const callAPIAverageRentByRent = () => {
-      axios.get(`http://127.0.0.1:5000/statistics/chart_average_by_district`)
+const yAxisTickFormatter = number =>  {
+  return `${number}m²`
+}
+
+export default function ChartAverageArea() {
+  const [chartData, setChartData] = React.useState()
+
+  const callAPIAverageRent = () => {
+      axios.get(`http://127.0.0.1:5000/statistics/chart_average_area_by_district`)
         .then(response => {
-            setData(response.data)
+            setChartData(response.data)
         })
     }
 
   React.useEffect(() => {
-    callAPIAverageRentByRent()
+    callAPIAverageRent()
   }, [])
 
 
   return (
-    <ResponsiveContainer width="95%" height={300}>
+    <ResponsiveContainer height={300}>
       <BarChart
-        height={300}
-        data={data}
-        margin={{
-          top: 5, right: 30, left: 20, bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="_id" />
-        <YAxis />
-        <Tooltip />
-        <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
-        <ReferenceLine y={0} stroke="#000" />
-        <Brush dataKey="uv" height={30} stroke="black" />
-        <Bar dataKey="average_area" fill="darkgray" />
-      </BarChart>
+            width={500}
+            height={300}
+            data={chartData}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 50,
+              bottom: 5
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="_id" />
+            <YAxis tickFormatter={yAxisTickFormatter}/>
+            <Tooltip formatter={yAxisTickFormatter}/>
+            <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
+            <Bar dataKey="average_area" fill="#8884d8"  />
+          </BarChart>
     </ResponsiveContainer>
   );
 }

@@ -5,39 +5,50 @@ import {
 import "./styles.scss"
 import axios from 'axios'
 
+var formatter = new Intl.NumberFormat([], {
+  style: 'currency',
+  currency: 'BRL',
+  minimumFractionDigits: 0,
+})
 
-export default function ChartAverageArea() {
-  const [data, setData] = React.useState()
-  const callAPIAverageRentByArea = () => {
-      axios.get(`http://127.0.0.1:5000/statistics/chart_average_by_district`)
-        .then(response => {
-            setData(response.data)
-        })
-    }
+const yAxisTickFormatter = number =>  {
+  return formatter.format(number)
+}
+
+export default function ChartAverageRent() {
+  let [chartData, setChartData] = React.useState([])
 
   React.useEffect(() => {
     callAPIAverageRentByArea()
   }, [])
 
+  const callAPIAverageRentByArea = () => {
+      axios.get(`http://127.0.0.1:5000/statistics/chart_average_rent_by_district`)
+        .then(response => {
+            setChartData(response.data)
+        })
+    }
 
   return (
-    <ResponsiveContainer width="95%" height={300}>
+    <ResponsiveContainer height={300}>
       <BarChart
-        height={300}
-        data={data}
-        margin={{
-          top: 5, right: 30, left: 20, bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="_id" />
-        <YAxis />
-        <Tooltip />
-        <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
-        <ReferenceLine y={0} stroke="#000" />
-        <Brush dataKey="uv" height={30} stroke="black" />
-        <Bar dataKey="average_rent" fill="darkgray" />
-      </BarChart>
+            width={500}
+            height={300}
+            data={chartData}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 50,
+              bottom: 5
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="_id" />
+            <YAxis tickFormatter={yAxisTickFormatter}/>
+            <Tooltip formatter={yAxisTickFormatter}/>
+            <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
+            <Bar dataKey="average_rent" fill="#8884d8"  />
+          </BarChart>
     </ResponsiveContainer>
   );
 }
