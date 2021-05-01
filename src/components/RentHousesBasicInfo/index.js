@@ -6,17 +6,17 @@ import "./styles.scss"
 import axios from 'axios'
 
 
-export default function ChartAverageArea() {
+export default function RentHousesBasicInfo() {
   const [data, setData] = React.useState()
-  const callAPIAverageRentByArea = () => {
-      axios.get(`http://127.0.0.1:5000/statistics/chart_average_by_district`)
+  const callAPIAverageRentByRent = () => {
+      axios.get(`http://127.0.0.1:5000/statistics/get_rent_houses`)
         .then(response => {
             setData(response.data)
         })
     }
 
   React.useEffect(() => {
-    callAPIAverageRentByArea()
+    callAPIAverageRentByRent()
   }, [])
 
 
@@ -36,7 +36,7 @@ export default function ChartAverageArea() {
         <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
         <ReferenceLine y={0} stroke="#000" />
         <Brush dataKey="uv" height={30} stroke="black" />
-        <Bar dataKey="average_rent" fill="darkgray" />
+        <Bar dataKey="average_area" fill="darkgray" />
       </BarChart>
     </ResponsiveContainer>
   );

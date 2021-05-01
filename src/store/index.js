@@ -9,7 +9,7 @@ const STATE =  {
     'gas_station_filter': false,
     'gym_filter': false,
     
-    'active_districts': ['pirituba']
+    'active_districts': ['brás']
     // [
     //     'barra funda', 'perdizes', 'jardim paulista', 'pinheiros', 'itaim bibi', 'lapa', 
     //     'alto pinheiros', 'butantã', 'morumbi', 'jaguará', 'vila leopoldina', 'jaguaré', 'rio pequeno', 'vila sônia',

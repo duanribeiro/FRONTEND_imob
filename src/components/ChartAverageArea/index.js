@@ -9,7 +9,7 @@ import axios from 'axios'
 export default function ChartAverageRent() {
   const [data, setData] = React.useState()
   const callAPIAverageRentByRent = () => {
-      axios.get(`http://127.0.0.1:5000/maps/chart_average_by_district`)
+      axios.get(`http://127.0.0.1:5000/statistics/chart_average_by_district`)
         .then(response => {
             setData(response.data)
         })

@@ -9,13 +9,13 @@ import Divider from '@material-ui/core/Divider'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 
 const formatYAxis = (tickItem) => {
-  return `R$ ${tickItem}`
+  return `R$${tickItem}`
 }
 
 const RentHousePopup = item => {
   let house = item["item"]
-
   let graphData = []
+
   for (let i in house["rent"]) {
     graphData.push({
       rent: house["rent"][i],
@@ -28,20 +28,23 @@ const RentHousePopup = item => {
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
           {house["real_estate"].toUpperCase()}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
           {house["description"]}
-          </Typography>
+        </Typography>
       </CardContent>
       <Divider />
-      <LineChart margin={{ top: 20, left: 0, right: 20, bottom: 20 }} width={300} height={200} data={graphData}>
+      <Typography>
+          EVOLUÇÃO DO PREÇO DE ALUGUEL
+      </Typography>
+      <LineChart margin={{ top: 20, left: 0, right: 20, bottom: 20 }} width={500} height={200} data={graphData}>
         <YAxis ticks={house["rent"]} interval={0} tickFormatter={formatYAxis}/>
         <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
         <Line type="monotone" dataKey="rent" stroke="#8884d8" />
       </LineChart>
     </Card>
-  );
-};
+  )
+}
 
 
 export class LeafletMap {
@@ -53,8 +56,6 @@ export class LeafletMap {
       this.map = L.map('map', {attributionControl: false}).setView(initial_position, initial_zoom)
       L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png').addTo(this.map)
       this.layer_group = L.layerGroup().addTo(this.map)
-      
-
       // RASCUNHO DO CÍRCULO
       //   L.circle([-23.5962, -46.732088], {
       //     radius: 900,
@@ -70,6 +71,7 @@ export class LeafletMap {
       })
     }
     
+    // TODO - PRECISA MELHORAR COMO IDENTIFICAR O TIPO DO ICONE
     makeIcon(item, icon_position, icon) {
       let LeafIcon = L.Icon.extend({
         options: {
@@ -97,11 +99,10 @@ export class LeafletMap {
 
       let myIcon = new LeafIcon({iconUrl: icon_url})
       if (item["real_estate"]){
-      L.marker(icon_position, {icon: myIcon}).bindPopup(ReactDOMServer.renderToString(<RentHousePopup item={item}/>)).addTo(this.layer_group)
+        L.marker(icon_position, {icon: myIcon}).bindPopup(ReactDOMServer.renderToString(<RentHousePopup item={item}/>), {minWidth: 500}).addTo(this.layer_group)
+      } else {
+        L.marker(icon_position, {icon: myIcon}).bindPopup(item["name"]).addTo(this.layer_group)
       }
-      L.marker(icon_position, {icon: myIcon}).bindPopup(item["name"]).addTo(this.layer_group)
-
-
     }
 
     clearMap() {
