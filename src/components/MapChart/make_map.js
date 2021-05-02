@@ -21,7 +21,6 @@ const RentHousePopup = item => {
       rent: house["rent"][i],
     })
   }
-  console.log(house)
   
   return (
     <Card elevation={0}>

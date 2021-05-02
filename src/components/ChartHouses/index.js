@@ -6,26 +6,26 @@ import "./styles.scss"
 import axios from 'axios'
 
 
-export default function RentHousesBasicInfo() {
-  const [countHouses, setCountHouses] = React.useState()
+export default function ChartHouses() {
+  const [housesPerDistrict, setHousesPerDistrict] = React.useState()
 
   React.useEffect(() => {
-    callAPIAverageRentByRent()
+    fetchHousesPerDistrict()
   }, [])
 
-  const callAPIAverageRentByRent = () => {
+  const fetchHousesPerDistrict = () => {
       axios.get(`http://127.0.0.1:5000/statistics/houses_per_district`)
         .then(response => {
-          setCountHouses(response.data)
+          setHousesPerDistrict(response.data)
         })
     }
 
   return (
     <ResponsiveContainer height={300}>
       <BarChart
-      width={500}
+        width={500}
         height={300}
-        data={countHouses}
+        data={housesPerDistrict}
         margin={{
           top: 5,
           right: 30,
@@ -33,9 +33,9 @@ export default function RentHousesBasicInfo() {
           bottom: 5
         }}
       >
-            <CartesianGrid strokeDasharray="3 3" />
+            {/* <CartesianGrid strokeDasharray="3 3" /> */}
             <XAxis dataKey="_id" />
-            <YAxis />
+            <YAxis domain={[0, 'dataMax']}/>
             <Tooltip />
             <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
             <Bar dataKey="count_houses" fill="#8884d8"  />

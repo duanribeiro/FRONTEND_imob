@@ -38,9 +38,9 @@ export default function ChartAverageArea() {
               bottom: 5
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
+            {/* <CartesianGrid strokeDasharray="3 3" /> */}
             <XAxis dataKey="_id" />
-            <YAxis tickFormatter={yAxisTickFormatter}/>
+            <YAxis tickFormatter={yAxisTickFormatter} domain={[0, 'dataMax']}/>
             <Tooltip formatter={yAxisTickFormatter}/>
             <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
             <Bar dataKey="average_area" fill="#8884d8"  />
