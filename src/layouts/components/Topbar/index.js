@@ -26,11 +26,6 @@ export default function Topbar(props) {
               <Button color="inherit">Estatísticas</Button>
             </Link>
           </Grid>
-          <Grid item>
-            <Link to='/real_estate_funds'>
-              <Button color="inherit">Fundos Imobiliários</Button>
-            </Link>
-          </Grid>
         </Grid>
       </AppBar>
     </>

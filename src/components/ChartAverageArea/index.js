@@ -10,7 +10,7 @@ const yAxisTickFormatter = number =>  {
   return `${number}m²`
 }
 
-export default function ChartAverageArea() {
+export default function CardRentReport() {
   const [chartData, setChartData] = React.useState()
 
   const callAPIAverageRent = () => {

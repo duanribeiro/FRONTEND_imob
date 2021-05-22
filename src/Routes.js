@@ -22,12 +22,6 @@ const Routes = () => {
         layout={Minimal}
         component={StatisticsView}
       />
-        <PublicRoute
-        exact
-        path="/real_estate_funds"
-        layout={Minimal}
-        component={RealEstateFundsView}
-      />
     </Switch>
   ) 
 } 

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import store from './store'
-import "./App.scss"
 import theme from './theme'
 import { ThemeProvider } from '@material-ui/styles'
 import { createBrowserHistory } from 'history'
 import { Router } from 'react-router-dom'
 import Routes from './Routes'
+import "./App.scss"
 
 const browserHistory = createBrowserHistory()
 
