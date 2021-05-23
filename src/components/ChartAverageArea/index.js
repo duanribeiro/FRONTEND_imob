@@ -43,7 +43,7 @@ export default function CardRentReport() {
             <YAxis tickFormatter={yAxisTickFormatter} domain={[0, 'dataMax']}/>
             <Tooltip formatter={yAxisTickFormatter}/>
             <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
-            <Bar dataKey="average_area" fill="#8884d8"  />
+            <Bar dataKey="average_area" fill="#B3B3B3"  />
           </BarChart>
     </ResponsiveContainer>
   );

@@ -1,9 +1,10 @@
 import React from 'react'
-import ChartAverageArea from './../../components/ChartAverageArea/index'
-import ChartAverageRent from './../../components/ChartAverageRent/index'
-import ChartHouses from './../../components/ChartHouses/index'
-import ChartHousesStdDeviation from './../../components/ChartHousesStdDeviation/index'
-import CardReport from './../../components/CardReport'
+import ChartAverageArea from './../../components/ChartAverageArea'
+import ChartAverageRent from './../../components/ChartAverageRent'
+import ChartHouses from '../../components/ChartHouses'
+import LineChartAvgRent from './../../components/LineChartAvgRent'
+import ChartHousesStdDeviation from './../../components/ChartHousesStdDeviation'
+import GridCards from './../../components/GridCards'
 import Grid from '@material-ui/core/Grid';
 import "./styles.scss"
 
@@ -13,31 +14,26 @@ export default function StatisticsView() {
   return (
     <>
       {/* <ChartHousesStdDeviation/> */}
+    
+      <GridCards/>
       <Grid
         container
         direction="row"
-        justify="center"
+        justifyContent="center"
         alignItems="center"
-        spacing={6}
       >
-        <Grid item>
-          <CardReport title={'Aluguel'} text={'Preço de aluguel mensal na cidade está em R$3.494 para os apartamentos de 65m² e dois quartos.'}/>
+        <Grid item xs={3} sm={3}>
+          <div className="chart_description">
+          O preço médio da cidade está em R$ 9.278/m², 0.4% acima do mês anterior.
+           A tendência a partir de preço é para cima:
+          Os preços aumentaram 1.2% sobre 2018, 2.6% sobre 2019 e 3.4% em 2020.
+           Já em 2021 aumentou 1.3%, abaixo da inflação.
+          </div>
         </Grid>
-          <Grid item>
-        <CardReport title={'Aluguel'} text={'Em 2019 aluguel subiu 5,3% e outros 5,6% em 2020. Em 2021, sobe 1,1%, abaixo da inflação e bem abaixo do IGP-M.'}/>
-        </Grid>
-          <Grid item>
-        <CardReport title={'Aluguel'} text={'Oeste é a região mais cara da cidade, R$ 4.081 por mês. Leste tem a oferta mais barata com preço médio de R$ 1.648 por mês.'}/>
-          </Grid>
-        <Grid item>
-          <CardReport title={'Aluguel'} text={'Itaim Bibi é o que tem o maior preço médio de aluguel da cidade, R$ 4.910 por mês. '}/>
-        </Grid>
-        <Grid item>
-          <CardReport title={'Aluguel'} text={'Sul é a região que oferece maior retorno para investidores em busca de renda, 6.5% ao ano.'}/>
+        <Grid item xs={12} sm={9}>
+          <LineChartAvgRent/>
         </Grid>
       </Grid>
-
-
       <ChartHouses/>
       <ChartAverageRent/>
       <ChartAverageArea/>

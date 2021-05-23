@@ -38,7 +38,7 @@ export default function ChartHouses() {
             <YAxis domain={[0, 'dataMax']}/>
             <Tooltip />
             <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
-            <Bar dataKey="count_houses" fill="#8884d8"  />
+            <Bar dataKey="count_houses" fill="#B3B3B3"  />
       </BarChart>
     </ResponsiveContainer>
   );

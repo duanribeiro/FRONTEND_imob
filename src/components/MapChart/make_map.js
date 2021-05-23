@@ -39,7 +39,7 @@ const RentHousePopup = item => {
       <LineChart margin={{ top: 20, left: 0, right: 20, bottom: 20 }} width={500} height={200} data={graphData}>
         <YAxis ticks={house["rent"]} interval={0} tickFormatter={formatYAxis}/>
         <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
-        <Line type="monotone" dataKey="rent" stroke="#8884d8" />
+        <Line type="monotone" dataKey="rent" stroke="#B3B3B3" />
       </LineChart>
     </Card>
   )

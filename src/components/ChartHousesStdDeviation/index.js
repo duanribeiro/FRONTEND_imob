@@ -38,7 +38,7 @@ export default function ChartHousesStdDeviation() {
           <Tooltip />
           <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white"  }} />
           <ReferenceLine y={0} stroke="#000" />
-          <Bar dataKey="rents_std_deviation" fill="#8884d8" />
+          <Bar dataKey="rents_std_deviation" fill="#B3B3B3" />
         </BarChart>
     </ResponsiveContainer>
   );
