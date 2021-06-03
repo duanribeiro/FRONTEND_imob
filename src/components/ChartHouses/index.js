@@ -3,7 +3,8 @@ import {
   BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts'
 import "./styles.scss"
-import axios from 'axios'
+import api from "./../../plugins/axios";
+
 
 
 export default function ChartHouses() {
@@ -14,7 +15,7 @@ export default function ChartHouses() {
   }, [])
 
   const fetchHousesPerDistrict = () => {
-      axios.get(`http://127.0.0.1:5000/statistics/houses_per_district`)
+      api.get(`http://127.0.0.1:5000/statistics/houses_per_district`)
         .then(response => {
           setHousesPerDistrict(response.data)
         })

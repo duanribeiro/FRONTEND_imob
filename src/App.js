@@ -7,6 +7,9 @@ import { createBrowserHistory } from 'history'
 import { Router } from 'react-router-dom'
 import Routes from './Routes'
 import "./App.scss"
+import axios from "axios"
+
+
 
 const browserHistory = createBrowserHistory()
 

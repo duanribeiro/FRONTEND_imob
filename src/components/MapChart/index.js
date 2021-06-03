@@ -4,6 +4,7 @@ import axios from 'axios'
 import Sidebar from './../../layouts/components/Sidebar'
 import {useSelector} from 'react-redux'
 import DrawerDistricts from './../DrawerDistricts'
+import api from "./../../plugins/axios";
 
 import 'leaflet/dist/leaflet.css'
 import "./styles.scss"
@@ -17,7 +18,7 @@ export default function MapChart() {
 
 
   const callFilterAPI = () => {
-    axios.post(`http://127.0.0.1:5000/maps/get_district`, {
+    api.post(`http://127.0.0.1:5000/maps/get_district`, {
         "filters": filters
       })
       .then(response => {
@@ -38,7 +39,7 @@ export default function MapChart() {
 
 
   const callRentHouse = () => {
-    axios.post(`http://127.0.0.1:5000/maps/get_rent_houses`, {
+    api.post(`http://127.0.0.1:5000/maps/get_rent_houses`, {
        "filters": filters
      })
      .then(response => {

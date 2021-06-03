@@ -3,7 +3,8 @@ import {
   BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts'
 import "./styles.scss"
-import axios from 'axios'
+import api from "./../../plugins/axios";
+
 
 var formatter = new Intl.NumberFormat([], {
   style: 'currency',
@@ -23,7 +24,7 @@ export default function ChartAverageRent() {
   }, [])
 
   const callAPIAverageRentByArea = () => {
-      axios.get(`http://127.0.0.1:5000/statistics/chart_average_rent_by_district`)
+      api.get(`http://127.0.0.1:5000/statistics/chart_average_rent_by_district`)
         .then(response => {
             setChartData(response.data)
         })

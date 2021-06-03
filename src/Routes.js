@@ -1,8 +1,10 @@
 import React from 'react' 
-import { Switch } from 'react-router-dom' 
+import { Switch, Redirect } from 'react-router-dom' 
 import Minimal from './layouts' 
 import PublicRoute from './layouts/components/PublicRoute' 
-import { MainView, StatisticsView, RealEstateFundsView } from './views' 
+import PrivateRoute from './layouts/components/PrivateRoute' 
+import { MainView, StatisticsView, AuthenticationView } from './views' 
+
 
 
 const Routes = () => {
@@ -12,16 +14,23 @@ const Routes = () => {
       {/* Rotas Públicas */}
       <PublicRoute
         exact
-        path="/"
+        path="/login"
         layout={Minimal}
-        component={MainView}
+        component={AuthenticationView}
       />
-      <PublicRoute
+      <PrivateRoute
         exact
         path="/statistics"
         layout={Minimal}
         component={StatisticsView}
       />
+      <PrivateRoute
+        exact
+        path="/map"
+        layout={Minimal}
+        component={MainView}
+      />
+      <Redirect to={{ pathname: "/login"}} />
     </Switch>
   ) 
 } 

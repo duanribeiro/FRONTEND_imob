@@ -3,7 +3,8 @@ import {
   BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts'
 import "./styles.scss"
-import axios from 'axios'
+import api from "./../../plugins/axios";
+
 
 
 const yAxisTickFormatter = number =>  {
@@ -14,7 +15,7 @@ export default function CardRentReport() {
   const [chartData, setChartData] = React.useState()
 
   const callAPIAverageRent = () => {
-      axios.get(`http://127.0.0.1:5000/statistics/chart_average_area_by_district`)
+      api.get(`http://127.0.0.1:5000/statistics/chart_average_area_by_district`)
         .then(response => {
             setChartData(response.data)
         })
