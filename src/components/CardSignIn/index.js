@@ -25,8 +25,9 @@ export default function CardSignIn(props) {
   const confirmSignIn = () => {
     api.post(`http://localhost:5000/auth/login`, values)
       .then(response => {
-        console.log(response.data['access_token'])
         login(response.data['access_token'])
+        history.push('/map')
+        console.log('O')
       })
       .catch(error => {
         if (error.response) {

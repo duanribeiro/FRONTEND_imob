@@ -5,7 +5,7 @@ import theme from './theme'
 import { ThemeProvider } from '@material-ui/styles'
 import { createBrowserHistory } from 'history'
 import { Router } from 'react-router-dom'
-import Routes from './Routes'
+import Routes from './router/Routes'
 import "./App.scss"
 import axios from "axios"
 

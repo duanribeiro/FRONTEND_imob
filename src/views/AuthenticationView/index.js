@@ -18,7 +18,7 @@ export default function AuthenticationView(props) {
             style={{ minHeight: '100vh' }}
             >
                 <Grid item xs={3}>
-                    <CardSignIn/>
+                    <CardSignIn history={props.history}/>
                 </Grid>      
             </Grid>
         </>
