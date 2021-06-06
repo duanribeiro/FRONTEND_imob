@@ -14,8 +14,8 @@ export default function CardSignIn(props) {
   const { history } = props
 
   const [values, setValues] = React.useState({
-    "username": "",
-    "password": "",
+    "username": "string",
+    "password": "string",
   })
 
   const handleChange = name => event => {
@@ -27,7 +27,6 @@ export default function CardSignIn(props) {
       .then(response => {
         login(response.data['access_token'])
         history.push('/map')
-        console.log('O')
       })
       .catch(error => {
         if (error.response) {

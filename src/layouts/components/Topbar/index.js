@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppBar, Toolbar } from '@material-ui/core'
+import { AppBar } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import { Link } from 'react-router-dom'

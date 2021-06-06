@@ -12,22 +12,23 @@ import "./styles.scss"
 
 export default function MapChart() {
   const [map, setMap] = React.useState()
-  const [rentHouses, setRentHouses] = React.useState([])
   const filters = useSelector(state => state)
-  const [filterResults, setFilterResults] = React.useState([])
+  const [rentHouses, setRentHouses] = React.useState([])
+  const [districtsResults, setDistrictsResults] = React.useState([])
 
-
-  const callFilterAPI = () => {
+  
+  const callDistricts = () => {
     api.post(`http://127.0.0.1:5000/maps/get_district`, {
         "filters": filters
       })
       .then(response => {
-        setFilterResults(response.data)
+        setDistrictsResults(response.data)
+
         for (var key in response.data) {
           if (response.data.hasOwnProperty(key)) {  
             response.data[key].forEach(element => {
               map.makeIcon(
-                element["name"],
+                element,
                 [element["geometry"]["location"]["lat"], element["geometry"]["location"]["lng"]],
                 key
               )
@@ -59,7 +60,7 @@ export default function MapChart() {
     if (filters.rent_houses) {
       callRentHouse()
     }
-    callFilterAPI()
+    callDistricts()
 
     if (map){
       map.clearMap()
