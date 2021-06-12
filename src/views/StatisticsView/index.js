@@ -3,7 +3,7 @@ import ChartAverageArea from './../../components/ChartAverageArea'
 import ChartAverageRent from './../../components/ChartAverageRent'
 import ChartHouses from '../../components/ChartHouses'
 import LineChartAvgRent from './../../components/LineChartAvgRent'
-import ChartHousesStdDeviation from './../../components/ChartHousesStdDeviation'
+import BarChartDistrictAvgPrice from '../../components/BarChartZoneAvgPrice'
 import GridCards from './../../components/GridCards'
 import Grid from '@material-ui/core/Grid';
 import "./styles.scss"
@@ -14,7 +14,6 @@ export default function StatisticsView() {
   return (
     <>
       {/* <ChartHousesStdDeviation/> */}
-    
       <GridCards/>
       <Grid
         container
@@ -22,6 +21,7 @@ export default function StatisticsView() {
         justifyContent="center"
         alignItems="center"
       >
+
         <Grid item xs={3} sm={3}>
           <div className="chart_description">
           O preço médio da cidade está em R$ 9.278/m², 0.4% acima do mês anterior.
@@ -34,6 +34,8 @@ export default function StatisticsView() {
           <LineChartAvgRent/>
         </Grid>
       </Grid>
+
+      <BarChartDistrictAvgPrice/>
       <ChartHouses/>
       <ChartAverageRent/>
       <ChartAverageArea/>
