@@ -3,7 +3,7 @@ import {
   BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts'
 import "./styles.scss"
-import api from "./../../plugins/axios";
+import api from "./../../plugins/axios"
 
 
 
@@ -11,7 +11,7 @@ const yAxisTickFormatter = number =>  {
   return `${number}m²`
 }
 
-export default function CardRentReport() {
+export default function ScatterChartAvgPriceRent() {
   const [chartData, setChartData] = React.useState()
 
   const callAPIAverageRent = () => {

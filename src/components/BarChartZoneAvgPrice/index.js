@@ -22,14 +22,15 @@ export default function BarChartZoneAvgPrice() {
   }, [])
 
   const fetchZoneAvgPrice = () => {
-      api.get(`http://127.0.0.1:5000/statistics/zone_average_price`)
+      api.get(`http://127.0.0.1:5000/statistics/zone_average_rent`)
         .then(response => {
-          console.log(response.data)
           setChartData(response.data)
         })
     }
 
   return (
+    <>
+    {/* <div>Preço do aluguel / m² por zona</div> */}
     <ComposedChart
       layout="vertical"
       width={500}
@@ -46,8 +47,10 @@ export default function BarChartZoneAvgPrice() {
       <XAxis type="number" />
       <YAxis dataKey="name" type="category"/>
       <Tooltip />
-      <Legend />
-      <Bar dataKey="avg_price"  fill="#B3B3B3" />
+      <Legend wrapperStyle={{ lineHeight: '40px', color: "white" }} />
+      <Bar dataKey="avg_rent"  fill="#B3B3B3" />
     </ComposedChart>
+  </>
+
   );
 }
