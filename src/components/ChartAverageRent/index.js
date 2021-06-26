@@ -48,7 +48,7 @@ export default function ChartAverageRent() {
             <YAxis tickFormatter={yAxisTickFormatter} domain={[0, 'dataMax']}/>
             <Tooltip formatter={yAxisTickFormatter}/>
             <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
-            <Bar dataKey="average_rent" fill="#B3B3B3"  />
+            <Bar dataKey="average_rent" name='Preço médio do aluguel' fill="#B3B3B3"  />
           </BarChart>
     </ResponsiveContainer>
   );

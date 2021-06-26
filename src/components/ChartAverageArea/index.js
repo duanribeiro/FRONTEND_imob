@@ -44,7 +44,7 @@ export default function ScatterChartAvgPriceRent() {
             <YAxis tickFormatter={yAxisTickFormatter} domain={[0, 'dataMax']}/>
             <Tooltip formatter={yAxisTickFormatter}/>
             <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
-            <Bar dataKey="average_area" fill="#B3B3B3"  />
+            <Bar dataKey="average_area" name={"Área média"} fill="#B3B3B3"  />
           </BarChart>
     </ResponsiveContainer>
   );

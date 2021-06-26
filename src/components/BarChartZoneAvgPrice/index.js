@@ -17,6 +17,10 @@ import api from "../../plugins/axios";
 export default function BarChartZoneAvgPrice() {
   const [chartData, setChartData] = React.useState([])
 
+  const xAxisTickFormatter = number =>  {
+    return `R$ ${number}`
+  }
+
   React.useEffect(() => {
     fetchZoneAvgPrice()
   }, [])
@@ -33,22 +37,18 @@ export default function BarChartZoneAvgPrice() {
     {/* <div>Preço do aluguel / m² por zona</div> */}
     <ComposedChart
       layout="vertical"
-      width={500}
-      height={400}
+      width={400}
+      height={300}
       data={chartData}
       margin={{
         top: 20,
-        right: 20,
-        bottom: 20,
-        left: 20
       }}
     >
-      {/* <CartesianGrid stroke="#f5f5f5" /> */}
-      <XAxis type="number" />
+      <XAxis type="number" tickFormatter={xAxisTickFormatter}/>
       <YAxis dataKey="name" type="category"/>
       <Tooltip />
       <Legend wrapperStyle={{ lineHeight: '40px', color: "white" }} />
-      <Bar dataKey="avg_rent"  fill="#B3B3B3" />
+      <Bar dataKey="avg_rent" name="Preço médio aluguel por m²" fill="#B3B3B3" formatter={xAxisTickFormatter}/>
     </ComposedChart>
   </>
 

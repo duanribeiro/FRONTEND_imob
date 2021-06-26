@@ -95,25 +95,24 @@ export default function ScatterChartAvgPriceRent() {
   return (
     <ScatterChart
       width={400}
-      height={400}
+      height={300}
       margin={{
         top: 20,
         right: 20,
-        bottom: 20,
         left: 20
       }}
     >
       <CartesianGrid />
-      <XAxis type="number" dataKey="area" name="area" unit="m²"/>
-      <YAxis type="number" dataKey="bedroom" name="bedrooms" unit=" quartos" ticks={[0, 1, 2, 3, 4]}/>
-      <ZAxis dataKey="rent" name="rent"/>
+      <XAxis type="number" dataKey="area" name="Área" unit="m²"/>
+      <YAxis type="number" dataKey="bedroom" name="Quartos" unit=" quartos" ticks={[1, 2, 3, 4]}/>
+      <ZAxis dataKey="rent" name="Preço do aluguel por mês"/>
       <Tooltip cursor={{ strokeDasharray: "3 3" }} />
       <Legend wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
-      <Scatter name="Norte" data={northData} color="red"  fill= 'red' />
-      <Scatter name="Oeste" data={westData} color="red"  fill= 'green' />
-      <Scatter name="Sul" data={southData} color="red"  fill= 'purple' />
-      <Scatter name="Leste" data={eastData} color="red"  fill= 'yellow' />
-      <Scatter name="Centro" data={centerData} color="red"  fill= 'blue' />
+      <Scatter name="Norte" data={northData} color="red" fill= 'red' />
+      <Scatter name="Oeste" data={westData} color="red" fill= 'green' />
+      <Scatter name="Sul" data={southData} color="red" fill= 'purple' />
+      <Scatter name="Leste" data={eastData} color="red" fill= 'yellow' />
+      <Scatter name="Centro" data={centerData} color="red" fill= 'blue' />
     </ScatterChart>
   );
 }
