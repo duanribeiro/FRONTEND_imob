@@ -4,14 +4,14 @@ import ReactDOMServer from "react-dom/server";
 import {dict_polygon_names, dict_polygon_colors} from './polygon_dicts'
 import PopupRentHouse from "./../../components/PopupRentHouse"
 import PopupNonHouse from "./../../components/PopupNonHouse"
-
+import Paper from '@material-ui/core/Paper';
 
 export class LeafletMap {
 
-    constructor(initial_position, initial_zoom) {
+    constructor() {
 
-      this.initial_position = initial_position
-      this.initial_zoom = initial_zoom
+      let initial_position = [-23.564942, -46.625]
+      let initial_zoom = 15
       this.map = L.map('map', {attributionControl: false}).setView(initial_position, initial_zoom)
       L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png').addTo(this.map)
       this.layer_group = L.layerGroup().addTo(this.map)
@@ -59,8 +59,8 @@ export class LeafletMap {
 
       if (item['real_estate']) {
         L.marker(icon_position, {icon: myIcon}).bindPopup(ReactDOMServer.renderToString(
-          <PopupRentHouse item={item}/>
-        ), {minWidth: 500}).addTo(this.layer_group)
+          <Paper elevation={0}><PopupRentHouse item={item}/></Paper>
+        ), {minWidth: 250}).addTo(this.layer_group)
       } else {
         L.marker(icon_position, {icon: myIcon}).bindPopup(ReactDOMServer.renderToString(
           <PopupNonHouse item={item}/>

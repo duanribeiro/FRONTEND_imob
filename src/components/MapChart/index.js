@@ -70,7 +70,7 @@ export default function MapChart() {
 
 
   React.useEffect(() => {
-    let map = new LeafletMap([-23.564942, -46.625], 12)
+    let map = new LeafletMap()
     setMap(map)
     map.clearMap()
     map.makePolygon(filters.active_districts)

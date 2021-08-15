@@ -3,12 +3,17 @@ import { Switch, Redirect } from 'react-router-dom'
 import {MinimalLayout, BasicLayout} from '../layouts' 
 import PublicRoute from './PublicRoute' 
 import PrivateRoute from './PrivateRoute' 
-import { MainView, StatisticsView, AuthenticationView } from '../views' 
+import { MainView, StatisticsView, AuthenticationView, DemoView } from '../views' 
 
 
 const Routes = () => {
   return (
     <Switch>
+      <Redirect
+        exact
+        path="/"
+        to="/login"
+      />
       <PublicRoute
         exact
         path="/login"
