@@ -2,7 +2,7 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import { Grid } from '@material-ui/core'
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
+import StarIcon from '@material-ui/icons/Star';
 import IconButton from '@material-ui/core/IconButton'
 import "./styles.scss"
 
@@ -67,7 +67,7 @@ export default function PopupRentHouse(item) {
       spacing={0}
       >
         <Grid item style={{"margin": 0, "padding": 0}}>
-            <AddCircleOutlineIcon className='myButton' style={{ "cursor": "pointer" }} variant="contained" color="inherit"/>
+            <StarIcon className='myButton' style={{ "cursor": "pointer" }} variant="contained" color="inherit"/>
         </Grid>
 
         <Grid item style={{"margin": 0, "padding": 0}} className="capitalize">

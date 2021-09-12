@@ -93,7 +93,7 @@ export default function MapChart() {
         <DrawerDistricts/>
       </div>
       <div id="wallet_button">
-        <DrawerWallet user_id={auth._id}/>
+        <DrawerWallet/>
       </div>
     </>
   );

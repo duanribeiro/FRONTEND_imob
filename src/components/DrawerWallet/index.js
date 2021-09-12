@@ -14,28 +14,60 @@ import Typography from '@material-ui/core/Typography';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import IconButton from '@material-ui/core/IconButton';
 import AssessmentIcon from '@material-ui/icons/Assessment';
-import api from "./../../plugins/axios"
+import StarIcon from '@material-ui/icons/Star';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import ButtonGroupWalletHouse from '../ButtonGroupWalletHouse'
+import api from "./../../plugins/axios";
 
-const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-});
+const useStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: 345,
+  }
+}));
 
 
-export default function DrawerWallet(user_id) {
+export default function DrawerWallet() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false)
-  
-  const dispatch = useDispatch()
-  const mapFilters = useSelector(state => state.mapFilters)
-  
+  const [walletHouses, setWalletHouses] = React.useState([])
+
+  const callAPIWalletGetHouses = () => {
+    api.get(`http://127.0.0.1:5000/wallet/get_houses`)
+      .then(response => {
+
+        let arr = []
+        for (var key in response.data['message']) {
+          if (response.data['message'].hasOwnProperty(key)) {
+              arr.push( response.data['message'][key]['house_id'] );
+          }
+      }
+        console.log(arr)
+        setWalletHouses(response.data['message'])
+      })
+  }
   React.useEffect(() => {
-    api.post(`http://localhost:5000/wallet/get_houses`, {'username': user_id['user_id']})
-    .then(response => {
-      console.log(response['data'])
-    })
+    callAPIWalletGetHouses()
   }, [])
+
+  const array = ['123', '123','123', '123'].map(key => {
+    return (
+      <>
+        <ListItemIcon>
+          <Card elevation={0} className={classes.root}>
+            <CardHeader
+              action={
+                <ButtonGroupWalletHouse/>
+              }
+              title="Shrimp and Chorizo Paella"
+              subheader="September 14, 2016"
+            />
+          </Card>
+        </ListItemIcon>
+        <br/>
+      </>
+    );
+  });
 
   
   const toggleDrawer = open => event => {
@@ -62,19 +94,7 @@ export default function DrawerWallet(user_id) {
         }
         className={classes.root}
       >
-          <ListItemIcon>
-            <FormControlLabel control={
-              <Checkbox
-              style={{"marginLeft": "20px"}}
-              checked={mapFilters.rent_houses ? true : false}
-              onClick={() => dispatch({ type: "rent_houses"})}
-              name="rent_houses"/>
-              }
-            label="Casas em Aluguel"
-            />
-          </ListItemIcon>
-          <br/>
-
+        {array}
       </List>
     <Divider />
     </div>
@@ -87,7 +107,7 @@ export default function DrawerWallet(user_id) {
             variant={"contained"}
             onClick={toggleDrawer(true)}
             style={{"fontWeight": "bold", "width": "65px", "height": "62px"}}>
-              <AssessmentIcon variant="contained" color="inherit"/>
+              <StarIcon variant="contained" color="inherit"/>
             </Button>
           <Drawer anchor='left' open={open} onClose={toggleDrawer(false)} BackdropProps={{ invisible: true }}>
           {list()}
