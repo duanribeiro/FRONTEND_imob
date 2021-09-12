@@ -51,8 +51,7 @@ export default function MapChart() {
            map.makeIcon(
             element,
              [element["latitude"], element["longitude"]],
-             "rent_house",
-             auth._id
+             "rent_house"
            )
          })
        }

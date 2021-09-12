@@ -36,7 +36,7 @@ export class LeafletMap {
     }
     
     // TODO - PRECISA MELHORAR COMO IDENTIFICAR O TIPO DO ICONE
-    makeIcon(item, icon_position, icon, user_id) {
+    makeIcon(item, icon_position, icon) {
       let LeafIcon = L.Icon.extend({
         options: {
           iconSize: [30, 33],
@@ -68,8 +68,7 @@ export class LeafletMap {
           $(".myButton").on("click", e => {
             e.preventDefault()
             api.post(`http://localhost:5000/wallet/add_house`, {
-              "house": item['_id'],
-              "user":  user_id
+              "house_id": item['_id']
               })
               .then(response => {
               })

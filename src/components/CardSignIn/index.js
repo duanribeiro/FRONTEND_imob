@@ -9,8 +9,6 @@ import api from "./../../plugins/axios";
 import { login } from "./../../plugins/auth";
 import {useSelector, useDispatch} from 'react-redux'
 
-
-
 export default function CardSignIn(props) {
   const { history } = props
   const auth = useSelector(state => state.auth)
@@ -30,6 +28,7 @@ export default function CardSignIn(props) {
     api.post(`http://localhost:5000/auth/login`, values)
       .then(response => {
         dispatch({type:'LOGIN', payload: response.data})
+        login(response.data['access_token'])
         history.push('/map')
       })
       .catch(error => {
