@@ -24,7 +24,7 @@ export default function DrawerDistricts() {
   const [open, setOpen] = React.useState(false)
   
   const dispatch = useDispatch()
-  const filters = useSelector(state => state)
+  const mapFilters = useSelector(state => state.mapFilters)
 
 
   const toggleDrawer = open => event => {
@@ -64,7 +64,7 @@ export default function DrawerDistricts() {
               size="small"
               style={{margin: "0 0 0 20px", width: 10, height: 1 }}
               onClick={() => dispatch({"type": "active_district", "district": district})}
-              checked={filters.active_districts.includes(district) ? true : false}
+              checked={mapFilters.active_districts.includes(district) ? true : false}
               />
             }
           label={<Typography variant="body2" color="textSecondary">{district}</Typography>}

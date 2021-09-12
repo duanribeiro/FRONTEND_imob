@@ -1,9 +1,10 @@
 import React from "react";
 import { LeafletMap } from './make_map'
 import axios from 'axios'
-import Sidebar from './../../layouts/components/Sidebar'
 import {useSelector} from 'react-redux'
 import DrawerDistricts from './../DrawerDistricts'
+import DrawerWallet from './../DrawerWallet'
+import DrawerFilter from './../DrawerFilter'
 import api from "./../../plugins/axios";
 
 import 'leaflet/dist/leaflet.css'
@@ -12,9 +13,10 @@ import "./styles.scss"
 
 export default function MapChart() {
   const [map, setMap] = React.useState()
-  const filters = useSelector(state => state)
+  const filters = useSelector(state => state.mapFilters)
   const [rentHouses, setRentHouses] = React.useState([])
   const [districtsResults, setDistrictsResults] = React.useState([])
+  const auth = useSelector(state => state.auth)
 
   
   const callDistricts = () => {
@@ -49,7 +51,8 @@ export default function MapChart() {
            map.makeIcon(
             element,
              [element["latitude"], element["longitude"]],
-             "rent_house"
+             "rent_house",
+             auth._id
            )
          })
        }
@@ -85,12 +88,14 @@ export default function MapChart() {
       />
 
       <div id="filters_button">
-        <Sidebar/>
+        <DrawerFilter/>
       </div>
       <div id="districts_button">
         <DrawerDistricts/>
       </div>
-      
+      <div id="wallet_button">
+        <DrawerWallet user_id={auth._id}/>
+      </div>
     </>
   );
 }

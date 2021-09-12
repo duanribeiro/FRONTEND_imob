@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Sidebar() {
+export default function DrawerFilter() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false)
   
@@ -32,7 +32,7 @@ export default function Sidebar() {
     setOpen(open)
   };
 
-  const filters = useSelector(state => state)
+  const mapFilters = useSelector(state => state.mapFilters)
 
   const list = () => (
     <div
@@ -55,7 +55,7 @@ export default function Sidebar() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={filters.rent_houses ? true : false}
+              checked={mapFilters.rent_houses ? true : false}
               onClick={() => dispatch({ type: "rent_houses"})}
               name="rent_houses"/>
               }
@@ -68,7 +68,7 @@ export default function Sidebar() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={filters.subway_station_filter ? true : false}
+              checked={mapFilters.subway_station_filter ? true : false}
               onClick={() => dispatch({ type: "subway_station_filter"})}
               name="subway_station_filter"/>
               }
@@ -81,7 +81,7 @@ export default function Sidebar() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={filters.school_filter ? true : false}
+              checked={mapFilters.school_filter ? true : false}
               onClick={() => dispatch({ type: "school_filter"})}
               name="school_filter"/>
               }
@@ -94,7 +94,7 @@ export default function Sidebar() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={filters.shopping_mall_filter ? true : false}
+              checked={mapFilters.shopping_mall_filter ? true : false}
               onClick={() => dispatch({ type: "shopping_mall_filter"})}
               name="shopping_mall_filter"/>
               }
@@ -108,7 +108,7 @@ export default function Sidebar() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={filters.bank_filter ? true : false}
+              checked={mapFilters.bank_filter ? true : false}
               onClick={() => dispatch({ type: "bank_filter"})}
               name="bank_filter"/>
               }
@@ -121,7 +121,7 @@ export default function Sidebar() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={filters.gas_station_filter ? true : false}
+              checked={mapFilters.gas_station_filter ? true : false}
               onClick={() => dispatch({ type: "gas_station_filter"})}
               name="gas_station_filter"/>
               }
@@ -135,7 +135,7 @@ export default function Sidebar() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={filters.gym_filter ? true : false}
+              checked={mapFilters.gym_filter ? true : false}
               onClick={() => dispatch({ type: "gym_filter"})}
               name="gym_filter"/>
               }

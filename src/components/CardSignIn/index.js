@@ -7,11 +7,15 @@ import { Grid } from '@material-ui/core';
 import "./styles.scss"
 import api from "./../../plugins/axios";
 import { login } from "./../../plugins/auth";
+import {useSelector, useDispatch} from 'react-redux'
 
 
 
 export default function CardSignIn(props) {
   const { history } = props
+  const auth = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+
 
   const [values, setValues] = React.useState({
     "username": "string",
@@ -25,7 +29,7 @@ export default function CardSignIn(props) {
   const confirmSignIn = () => {
     api.post(`http://localhost:5000/auth/login`, values)
       .then(response => {
-        login(response.data['access_token'])
+        dispatch({type:'LOGIN', payload: response.data})
         history.push('/map')
       })
       .catch(error => {
@@ -48,7 +52,7 @@ export default function CardSignIn(props) {
         <Grid
         container
         direction="column"
-        justify="center"
+        justifyContent="center"
         alignItems="center"
         spacing={1}
         >

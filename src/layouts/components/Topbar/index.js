@@ -13,7 +13,7 @@ export default function Topbar(props) {
         <Grid
           container
           direction="row"
-          justify="flex-start"
+          justifyContent="flex-start"
           alignItems="center"
         >
           <Grid item>

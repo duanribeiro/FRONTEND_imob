@@ -4,14 +4,20 @@
 
 #filters_button {
     position: absolute;
-    top: 120px;
+    top: 115px;
     left: 10px;
     z-index: 400;
   }
 
   #districts_button {
     position: absolute;
-    top: 160px;
+    top: 155px;
     left: 10px;
+    z-index: 400;
+  }
+  #wallet_button {
+    position: absolute;
+    top: 50px;
+    left: 45px;
     z-index: 400;
   }

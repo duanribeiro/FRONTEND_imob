@@ -5,11 +5,16 @@ import {dict_polygon_names, dict_polygon_colors} from './polygon_dicts'
 import PopupRentHouse from "./../../components/PopupRentHouse"
 import PopupNonHouse from "./../../components/PopupNonHouse"
 import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
+import api from "./../../plugins/axios";
+import Button from '@material-ui/core/Button';
+import { Grid } from '@material-ui/core'
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import $ from "jquery";
+
 
 export class LeafletMap {
-
     constructor() {
-
       let initial_position = [-23.564942, -46.625]
       let initial_zoom = 15
       this.map = L.map('map', {attributionControl: false}).setView(initial_position, initial_zoom)
@@ -31,14 +36,13 @@ export class LeafletMap {
     }
     
     // TODO - PRECISA MELHORAR COMO IDENTIFICAR O TIPO DO ICONE
-    makeIcon(item, icon_position, icon) {
+    makeIcon(item, icon_position, icon, user_id) {
       let LeafIcon = L.Icon.extend({
         options: {
           iconSize: [30, 33],
           iconAnchor: [15, 5]
         }
       })
-    
       let icon_url = ''
       if (icon === 'school') {
         icon_url = 'https://icons-maps-google.s3.amazonaws.com/university.png'
@@ -59,11 +63,24 @@ export class LeafletMap {
 
       if (item['real_estate']) {
         L.marker(icon_position, {icon: myIcon}).bindPopup(ReactDOMServer.renderToString(
-          <Paper elevation={0}><PopupRentHouse item={item}/></Paper>
-        ), {minWidth: 250}).addTo(this.layer_group)
+        <PopupRentHouse item={item}/>
+        ), {minWidth: 250}).on("popupopen", () => {
+          $(".myButton").on("click", e => {
+            e.preventDefault()
+            api.post(`http://localhost:5000/wallet/add_house`, {
+              "house": item['_id'],
+              "user":  user_id
+              })
+              .then(response => {
+              })
+              .catch(error => {
+                console.log(error)
+              })
+          })
+        }).addTo(this.layer_group)
       } else {
         L.marker(icon_position, {icon: myIcon}).bindPopup(ReactDOMServer.renderToString(
-          <PopupNonHouse item={item}/>
+        <PopupNonHouse item={item}/>
         ), {minWidth: 100}).addTo(this.layer_group)
       }
     }

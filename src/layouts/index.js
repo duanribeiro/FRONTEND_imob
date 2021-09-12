@@ -11,7 +11,7 @@ export function MinimalLayout(props) {
       style={{"paddingTop": "38px"}}
       container
       direction="row"
-      justify="center"
+      justifyContent="center"
       alignItems="center"
       >
         <Grid
@@ -37,7 +37,7 @@ export function BasicLayout(props) {
       style={{"paddingTop": "38px"}}
       container
       direction="row"
-      justify="center"
+      justifyContent="center"
       alignItems="center"
       >
         <Grid

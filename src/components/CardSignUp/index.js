@@ -42,7 +42,7 @@ export default function SignUpCard() {
         <Grid
         container
         direction="column"
-        justify="center"
+        justifyContent="center"
         alignItems="center"
         spacing={1}
         >

@@ -10,17 +10,29 @@ const PrivateRoute = props => {
         <Route
             {...rest}
             render={matchProps => (
-                isAuthenticated() ? 
                 <Layout>
                     <Component {...matchProps} />
-                </Layout> : 
-                <Layout>
-                    <Redirect to={{ pathname: "/login", state: { from: matchProps.location } }} />
                 </Layout>
             )}
            
         />
     )
+
+    // return (
+    //     <Route
+    //         {...rest}
+    //         render={matchProps => (
+    //             isAuthenticated() ? 
+    //             <Layout>
+    //                 <Component {...matchProps} />
+    //             </Layout> : 
+    //             <Layout>
+    //                 <Redirect to={{ pathname: "/login", state: { from: matchProps.location } }} />
+    //             </Layout>
+    //         )}
+           
+    //     />
+    // )
 }
 
 export default PrivateRoute
