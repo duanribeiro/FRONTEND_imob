@@ -17,6 +17,8 @@ export default function MapChart() {
   const filters = useSelector(state => state.mapFilters)
   const dispatch = useDispatch()
 
+
+
   const callWalletHouses = () => {
     api.get(`http://127.0.0.1:5000/wallet/get_houses`)
     .then(response => {
@@ -82,6 +84,7 @@ export default function MapChart() {
     map.clearMap()
     map.makePolygon(filters.active_districts)
     callWalletHouses()
+    dispatch({type: 'SET_MAP', payload: map})
   }, [])
 
   return (

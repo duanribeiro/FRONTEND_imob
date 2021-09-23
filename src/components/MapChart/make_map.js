@@ -24,6 +24,11 @@ export class LeafletMap {
       //   }).addTo(this.map)
     }
 
+    flyTo(latitude, longitude) {
+      this.map.flyTo([latitude, longitude], 18)  
+    }
+    
+    
     makePolygon(active_districts) {
       active_districts.forEach(district => {
         L.polygon(dict_polygon_names[district], {'color': dict_polygon_colors[district]}).addTo(this.layer_group)

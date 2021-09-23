@@ -8,9 +8,15 @@ import HomeIcon from '@material-ui/icons/Home';
 import api from "./../../plugins/axios";
 import {useSelector, useDispatch} from 'react-redux'
 
-
 export default function ButtonGroupWalletHouse(item) {
   const dispatch = useDispatch()
+  const map = useSelector(state => state.map)
+
+  const goHouse = (item) => {
+    console.log(item['item'])
+    map.flyTo(item['item']['latitude'], item['item']['longitude'])  
+  }
+
   const removeHouse = (item) => {
     api.post(`http://localhost:5000/wallet/remove_house`, {
       "house_id": item['item']['_id']
@@ -23,6 +29,7 @@ export default function ButtonGroupWalletHouse(item) {
     })
   }
 
+
   return (
       <ButtonGroup
         orientation="vertical"
@@ -30,7 +37,7 @@ export default function ButtonGroupWalletHouse(item) {
         aria-label="vertical outlined primary button group"
       >
         <IconButton>
-          <HomeIcon />
+          <HomeIcon onClick={() => goHouse(item)} />
         </IconButton>
         <IconButton aria-label="delete" onClick={() => removeHouse(item)}>
           <DeleteForeverIcon />
