@@ -7,7 +7,11 @@ import IconButton from '@material-ui/core/IconButton'
 import "./styles.scss"
 
 const formatYAxis = (tickItem) => {
-  return `R$${tickItem}`
+  if (tickItem >= 1000 && tickItem < 1000000) {
+    return `R$ ${tickItem / 1000}K`
+  } else {
+    return `R$ ${tickItem / 1000000}M`
+  }
 }
 
 const formatXAxis = (tickItem) => {
@@ -18,7 +22,7 @@ String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
-export default function PopupRentHouse(item) {
+export default function PopupHouse(item) {
   let house = item["item"]
   let graphData = []
   let priceArray = []
@@ -67,7 +71,8 @@ export default function PopupRentHouse(item) {
       spacing={0}
       >
         <Grid item style={{"margin": 0, "padding": 0}}>
-            <StarIcon className='myButton' style={{ "cursor": "pointer" }} variant="contained" color="inherit"/>
+          {/* O OnClick desse botão fica em  "src\components\MapChart\make_map.js" */}
+          <StarIcon className='myButton' style={{ "cursor": "pointer" }} variant="contained" color="inherit"/>
         </Grid>
 
         <Grid item style={{"margin": 0, "padding": 0}} className="capitalize">

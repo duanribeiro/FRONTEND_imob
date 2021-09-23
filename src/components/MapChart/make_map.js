@@ -2,16 +2,11 @@ import L from 'leaflet'
 import React from "react"
 import ReactDOMServer from "react-dom/server";
 import {dict_polygon_names, dict_polygon_colors} from './polygon_dicts'
-import PopupRentHouse from "./../../components/PopupRentHouse"
+import PopupHouse from "./../../components/PopupHouse"
 import PopupNonHouse from "./../../components/PopupNonHouse"
-import Paper from '@material-ui/core/Paper';
-import IconButton from '@material-ui/core/IconButton';
-import api from "./../../plugins/axios";
-import Button from '@material-ui/core/Button';
-import { Grid } from '@material-ui/core'
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import $ from "jquery";
-
+import api from "./../../plugins/axios"
+import $ from "jquery"
+import {useSelector, useDispatch} from 'react-redux'
 
 export class LeafletMap {
     constructor() {
@@ -36,13 +31,15 @@ export class LeafletMap {
     }
     
     // TODO - PRECISA MELHORAR COMO IDENTIFICAR O TIPO DO ICONE
-    makeIcon(item, icon_position, icon) {
+    makeIcon(item, icon_position, icon, dispatch) {
+      
       let LeafIcon = L.Icon.extend({
         options: {
           iconSize: [30, 33],
           iconAnchor: [15, 5]
         }
       })
+
       let icon_url = ''
       if (icon === 'school') {
         icon_url = 'https://icons-maps-google.s3.amazonaws.com/university.png'
@@ -63,18 +60,20 @@ export class LeafletMap {
 
       if (item['real_estate']) {
         L.marker(icon_position, {icon: myIcon}).bindPopup(ReactDOMServer.renderToString(
-        <PopupRentHouse item={item}/>
+        
+        <PopupHouse item={item}/>
         ), {minWidth: 250}).on("popupopen", () => {
           $(".myButton").on("click", e => {
             e.preventDefault()
             api.post(`http://localhost:5000/wallet/add_house`, {
               "house_id": item['_id']
-              })
-              .then(response => {
-              })
-              .catch(error => {
-                console.log(error)
-              })
+            })
+            .then(response => {
+              dispatch({type: 'ADD_HOUSE', payload: item})
+            })
+            .catch(error => {
+              console.log(error)
+            })
           })
         }).addTo(this.layer_group)
       } else {

@@ -30,37 +30,19 @@ const useStyles = makeStyles((theme) => ({
 export default function DrawerWallet() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false)
-  const [walletHouses, setWalletHouses] = React.useState([])
+  const wallet = useSelector(state => state.wallet)
 
-  const callAPIWalletGetHouses = () => {
-    api.get(`http://127.0.0.1:5000/wallet/get_houses`)
-      .then(response => {
-
-        let arr = []
-        for (var key in response.data['message']) {
-          if (response.data['message'].hasOwnProperty(key)) {
-              arr.push( response.data['message'][key]['house_id'] );
-          }
-      }
-        console.log(arr)
-        setWalletHouses(response.data['message'])
-      })
-  }
-  React.useEffect(() => {
-    callAPIWalletGetHouses()
-  }, [])
-
-  const array = ['123', '123','123', '123'].map(key => {
+  const array = wallet['houses'].map(item => {
     return (
       <>
         <ListItemIcon>
           <Card elevation={0} className={classes.root}>
             <CardHeader
               action={
-                <ButtonGroupWalletHouse/>
+                <ButtonGroupWalletHouse item={item}/>
               }
-              title="Shrimp and Chorizo Paella"
-              subheader="September 14, 2016"
+              title={`${item["street"]}${item["number"] ? `, ${item["number"]}` : ''}`}
+              subheader={`R$ ${item["rent"].pop()}/mês`}
             />
           </Card>
         </ListItemIcon>
@@ -68,7 +50,6 @@ export default function DrawerWallet() {
       </>
     );
   });
-
   
   const toggleDrawer = open => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {

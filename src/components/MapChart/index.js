@@ -1,38 +1,42 @@
 import React from "react";
 import { LeafletMap } from './make_map'
 import axios from 'axios'
-import {useSelector} from 'react-redux'
 import DrawerDistricts from './../DrawerDistricts'
 import DrawerWallet from './../DrawerWallet'
 import DrawerFilter from './../DrawerFilter'
 import api from "./../../plugins/axios";
+import {useSelector, useDispatch} from 'react-redux'
 
 import 'leaflet/dist/leaflet.css'
 import "./styles.scss"
 
 
 export default function MapChart() {
+
   const [map, setMap] = React.useState()
   const filters = useSelector(state => state.mapFilters)
-  const [rentHouses, setRentHouses] = React.useState([])
-  const [districtsResults, setDistrictsResults] = React.useState([])
-  const auth = useSelector(state => state.auth)
+  const dispatch = useDispatch()
 
-  
+  const callWalletHouses = () => {
+    api.get(`http://127.0.0.1:5000/wallet/get_houses`)
+    .then(response => {
+      dispatch({type: 'GET_HOUSES', payload: response.data["message"]});
+    })
+  }
+
   const callDistricts = () => {
     api.post(`http://127.0.0.1:5000/maps/get_district`, {
         "filters": filters
       })
       .then(response => {
-        setDistrictsResults(response.data)
-
         for (var key in response.data) {
           if (response.data.hasOwnProperty(key)) {  
             response.data[key].forEach(element => {
               map.makeIcon(
                 element,
                 [element["geometry"]["location"]["lat"], element["geometry"]["location"]["lng"]],
-                key
+                key,
+                dispatch
               )
             })
           }
@@ -40,9 +44,8 @@ export default function MapChart() {
       })
   }
 
-
-  const callRentHouse = () => {
-    api.post(`http://127.0.0.1:5000/maps/get_rent_houses`, {
+  const callHouses = () => {
+    api.post(`http://127.0.0.1:5000/maps/get_houses`, {
        "filters": filters
      })
      .then(response => {
@@ -51,7 +54,8 @@ export default function MapChart() {
            map.makeIcon(
             element,
              [element["latitude"], element["longitude"]],
-             "rent_house"
+             "rent_house",
+             dispatch
            )
          })
        }
@@ -60,7 +64,7 @@ export default function MapChart() {
 
   React.useEffect(() => {
     if (filters.rent_houses) {
-      callRentHouse()
+      callHouses()
     }
     callDistricts()
 
@@ -71,11 +75,13 @@ export default function MapChart() {
   }, [filters])
 
 
+
   React.useEffect(() => {
     let map = new LeafletMap()
     setMap(map)
     map.clearMap()
     map.makePolygon(filters.active_districts)
+    callWalletHouses()
   }, [])
 
   return (

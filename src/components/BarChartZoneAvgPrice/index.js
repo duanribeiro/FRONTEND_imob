@@ -18,7 +18,11 @@ export default function BarChartZoneAvgPrice() {
   const [chartData, setChartData] = React.useState([])
 
   const xAxisTickFormatter = number =>  {
-    return `R$ ${number}`
+    if (1000 >= number >= 1000000) {
+      return `R$ ${number / 1000}K`
+    } else {
+      return `R$ ${number / 1000000}M`
+    }
   }
 
   React.useEffect(() => {
