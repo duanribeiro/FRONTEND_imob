@@ -10,19 +10,22 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import {useSelector, useDispatch} from 'react-redux'
+import SliderDates from '../SliderDates'
+import SliderRentPrices from '../SliderRentPrices'
+import SliderSellPrices from '../SliderSellPrices'
 
 
 const useStyles = makeStyles({
   list: {
-    width: 250,
+    width: 300,
   },
 });
 
-export default function DrawerFilter() {
+export default function DrawerFilters() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false)
-  
-  const dispatch = useDispatch()
+  const [checked, setChecked] = React.useState([false, false, false, false, false]);
+  const mapFilters = useSelector(state => state.mapFilters)
 
 
   const toggleDrawer = open => event => {
@@ -30,9 +33,16 @@ export default function DrawerFilter() {
       return;
     }
     setOpen(open)
+  }
+
+  const handleChange = (position) => {
+    const updatedCheckedState = checked.map((item, index) =>
+      index === position ? !item : item
+    );
+    setChecked(updatedCheckedState);
+    console.log(updatedCheckedState)
   };
 
-  const mapFilters = useSelector(state => state.mapFilters)
 
   const list = () => (
     <div
@@ -46,7 +56,7 @@ export default function DrawerFilter() {
         aria-labelledby="nested-list-subheader"
         subheader={
           <ListSubheader component="div" id="nested-list-subheader">
-            Categorias
+            Filtros
           </ListSubheader>
         }
         className={classes.root}
@@ -55,12 +65,36 @@ export default function DrawerFilter() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={mapFilters.rent_houses ? true : false}
-              onClick={() => dispatch({ type: "rent_houses"})}
-              name="rent_houses"/>
+              checked={checked[0]}
+              onChange={() => handleChange(0)}
+              name="slider_dates"/>
               }
-            label="Casas em Aluguel"
             />
+            <SliderDates/>
+          </ListItemIcon>
+          
+          <ListItemIcon>
+            <FormControlLabel control={
+              <Checkbox
+              style={{"marginLeft": "20px"}}
+              checked={checked[1]}
+              onChange={() => handleChange(1)}
+              name="slider_rent_prices"/>
+              }
+            />
+            <SliderRentPrices/>
+          </ListItemIcon>
+
+          <ListItemIcon>
+            <FormControlLabel control={
+              <Checkbox
+              style={{"marginLeft": "20px"}}
+              checked={checked[2]}
+              onChange={() => handleChange(2)}
+              name="slider_sell_prices"/>
+              }
+            />
+            <SliderSellPrices/>
           </ListItemIcon>
           <br/>
 
@@ -68,78 +102,23 @@ export default function DrawerFilter() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={mapFilters.subway_station_filter ? true : false}
-              onClick={() => dispatch({ type: "subway_station_filter"})}
-              name="subway_station_filter"/>
+              checked={checked[3]}
+              onChange={() => handleChange(3)}
+              name="available_houses"/>
               }
-            label="Metro"
+            label="Casas disponíves"
             />
           </ListItemIcon>
           <br/>
-
           <ListItemIcon>
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={mapFilters.school_filter ? true : false}
-              onClick={() => dispatch({ type: "school_filter"})}
-              name="school_filter"/>
+              checked={checked[4]}
+              onChange={() => handleChange(4)}
+              name="favorite_houses"/>
               }
-            label="Escolas"
-            />
-          </ListItemIcon>
-          <br/>
-        
-          <ListItemIcon>
-            <FormControlLabel control={
-              <Checkbox
-              style={{"marginLeft": "20px"}}
-              checked={mapFilters.shopping_mall_filter ? true : false}
-              onClick={() => dispatch({ type: "shopping_mall_filter"})}
-              name="shopping_mall_filter"/>
-              }
-            label="Shoppings"
-            />
-          </ListItemIcon>
-          <br/>
-
-
-          <ListItemIcon>
-            <FormControlLabel control={
-              <Checkbox
-              style={{"marginLeft": "20px"}}
-              checked={mapFilters.bank_filter ? true : false}
-              onClick={() => dispatch({ type: "bank_filter"})}
-              name="bank_filter"/>
-              }
-            label="Agência Bancária"
-            />
-          </ListItemIcon>
-          <br/>
-
-          <ListItemIcon>
-            <FormControlLabel control={
-              <Checkbox
-              style={{"marginLeft": "20px"}}
-              checked={mapFilters.gas_station_filter ? true : false}
-              onClick={() => dispatch({ type: "gas_station_filter"})}
-              name="gas_station_filter"/>
-              }
-            label="Postos de Gasolina"
-            />
-          </ListItemIcon>
-          <br/>
-
-
-          <ListItemIcon>
-            <FormControlLabel control={
-              <Checkbox
-              style={{"marginLeft": "20px"}}
-              checked={mapFilters.gym_filter ? true : false}
-              onClick={() => dispatch({ type: "gym_filter"})}
-              name="gym_filter"/>
-              }
-            label="Academia"
+            label="Minhas casas favoritas"
             />
           </ListItemIcon>
           <br/>
@@ -155,7 +134,7 @@ export default function DrawerFilter() {
           variant={"contained"}
           onClick={toggleDrawer(true)}
           style={{"fontWeight": "bold", "width": "100px"}}>
-            Locais
+            Filtros
           </Button>
 
           <Drawer anchor='left' open={open} onClose={toggleDrawer(false)} BackdropProps={{ invisible: true }}>

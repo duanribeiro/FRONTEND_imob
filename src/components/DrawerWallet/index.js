@@ -19,10 +19,11 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import ButtonGroupWalletHouse from '../ButtonGroupWalletHouse'
 import api from "./../../plugins/axios";
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    width: 300,
   }
 }));
 
@@ -33,6 +34,12 @@ export default function DrawerWallet() {
   const wallet = useSelector(state => state.wallet)
 
   const array = wallet['houses'].map(item => {
+    const subheader = (
+      <ul>
+        <li>{`${item["street"]}${item["number"] ? `, ${item["number"]}` : ''} `}</li>
+        <li>{`R$ ${item["rent"][item["rent"].length - 1]}/mês`}</li>
+      </ul>
+    );
     return (
       <>
         <ListItemIcon>
@@ -41,8 +48,8 @@ export default function DrawerWallet() {
               action={
                 <ButtonGroupWalletHouse item={item}/>
               }
-              title={`${item["street"]}${item["number"] ? `, ${item["number"]}` : ''}`}
-              subheader={`R$ ${item["rent"].pop()}/mês`}
+              title={`${item["district"]}  `}
+              subheader={subheader}
             />
           </Card>
         </ListItemIcon>
@@ -61,7 +68,6 @@ export default function DrawerWallet() {
   const list = () => (
     <div
       className={clsx(classes.list)}
-      styles= {{"width": 250}}
       role="presentation"
       onKeyDown={toggleDrawer(false)}
     >
@@ -75,7 +81,14 @@ export default function DrawerWallet() {
         }
         className={classes.root}
       >
-        {array}
+        <Grid
+        container
+        direction="row"
+        justifyContent="flex-end"
+        alignItems="center"
+        >
+          {array}
+        </Grid>
       </List>
     <Divider />
     </div>
