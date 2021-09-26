@@ -15,7 +15,7 @@ import "./styles.scss"
 export default function MapChart() {
 
   const [map, setMap] = React.useState()
-  const filters = useSelector(state => state.mapFilters)
+  const filters = useSelector(state => state.places)
   const dispatch = useDispatch()
 
   const callWalletHouses = () => {

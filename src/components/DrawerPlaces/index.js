@@ -32,7 +32,7 @@ export default function DrawerPlaces() {
     setOpen(open)
   };
 
-  const mapFilters = useSelector(state => state.mapFilters)
+  const places = useSelector(state => state.places)
 
   const list = () => (
     <div
@@ -55,7 +55,7 @@ export default function DrawerPlaces() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={mapFilters.rent_houses ? true : false}
+              checked={places.rent_houses ? true : false}
               onClick={() => dispatch({ type: "rent_houses"})}
               name="rent_houses"/>
               }
@@ -68,7 +68,7 @@ export default function DrawerPlaces() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={mapFilters.subway_station_filter ? true : false}
+              checked={places.subway_station_filter ? true : false}
               onClick={() => dispatch({ type: "subway_station_filter"})}
               name="subway_station_filter"/>
               }
@@ -81,7 +81,7 @@ export default function DrawerPlaces() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={mapFilters.school_filter ? true : false}
+              checked={places.school_filter ? true : false}
               onClick={() => dispatch({ type: "school_filter"})}
               name="school_filter"/>
               }
@@ -94,7 +94,7 @@ export default function DrawerPlaces() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={mapFilters.shopping_mall_filter ? true : false}
+              checked={places.shopping_mall_filter ? true : false}
               onClick={() => dispatch({ type: "shopping_mall_filter"})}
               name="shopping_mall_filter"/>
               }
@@ -108,7 +108,7 @@ export default function DrawerPlaces() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={mapFilters.bank_filter ? true : false}
+              checked={places.bank_filter ? true : false}
               onClick={() => dispatch({ type: "bank_filter"})}
               name="bank_filter"/>
               }
@@ -121,7 +121,7 @@ export default function DrawerPlaces() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={mapFilters.gas_station_filter ? true : false}
+              checked={places.gas_station_filter ? true : false}
               onClick={() => dispatch({ type: "gas_station_filter"})}
               name="gas_station_filter"/>
               }
@@ -135,7 +135,7 @@ export default function DrawerPlaces() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={mapFilters.gym_filter ? true : false}
+              checked={places.gym_filter ? true : false}
               onClick={() => dispatch({ type: "gym_filter"})}
               name="gym_filter"/>
               }

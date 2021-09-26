@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@material-ui/core/Box';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
+import {useSelector, useDispatch} from 'react-redux'
 
 const marks = [
   {
@@ -30,34 +31,17 @@ const marks = [
   },
 ];
 
-function valuetext(value) {
-  return `${value}°C`;
-}
-
-const minDistance = 1;
-
 export default function SliderDates() {
-
-  const [value2, setValue2] = React.useState([20, 37]);
-
-  const handleChange2 = (event, newValue, activeThumb) => {
-    console.log(activeThumb)
+  const dispatch = useDispatch()
+  const filters = useSelector(state => state.filters)
+  
+  const handleChange = (event, newValue, activeThumb) => {
     if (!Array.isArray(newValue)) {
-      return;
+      return
     }
-
-    if (newValue[1] - newValue[0] < minDistance) {
-      if (activeThumb === 0) {
-        const clamped = Math.min(newValue[0], 6 - minDistance);
-        setValue2([clamped, clamped + minDistance]);
-      } else {
-        const clamped = Math.max(newValue[1], minDistance);
-        setValue2([clamped - minDistance, clamped]);
-      }
-    } else {
-      setValue2(newValue);
-    }
+    dispatch({"type": "CHANGE_SLIDER_DATES", "payload": newValue})
   };
+
   return (
     <Box sx={{ width: 300 }} style={{"paddingLeft": 0}}>
       <Typography id="input-slider" gutterBottom>
@@ -65,11 +49,9 @@ export default function SliderDates() {
       </Typography>
       <Slider
         style={{"width": 200}}
-        getAriaLabel={() => "Minimum distance"}
-        value={value2}
-        onChange={handleChange2}
+        value={filters.slider_dates}
+        onChange={handleChange}
         valueLabelDisplay="auto"
-        getAriaValueText={valuetext}
         disableSwap
         min={4}
         max={9}

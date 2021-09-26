@@ -22,7 +22,7 @@ const initialState =  {
     //     'tremembé']
 
 }
-export const mapFilterReducer = (state = initialState, action) => {
+export const placesReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'rent_houses':
             return {...state, rent_houses: !state.rent_houses}

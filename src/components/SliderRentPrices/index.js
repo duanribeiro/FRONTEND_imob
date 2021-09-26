@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@material-ui/core/Box';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
+import {useSelector, useDispatch} from 'react-redux'
 
 const marks = [
   {
@@ -17,15 +18,16 @@ const marks = [
 
 
 export default function SliderRentPrices() {
+  const dispatch = useDispatch()
+  const filters = useSelector(state => state.filters)
 
   const [value, setValue] = React.useState([1000, 5000]);
 
   const handleChange = (event, newValue, activeThumb) => {
     if (!Array.isArray(newValue)) {
-      return;
-    } else {
-      setValue(newValue);
+      return
     }
+    dispatch({"type": "CHANGE_SLIDER_RENT_PRICES", "payload": newValue})
   };
 
   return (
@@ -35,8 +37,7 @@ export default function SliderRentPrices() {
       </Typography>
       <Slider
         style={{"width": 200}}
-        getAriaLabel={() => 'Minimum distance shift'}
-        value={value}
+        value={filters.slider_rent_prices}
         onChange={handleChange}
         valueLabelDisplay="auto"
         disableSwap

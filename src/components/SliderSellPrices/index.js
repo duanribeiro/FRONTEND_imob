@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@material-ui/core/Box';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
+import {useSelector, useDispatch} from 'react-redux'
 
 const marks = [
   {
@@ -9,23 +10,24 @@ const marks = [
     label: 'R$1M',
   },
   {
-    value: 10000000,
-    label: 'R$10M',
+    value: 5000000,
+    label: 'R$5M',
   },
 
 ];
 
 
 export default function SliderSellPrices() {
+  const dispatch = useDispatch()
+  const filters = useSelector(state => state.filters)
 
-  const [value, setValue] = React.useState([1000000, 3000000]);
+  const [value, setValue] = React.useState([1000, 5000]);
 
   const handleChange = (event, newValue, activeThumb) => {
     if (!Array.isArray(newValue)) {
-      return;
-    } else {
-      setValue(newValue);
+      return
     }
+    dispatch({"type": "CHANGE_SLIDER_SELL_PRICES", "payload": newValue})
   };
 
   return (
@@ -35,14 +37,13 @@ export default function SliderSellPrices() {
       </Typography>
       <Slider
         style={{"width": 200}}
-        getAriaLabel={() => 'Minimum distance shift'}
-        value={value}
+        value={filters.slider_sell_prices}
         onChange={handleChange}
         valueLabelDisplay="auto"
         disableSwap
         marks={marks}
-        min={0}
-        max={10000000}
+        min={1000000}
+        max={5000000}
       />
     </Box>
   );

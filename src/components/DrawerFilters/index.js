@@ -24,8 +24,8 @@ const useStyles = makeStyles({
 export default function DrawerFilters() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false)
-  const [checked, setChecked] = React.useState([false, false, false, false, false]);
-  const mapFilters = useSelector(state => state.mapFilters)
+  const filters = useSelector(state => state.filters)
+  const dispatch = useDispatch()
 
 
   const toggleDrawer = open => event => {
@@ -36,11 +36,10 @@ export default function DrawerFilters() {
   }
 
   const handleChange = (position) => {
-    const updatedCheckedState = checked.map((item, index) =>
+    const updatedCheckedState = filters.checked.map((item, index) =>
       index === position ? !item : item
     );
-    setChecked(updatedCheckedState);
-    console.log(updatedCheckedState)
+    dispatch({type: 'UPDATE_CHECKBOX', payload: updatedCheckedState})
   };
 
 
@@ -65,7 +64,7 @@ export default function DrawerFilters() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={checked[0]}
+              checked={filters.checked[0]}
               onChange={() => handleChange(0)}
               name="slider_dates"/>
               }
@@ -77,7 +76,7 @@ export default function DrawerFilters() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={checked[1]}
+              checked={filters.checked[1]}
               onChange={() => handleChange(1)}
               name="slider_rent_prices"/>
               }
@@ -89,7 +88,7 @@ export default function DrawerFilters() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={checked[2]}
+              checked={filters.checked[2]}
               onChange={() => handleChange(2)}
               name="slider_sell_prices"/>
               }
@@ -102,7 +101,7 @@ export default function DrawerFilters() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={checked[3]}
+              checked={filters.checked[3]}
               onChange={() => handleChange(3)}
               name="available_houses"/>
               }
@@ -114,7 +113,7 @@ export default function DrawerFilters() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
-              checked={checked[4]}
+              checked={filters.checked[4]}
               onChange={() => handleChange(4)}
               name="favorite_houses"/>
               }
@@ -123,6 +122,12 @@ export default function DrawerFilters() {
           </ListItemIcon>
           <br/>
       </List>
+      <Button
+          onClick={toggleDrawer(true)}
+          variant="contained"
+          style={{"fontWeight": "bold", "width": "100%", "borderRadius": 0, "backgroundColor": "black", "color": 'white'}}>
+            Buscar
+          </Button>
     <Divider />
     </div>
   );
