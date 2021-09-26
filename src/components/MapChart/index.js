@@ -15,7 +15,9 @@ import "./styles.scss"
 export default function MapChart() {
 
   const [map, setMap] = React.useState()
-  const filters = useSelector(state => state.places)
+  const places = useSelector(state => state.places)
+  const filters = useSelector(state => state.filters)
+
   const dispatch = useDispatch()
 
   const callWalletHouses = () => {
@@ -27,7 +29,7 @@ export default function MapChart() {
 
   const callDistricts = () => {
     api.post(`http://127.0.0.1:5000/maps/get_district`, {
-        "filters": filters
+        "places": places,
       })
       .then(response => {
         for (var key in response.data) {
@@ -47,33 +49,34 @@ export default function MapChart() {
 
   const callHouses = () => {
     api.post(`http://127.0.0.1:5000/maps/get_houses`, {
-       "filters": filters
+       "places": places,
+       "filters": filters,
      })
      .then(response => {
        if (response.data) {
          response.data.forEach(element => {
-           map.makeIcon(
-            element,
-             [element["latitude"], element["longitude"]],
-             "rent_house",
-             dispatch
-           )
-         })
-       }
-     })
- }
+          map.makeIcon(
+          element,
+            [element["latitude"], element["longitude"]],
+            "rent_house",
+            dispatch
+          )
+        })
+      }
+    })
+  }
 
   React.useEffect(() => {
-    if (filters.rent_houses) {
+    if (places.rent_houses) {
       callHouses()
     }
     callDistricts()
 
     if (map){
       map.clearMap()
-      map.makePolygon(filters.active_districts)
+      map.makePolygon(places.active_districts)
     }
-  }, [filters])
+  }, [places])
 
 
 
@@ -81,7 +84,7 @@ export default function MapChart() {
     let map = new LeafletMap()
     setMap(map)
     map.clearMap()
-    map.makePolygon(filters.active_districts)
+    map.makePolygon(places.active_districts)
     callWalletHouses()
     dispatch({type: 'SET_MAP', payload: map})
   }, [])

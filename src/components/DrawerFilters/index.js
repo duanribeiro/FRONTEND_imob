@@ -13,7 +13,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import SliderDates from '../SliderDates'
 import SliderRentPrices from '../SliderRentPrices'
 import SliderSellPrices from '../SliderSellPrices'
-
+import api from "./../../plugins/axios";
 
 const useStyles = makeStyles({
   list: {
@@ -22,11 +22,37 @@ const useStyles = makeStyles({
 });
 
 export default function DrawerFilters() {
+
+  
   const classes = useStyles();
   const [open, setOpen] = React.useState(false)
+  const places = useSelector(state => state.places)
   const filters = useSelector(state => state.filters)
+  const map = useSelector(state => state.map)
+
   const dispatch = useDispatch()
 
+  const callHouses = () => {
+    api.post(`http://127.0.0.1:5000/maps/get_houses`, {
+       "places": places,
+       "filters": filters,
+     })
+     .then(response => {
+      map.clearMap()
+      map.makePolygon(places.active_districts)
+
+       if (response.data) {
+         response.data.forEach(element => {
+          map.makeIcon(
+          element,
+            [element["latitude"], element["longitude"]],
+            "rent_house",
+            dispatch
+          )
+        })
+      }
+    })
+  }
 
   const toggleDrawer = open => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -123,9 +149,15 @@ export default function DrawerFilters() {
           <br/>
       </List>
       <Button
-          onClick={toggleDrawer(true)}
+          onClick={() => callHouses()}
           variant="contained"
-          style={{"fontWeight": "bold", "width": "100%", "borderRadius": 0, "backgroundColor": "black", "color": 'white'}}>
+          style={{
+            "fontWeight": "bold",
+            "width": "100%",
+            "borderRadius": 0,
+            "backgroundColor": "black",
+            "color": 'white'
+            }}>
             Buscar
           </Button>
     <Divider />

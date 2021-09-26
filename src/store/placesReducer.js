@@ -1,13 +1,13 @@
 const initialState =  {
     'user': null,
-    'rent_houses': false,
+    'rent_houses': true,
     'school_filter': false,
     'subway_station_filter': false,
     'shopping_mall_filter': false,
     'bank_filter': false,
     'gas_station_filter': false,
     'gym_filter': false,
-    'active_districts': ['liberdade']
+    'active_districts': []
     // [
     //     'barra funda', 'perdizes', 'jardim paulista', 'pinheiros', 'itaim bibi', 'lapa', 
     //     'alto pinheiros', 'butantã', 'morumbi', 'jaguará', 'vila leopoldina', 'jaguaré', 'rio pequeno', 'vila sônia',

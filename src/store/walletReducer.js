@@ -14,7 +14,7 @@ export const walletReducer = (state = initialState, action) => {
         case 'REMOVE_HOUSE':
             return {...state, houses: state.houses.filter(house => house['_id'] !== action.payload['_id']),}
        
-            default:
+        default:
             return state
     }
 }

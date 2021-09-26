@@ -1,7 +1,8 @@
 const initialState =  {
     'user_id': null,
     'username': null,
-    'access_token': null,    'refresh_token': null,
+    'access_token': null,
+    'refresh_token': null,
 }
 
 export const authReducer = (state = initialState, action) => {
