@@ -6,7 +6,8 @@ import PopupHouse from "./../../components/PopupHouse"
 import PopupNonHouse from "./../../components/PopupNonHouse"
 import api from "./../../plugins/axios"
 import $ from "jquery"
-import {useSelector, useDispatch} from 'react-redux'
+import { LocalConvenienceStoreOutlined } from '@material-ui/icons';
+
 
 export class LeafletMap {
     constructor() {
@@ -79,6 +80,11 @@ export class LeafletMap {
             .catch(error => {
               console.log(error)
             })
+          })
+        }).on("popupopen", () => {
+          $(".myButton2").on("click", e => {
+            e.preventDefault()
+            window.open(item["url"], "_blank")
           })
         }).addTo(this.layer_group)
       } else {

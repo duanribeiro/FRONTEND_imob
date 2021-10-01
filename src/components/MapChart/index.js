@@ -67,9 +67,10 @@ export default function MapChart() {
   }
 
   React.useEffect(() => {
-    if (places.rent_houses) {
-      callHouses()
-    }
+    // if (places.rent_houses) {
+    //   callHouses()
+    // }
+    callHouses()
     callDistricts()
 
     if (map){

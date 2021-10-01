@@ -51,7 +51,7 @@ export default function DrawerPlaces() {
         }
         className={classes.root}
       >
-          <ListItemIcon>
+          {/* <ListItemIcon>
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
@@ -62,7 +62,7 @@ export default function DrawerPlaces() {
             label="Casas em Aluguel"
             />
           </ListItemIcon>
-          <br/>
+          <br/> */}
 
           <ListItemIcon>
             <FormControlLabel control={

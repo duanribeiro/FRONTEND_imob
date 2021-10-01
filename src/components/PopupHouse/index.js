@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import { Grid } from '@material-ui/core'
 import StarIcon from '@material-ui/icons/Star';
-import IconButton from '@material-ui/core/IconButton'
+import HomeIcon from '@material-ui/icons/Home';
 import "./styles.scss"
 
 const formatYAxis = (tickItem) => {
@@ -73,6 +73,7 @@ export default function PopupHouse(item) {
         <Grid item style={{"margin": 0, "padding": 0}}>
           {/* O OnClick desse botão fica em  "src\components\MapChart\make_map.js" */}
           <StarIcon className='myButton' style={{ "cursor": "pointer" }} variant="contained" color="inherit"/>
+          <HomeIcon className='myButton2' style={{ "cursor": "pointer" }} variant="contained" color="inherit"/>
         </Grid>
 
         <Grid item style={{"margin": 0, "padding": 0}} className="capitalize">
