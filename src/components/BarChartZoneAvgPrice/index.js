@@ -30,7 +30,7 @@ export default function BarChartZoneAvgPrice() {
   }, [])
 
   const fetchZoneAvgPrice = () => {
-      api.get(`http://127.0.0.1:5000/statistics/zone_average_rent`)
+      api.get(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/statistics/zone_average_rent`)
         .then(response => {
           setChartData(response.data)
         })

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { getToken } from "./auth"
+import { get_access_token, get_refresh_token } from "./auth"
 
 const api = axios.create({
   baseURL: "http://127.0.0.1:3000"
@@ -7,51 +7,51 @@ const api = axios.create({
 
 // Envio do token JWT em todas as requisições
 api.interceptors.request.use(async originalReq => {
-  const token = getToken()
+  const access_token = get_access_token()
 
-  if (token) {
-    originalReq.headers['Authorization'] = `Bearer ${token}`
+  if (access_token) {
+    originalReq.headers['Authorization'] = `Bearer ${access_token}`
   }
   return originalReq
 })
 
 // Atualização automática após expirar o token JWT
-// api.interceptors.response.use(response => {
-//   return response;
-// }, err => {
-//   return new Promise((resolve, reject) => {
-//       const originalReq = err.config
-//       if ( err.response.status === 401 && err.config && !err.config.__isRetryRequest )
-//       {
-//           originalReq._retry = true
+api.interceptors.response.use(response => {
+  return response;
+}, err => {
+  return new Promise((resolve, reject) => {
+      const originalReq = err.config
+      if ( err.response.status === 401 && err.config && !err.config.__isRetryRequest )
+      {
+          originalReq._retry = true
+          const refresh_token = get_refresh_token()
+          // const access_token = get_access_token()
+          let res = fetch('https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/auth/refresh', {
+              method: 'POST',
+              mode: 'cors',
+              cache: 'no-cache',
+              credentials: 'same-origin',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Device': 'device',
+                  'Authorization': `Bearer ${refresh_token}`
+              },
+              redirect: 'follow',
+              referrer: 'no-referrer',
+              body: JSON.stringify({
+                'Authorization': `Bearer ${refresh_token}`
+              }),
+          }).then(res => res.json()).then(res => {
+              console.log(res)
+              originalReq.headers['Authorization'] = `Bearer ${res.access_token}`
 
-//           let res = fetch('http://localhost:5000/auth/refresh', {
-//               method: 'POST',
-//               mode: 'cors',
-//               cache: 'no-cache',
-//               credentials: 'same-origin',
-//               headers: {
-//                   'Content-Type': 'application/json',
-//                   'Device': 'device',
-//                   'Token': localStorage.getItem("TOKEN_KEY")
-//               },
-//               redirect: 'follow',
-//               referrer: 'no-referrer',
-//               // body: JSON.stringify({
-//               //     token: localStorage.getItem("TOKEN_KEY"),
-//               //     refresh_token: localStorage.getItem("refresh_token")
-//               // }),
-//           }).then(res => res.json()).then(res => {
-//               console.log(res)
-//               originalReq.headers['Authorization'] = `Bearer ${res.token}`
+              return axios(originalReq)
+          })
+          resolve(res)
+      }
 
-//               return axios(originalReq)
-//           })
-//           resolve(res)
-//       }
-
-//       return Promise.reject(err)
-//   })
-// })
+      return Promise.reject(err)
+  })
+})
 
 export default api

@@ -21,14 +21,14 @@ export default function MapChart() {
   const dispatch = useDispatch()
 
   const callWalletHouses = () => {
-    api.get(`http://127.0.0.1:5000/wallet/get_houses`)
+    api.get(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/wallet/get_houses`)
     .then(response => {
       dispatch({type: 'GET_HOUSES', payload: response.data["message"]});
     })
   }
 
   const callDistricts = () => {
-    api.post(`http://127.0.0.1:5000/maps/get_district`, {
+    api.post(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/maps/get_district`, {
         "places": places,
       })
       .then(response => {
@@ -48,7 +48,7 @@ export default function MapChart() {
   }
 
   const callHouses = () => {
-    api.post(`http://127.0.0.1:5000/maps/get_houses`, {
+    api.post(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/maps/get_houses`, {
        "places": places,
        "filters": filters,
      })

@@ -15,7 +15,7 @@ export default function ChartHouses() {
   }, [])
 
   const fetchHousesPerDistrict = () => {
-      api.get(`http://127.0.0.1:5000/statistics/houses_per_district`)
+      api.get(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/statistics/houses_per_district`)
         .then(response => {
           setHousesPerDistrict(response.data)
         })

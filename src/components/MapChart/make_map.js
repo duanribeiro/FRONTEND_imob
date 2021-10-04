@@ -7,6 +7,13 @@ import PopupNonHouse from "./../../components/PopupNonHouse"
 import api from "./../../plugins/axios"
 import $ from "jquery"
 import { LocalConvenienceStoreOutlined } from '@material-ui/icons';
+import bank from './../../assets/map_icons/bank.png'
+import university from './../../assets/map_icons/university.png'
+import subway from './../../assets/map_icons/subway.png'
+import shoppingmall from './../../assets/map_icons/shoppingmall.png'
+import gazstation from './../../assets/map_icons/gazstation.png'
+import gym from './../../assets/map_icons/gym.png'
+import home from './../../assets/map_icons/home.png'
 
 
 export class LeafletMap {
@@ -14,7 +21,7 @@ export class LeafletMap {
       let initial_position = [-23.564942, -46.625]
       let initial_zoom = 15
       this.map = L.map('map', {attributionControl: false}).setView(initial_position, initial_zoom)
-      L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png').addTo(this.map)
+      L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=d7dce56d-10c6-4d8a-bd39-04f6e42c2683').addTo(this.map)
       this.layer_group = L.layerGroup().addTo(this.map)
       // RASCUNHO DO CÍRCULO
       //   L.circle([-23.5962, -46.732088], {
@@ -48,19 +55,19 @@ export class LeafletMap {
 
       let icon_url = ''
       if (icon === 'school') {
-        icon_url = 'https://icons-maps-google.s3.amazonaws.com/university.png'
+        icon_url = university
       } else if (icon === 'subway_station') {
-        icon_url = 'https://icons-maps-google.s3.amazonaws.com/underground.png'
+        icon_url = subway
       } else if (icon === 'shopping_mall') {
-        icon_url = 'https://icons-maps-google.s3.amazonaws.com/mall.png'
+        icon_url = shoppingmall
       } else if (icon === 'bank') {
-        icon_url = 'https://icons-maps-google.s3.amazonaws.com/bank_euro.png'
+        icon_url = bank
       } else if (icon === 'gas_station') {
-        icon_url = 'https://icons-maps-google.s3.amazonaws.com/fillingstation.png'
+        icon_url = gazstation
       } else if (icon === 'gym') {
-        icon_url = 'https://icons-maps-google.s3.amazonaws.com/weights.png'
+        icon_url = gym
       } else if (icon === 'rent_house') {
-        icon_url = 'https://icons-maps-google.s3.amazonaws.com/home-2.png'
+        icon_url = home
       }
       let myIcon = new LeafIcon({iconUrl: icon_url})
 
@@ -71,7 +78,7 @@ export class LeafletMap {
         ), {minWidth: 250}).on("popupopen", () => {
           $(".myButton").on("click", e => {
             e.preventDefault()
-            api.post(`http://localhost:5000/wallet/add_house`, {
+            api.post(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/wallet/add_house`, {
               "house_id": item['_id']
             })
             .then(response => {

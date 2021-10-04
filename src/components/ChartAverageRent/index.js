@@ -24,7 +24,7 @@ export default function ChartAverageRent() {
   }, [])
 
   const callAPIAverageRentByArea = () => {
-      api.get(`http://127.0.0.1:5000/statistics/chart_average_rent_by_district`)
+      api.get(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/statistics/chart_average_rent_by_district`)
         .then(response => {
             setChartData(response.data)
         })

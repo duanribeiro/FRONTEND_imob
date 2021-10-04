@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import { Grid } from '@material-ui/core';
 import "./styles.scss"
 import api from "./../../plugins/axios";
-import { login } from "./../../plugins/auth";
+import { save_access_token, save_refresh_token } from "./../../plugins/auth";
 import {useSelector, useDispatch} from 'react-redux'
 
 export default function CardSignIn(props) {
@@ -25,10 +25,10 @@ export default function CardSignIn(props) {
   }
 
   const confirmSignIn = () => {
-    api.post(`http://localhost:5000/auth/login`, values)
+    api.post(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/auth/login`, values)
       .then(response => {
-        dispatch({type:'LOGIN', payload: response.data})
-        login(response.data['access_token'])
+        save_access_token(response.data['access_token'])
+        save_refresh_token(response.data['refresh_token'])
         history.push('/map')
       })
       .catch(error => {

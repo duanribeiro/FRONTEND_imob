@@ -18,7 +18,7 @@ export default function ButtonGroupWalletHouse(item) {
   }
 
   const removeHouse = (item) => {
-    api.post(`http://localhost:5000/wallet/remove_house`, {
+    api.post(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/wallet/remove_house`, {
       "house_id": item['item']['_id']
     })
     .then(response => {
