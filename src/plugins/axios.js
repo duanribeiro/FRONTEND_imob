@@ -26,7 +26,7 @@ api.interceptors.response.use(response => {
           originalReq._retry = true
           const refresh_token = get_refresh_token()
           // const access_token = get_access_token()
-          let res = fetch('https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/auth/refresh', {
+          let res = fetch(`${process.env.REACT_APP_BACKEND_API}/auth/refresh`, {
               method: 'POST',
               mode: 'cors',
               cache: 'no-cache',

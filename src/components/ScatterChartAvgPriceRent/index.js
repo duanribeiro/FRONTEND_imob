@@ -38,7 +38,7 @@ export default function ScatterChartAvgPriceRent() {
 
 
   const callAPIAveragePriceRent = () => {
-      api.get(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/statistics/chart_average_price_rent`)
+      api.get(`${process.env.REACT_APP_BACKEND_API}/statistics/chart_average_price_rent`)
         .then(response => {
             setNorthData([{  
               bedroom: 2,

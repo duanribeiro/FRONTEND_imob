@@ -83,13 +83,10 @@ export default function DrawerDistricts() {
     role="presentation"
     onKeyDown={toggleDrawer(false)}
     >
-      {/* <Button 
-        variant={"outlined"}
-        className="button_all"
-        color="primary"
-        style={{"fontWeight": "bold", "width": "100%"}}>
-          Selecionar Todos
-      </Button> */}
+      <Typography align="justify" variant="overline" gutterBottom component="div" style={{"padding": "20px 20px 0px 20px"}}>
+        NESTA ABA ESCOLHEMOS QUAIS BAIRROS DEVEM SER ATIVOS PARA AS BUSCAS.
+      </Typography>
+      
       <List
       component="nav"
       subheader={

@@ -13,17 +13,20 @@ export default function Topbar(props) {
         <Grid
           container
           direction="row"
-          justifyContent="flex-start"
+          justifyContent="space-between"
           alignItems="center"
         >
           <Grid item>
             <Link to='/map'>
               <Button color="inherit">Mapa</Button>
             </Link>
-          </Grid>
-          <Grid item>
             <Link to='/statistics'>
               <Button color="inherit">Estatísticas</Button>
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link to='/login'>
+              <Button color="inherit">ACESSE SUA CONTA</Button>
             </Link>
           </Grid>
         </Grid>

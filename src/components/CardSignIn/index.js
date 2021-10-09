@@ -16,8 +16,8 @@ export default function CardSignIn(props) {
 
 
   const [values, setValues] = React.useState({
-    "username": "string",
-    "password": "string",
+    "username": "",
+    "password": "",
   })
 
   const handleChange = name => event => {
@@ -25,7 +25,7 @@ export default function CardSignIn(props) {
   }
 
   const confirmSignIn = () => {
-    api.post(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/auth/login`, values)
+    api.post(`${process.env.REACT_APP_BACKEND_API}/auth/login`, values)
       .then(response => {
         save_access_token(response.data['access_token'])
         save_refresh_token(response.data['refresh_token'])
@@ -57,7 +57,7 @@ export default function CardSignIn(props) {
         >
             <Grid item>
               <Typography variant="h2" component="h2" align="center">
-                Sign In
+                ÁREA DO USUÁRIO
               </Typography>
             </Grid>
             
@@ -65,7 +65,7 @@ export default function CardSignIn(props) {
               <TextField
               id="username"
               label="Email"
-              helperText="Example: roger@gmail.com"
+              helperText="Exemplo: roger@gmail.com"
               value={values["username"]}
               onChange={handleChange("username")}
               />
@@ -75,7 +75,7 @@ export default function CardSignIn(props) {
               <TextField
               id="password"
               type="password"
-              label="Password"
+              label="Senha"
               value={values["password"]}
               onChange={handleChange("password")}
               />
@@ -88,7 +88,7 @@ export default function CardSignIn(props) {
               style={{"marginTop": "30px"}}
               onClick={() => confirmSignIn()}
               >
-                Sign In
+                ENTRAR
               </Button>
             </Grid>
         </Grid>

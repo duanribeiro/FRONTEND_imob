@@ -15,7 +15,7 @@ export default function ChartHousesStdDeviation() {
   }, [])
 
   const fetchHousesStdDeviation = () => {
-      api.get(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/statistics/houses_std_deviation_per_district`)
+      api.get(`${process.env.REACT_APP_BACKEND_API}/statistics/houses_std_deviation_per_district`)
         .then(response => {
           setHousesStdDeviation(response.data)
         })

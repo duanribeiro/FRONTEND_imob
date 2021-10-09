@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function DrawerWallet() {
+export default function DrawerWallet(disabled=false) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false)
   const wallet = useSelector(state => state.wallet)

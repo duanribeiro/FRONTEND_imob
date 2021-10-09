@@ -28,7 +28,7 @@ export default function LineChartAvgRent() {
   // }, [])
 
   // const fetchHousesPerDistrict = () => {
-  //     axios.get(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/statistics/houses_per_district`)
+  //     axios.get(`${process.env.REACT_APP_BACKEND_API}/statistics/houses_per_district`)
   //       .then(response => {
   //         setAvgRentPerMonth(response.data)
   //       })

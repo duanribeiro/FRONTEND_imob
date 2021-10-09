@@ -21,7 +21,7 @@ export default function SignUpCard() {
   }
 
   const confirmSignUp = () => {
-    api.post(`${process.env.REACT_APP_BACKEND_API}/api/v1/authentication/`, {
+    api.post(`${process.env.REACT_APP_REACT_APP_BACKEND_API}/api/v1/authentication/`, {
       "data": values
     })
       .then(response => {

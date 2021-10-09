@@ -1,5 +1,5 @@
 import React from 'react'
-import { Topbar } from './components'
+import { Topbar, Bottombar } from './components'
 import Grid from '@material-ui/core/Grid'
 
 export function MinimalLayout(props) {
@@ -47,6 +47,7 @@ export function BasicLayout(props) {
           {children}
         </Grid>
       </Grid>
+      <Bottombar/>
     </>
   )
 }

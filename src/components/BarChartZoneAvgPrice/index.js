@@ -18,11 +18,7 @@ export default function BarChartZoneAvgPrice() {
   const [chartData, setChartData] = React.useState([])
 
   const xAxisTickFormatter = number =>  {
-    if (1000 >= number >= 1000000) {
-      return `R$ ${number / 1000}K`
-    } else {
-      return `R$ ${number / 1000000}M`
-    }
+    return `R$ ${number}`
   }
 
   React.useEffect(() => {
@@ -30,7 +26,7 @@ export default function BarChartZoneAvgPrice() {
   }, [])
 
   const fetchZoneAvgPrice = () => {
-      api.get(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/statistics/zone_average_rent`)
+      api.get(`${process.env.REACT_APP_BACKEND_API}/statistics/zone_average_rent`)
         .then(response => {
           setChartData(response.data)
         })

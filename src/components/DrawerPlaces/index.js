@@ -10,6 +10,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import {useSelector, useDispatch} from 'react-redux'
+import Typography from '@material-ui/core/Typography';
 
 
 const useStyles = makeStyles({
@@ -41,6 +42,9 @@ export default function DrawerPlaces() {
       role="presentation"
       onKeyDown={toggleDrawer(false)}
     >
+      <Typography align="justify" variant="overline" gutterBottom component="div" style={{"padding": "20px 20px 0px 20px"}}>
+        NESTA ABA DESCOBRIMOS OS PONTOS DE INTERESSE NOS BAIRROS ATIVOS.
+      </Typography>
       <List
         component="nav"
         aria-labelledby="nested-list-subheader"

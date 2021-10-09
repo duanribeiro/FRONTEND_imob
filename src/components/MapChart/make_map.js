@@ -19,7 +19,7 @@ import home from './../../assets/map_icons/home.png'
 export class LeafletMap {
     constructor() {
       let initial_position = [-23.564942, -46.625]
-      let initial_zoom = 15
+      let initial_zoom = 12
       this.map = L.map('map', {attributionControl: false}).setView(initial_position, initial_zoom)
       L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=d7dce56d-10c6-4d8a-bd39-04f6e42c2683').addTo(this.map)
       this.layer_group = L.layerGroup().addTo(this.map)
@@ -78,7 +78,7 @@ export class LeafletMap {
         ), {minWidth: 250}).on("popupopen", () => {
           $(".myButton").on("click", e => {
             e.preventDefault()
-            api.post(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/wallet/add_house`, {
+            api.post(`${process.env.REACT_APP_BACKEND_API}/wallet/add_house`, {
               "house_id": item['_id']
             })
             .then(response => {

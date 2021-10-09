@@ -14,6 +14,7 @@ import SliderDates from '../SliderDates'
 import SliderRentPrices from '../SliderRentPrices'
 import SliderSellPrices from '../SliderSellPrices'
 import api from "./../../plugins/axios";
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   list: {
@@ -22,10 +23,9 @@ const useStyles = makeStyles({
 });
 
 export default function DrawerFilters() {
-
-  
   const classes = useStyles();
   const [open, setOpen] = React.useState(false)
+  const [loading, setLoading] = React.useState(true)
   const places = useSelector(state => state.places)
   const filters = useSelector(state => state.filters)
   const map = useSelector(state => state.map)
@@ -33,14 +33,15 @@ export default function DrawerFilters() {
   const dispatch = useDispatch()
 
   const callHouses = () => {
-    api.post(`https://01ldy5zq44.execute-api.us-east-1.amazonaws.com/dev/maps/get_houses`, {
+    dispatch({type: 'SET_LOADING_ON'})
+    api.post(`${process.env.REACT_APP_BACKEND_API}/maps/get_houses`, {
        "places": places,
        "filters": filters,
      })
      .then(response => {
       map.clearMap()
       map.makePolygon(places.active_districts)
-
+      dispatch({type: 'SET_LOADING_OFF'})
        if (response.data) {
          response.data.forEach(element => {
           map.makeIcon(
@@ -68,7 +69,6 @@ export default function DrawerFilters() {
     dispatch({type: 'UPDATE_CHECKBOX', payload: updatedCheckedState})
   };
 
-
   const list = () => (
     <div
       className={clsx(classes.list)}
@@ -76,6 +76,9 @@ export default function DrawerFilters() {
       role="presentation"
       onKeyDown={toggleDrawer(false)}
     >
+      <Typography align="justify" variant="overline" gutterBottom component="div" style={{"padding": "20px 20px 0px 20px"}}>
+        NESTA ABA FILTRAMOS INFORMAÇÕES DOS BAIRROS ATIVOS.
+      </Typography>
       <List
         component="nav"
         aria-labelledby="nested-list-subheader"
@@ -122,18 +125,7 @@ export default function DrawerFilters() {
             <SliderSellPrices/>
           </ListItemIcon>
           <br/>
-
-          <ListItemIcon>
-            <FormControlLabel control={
-              <Checkbox
-              style={{"marginLeft": "20px"}}
-              checked={filters.checked[3]}
-              onChange={() => handleChange(3)}
-              name="available_houses"/>
-              }
-            label="Casas disponíves"
-            />
-          </ListItemIcon>
+{/* 
           <br/>
           <ListItemIcon>
             <FormControlLabel control={
@@ -146,7 +138,7 @@ export default function DrawerFilters() {
             label="Minhas casas favoritas"
             />
           </ListItemIcon>
-          <br/>
+          <br/> */}
       </List>
       <Button
           onClick={() => callHouses()}
@@ -178,6 +170,7 @@ export default function DrawerFilters() {
             {list()}
           </Drawer>
         </React.Fragment>
+
     </div>
   );
 }

@@ -12,21 +12,21 @@ const Routes = () => {
       <Redirect
         exact
         path="/"
-        to="/login"
+        to="/map"
       />
       <PublicRoute
         exact
         path="/login"
-        layout={MinimalLayout}
+        layout={BasicLayout}
         component={AuthenticationView}
       />
-      <PrivateRoute
+      <PublicRoute
         exact
         path="/map"
         layout={BasicLayout}
         component={MainView}
       />
-      <PrivateRoute
+      <PublicRoute
         exact
         path="/statistics"
         layout={BasicLayout}
