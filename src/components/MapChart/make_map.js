@@ -14,6 +14,7 @@ import shoppingmall from './../../assets/map_icons/shoppingmall.png'
 import gazstation from './../../assets/map_icons/gazstation.png'
 import gym from './../../assets/map_icons/gym.png'
 import home from './../../assets/map_icons/home.png'
+import 'leaflet.markercluster';
 
 
 export class LeafletMap {
@@ -22,7 +23,9 @@ export class LeafletMap {
       let initial_zoom = 12
       this.map = L.map('map', {attributionControl: false}).setView(initial_position, initial_zoom)
       L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=d7dce56d-10c6-4d8a-bd39-04f6e42c2683').addTo(this.map)
-      this.layer_group = L.layerGroup().addTo(this.map)
+      this.layer_places = L.layerGroup()
+      this.layer_group = L.markerClusterGroup({showCoverageOnHover: true, disableClusteringAtZoom: 18});
+
       // RASCUNHO DO CÍRCULO
       //   L.circle([-23.5962, -46.732088], {
       //     radius: 900,
@@ -97,11 +100,19 @@ export class LeafletMap {
       } else {
         L.marker(icon_position, {icon: myIcon}).bindPopup(ReactDOMServer.renderToString(
         <PopupNonHouse item={item}/>
-        ), {minWidth: 100}).addTo(this.layer_group)
+        ), {minWidth: 100}).addTo(this.layer_places)
       }
+
+    // this.markers.addLayer(marker)
     }
 
     clearMap() {
       this.layer_group.clearLayers();
+    }
+
+    bindLayerMap() {
+      this.map.addLayer(this.layer_group)
+      this.map.addLayer(this.layer_places)
+      this.map.fitBounds(this.layer_group.getBounds()); 
     }
   }

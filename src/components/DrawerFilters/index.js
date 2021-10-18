@@ -51,6 +51,7 @@ export default function DrawerFilters() {
             dispatch
           )
         })
+      map.bindLayerMap()
       }
     })
   }

@@ -42,9 +42,7 @@ api.interceptors.response.use(response => {
                 'Authorization': `Bearer ${refresh_token}`
               }),
           }).then(res => res.json()).then(res => {
-              console.log(res)
               originalReq.headers['Authorization'] = `Bearer ${res.access_token}`
-
               return axios(originalReq)
           })
           resolve(res)

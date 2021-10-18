@@ -66,6 +66,8 @@ export default function MapChart() {
             dispatch
           )
         })
+        
+
       }
     })
   }
@@ -78,8 +80,14 @@ export default function MapChart() {
     callDistricts()
 
     if (map){
+
       map.clearMap()
       map.makePolygon(places.active_districts)
+
+      if (places.active_districts.length !== 0) {
+        map.bindLayerMap()
+      }
+
     }
   }, [places])
 
@@ -92,7 +100,7 @@ export default function MapChart() {
     map.makePolygon(places.active_districts)
     callWalletHouses()
     dispatch({type: 'SET_MAP', payload: map})
-  }, [])
+  }, [])  
 
 
   let wallet_button = null;

@@ -10,7 +10,6 @@ export default function Bottombar(props) {
     );
   };
 
-
   return (
     <>
         <Grid
