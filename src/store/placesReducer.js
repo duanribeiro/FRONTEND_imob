@@ -7,7 +7,7 @@ const initialState =  {
     'bank_filter': false,
     'gas_station_filter': false,
     'gym_filter': false,
-    'active_districts': []
+    // 'active_districts': []
     // [
     //     'barra funda', 'perdizes', 'jardim paulista', 'pinheiros', 'itaim bibi', 'lapa', 
     //     'alto pinheiros', 'butantã', 'morumbi', 'jaguará', 'vila leopoldina', 'jaguaré', 'rio pequeno', 'vila sônia',
@@ -39,17 +39,17 @@ export const placesReducer = (state = initialState, action) => {
         case 'gym_filter':
             return {...state, gym_filter: !state.gym_filter}
 
-        case 'active_district':
-            // Se existir ele adiciona
-            if (state.active_districts.includes(action.district)) {
-                const new_active_districts = state.active_districts.filter(item => ![action.district].includes(item))
-                return {...state, active_districts: new_active_districts}
+        // case 'ACTIVE_DISTRICT':
+        //     // Se existir ele adiciona
+        //     if (state.active_districts.includes(action.district)) {
+        //         const new_active_districts = state.active_districts.filter(item => ![action.district].includes(item))
+        //         return {...state, active_districts: new_active_districts}
                 
-            // Se não ele retira
-            } else {
-                state.active_districts.push(action.district)
-                return {...state, active_districts: state.active_districts}
-            }
+        //     // Se não ele retira
+        //     } else {
+        //         state.active_districts.push(action.district)
+        //         return {...state, active_districts: state.active_districts}
+        //     }
             
         default:
             return state

@@ -26,6 +26,7 @@ export default function DrawerFilters() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false)
   const [loading, setLoading] = React.useState(true)
+  const districts = useSelector(state => state.districts)
   const places = useSelector(state => state.places)
   const filters = useSelector(state => state.filters)
   const map = useSelector(state => state.map)
@@ -33,14 +34,16 @@ export default function DrawerFilters() {
   const dispatch = useDispatch()
 
   const callHouses = () => {
+    setOpen(false)
     dispatch({type: 'SET_LOADING_ON'})
     api.post(`${process.env.REACT_APP_BACKEND_API}/maps/get_houses`, {
        "places": places,
        "filters": filters,
+       "districts": districts.actives
      })
      .then(response => {
       map.clearMap()
-      map.makePolygon(places.active_districts)
+      map.makePolygon(districts.actives)
       dispatch({type: 'SET_LOADING_OFF'})
        if (response.data) {
          response.data.forEach(element => {

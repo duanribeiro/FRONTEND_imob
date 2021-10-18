@@ -110,6 +110,9 @@ export class LeafletMap {
       this.layer_group.clearLayers();
     }
 
+    clearPlaces() {
+      this.layer_places.clearLayers();
+    }
     bindLayerMap() {
       this.map.addLayer(this.layer_group)
       this.map.addLayer(this.layer_places)
