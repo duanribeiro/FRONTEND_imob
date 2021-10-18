@@ -51,7 +51,10 @@ export default function MapChart() {
   }
 
   const callHouses = () => {
-    dispatch({type: 'SET_LOADING_ON'})
+      if (districts.actives.length !== 0){
+        dispatch({type: 'SET_LOADING_ON'})
+
+      }
     api.post(`${process.env.REACT_APP_BACKEND_API}/maps/get_houses`, {
        "places": places,
        "filters": filters,
@@ -84,11 +87,12 @@ export default function MapChart() {
   }, [places])
 
   React.useEffect(() => {
-    
     callHouses()
     if (map){   
       map.clearMap()
-      map.makePolygon(districts.actives)
+      if (districts.actives) {
+        map.makePolygon(districts.actives)
+      }
 
       if (districts.actives.length !== 0) {
         map.bindLayerMap()

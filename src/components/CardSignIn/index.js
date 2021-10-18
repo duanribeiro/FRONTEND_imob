@@ -29,7 +29,7 @@ export default function CardSignIn(props) {
       .then(response => {
         save_access_token(response.data['access_token'])
         save_refresh_token(response.data['refresh_token'])
-        history.push('/map')
+        history.push('/')
       })
       .catch(error => {
         if (error.response) {

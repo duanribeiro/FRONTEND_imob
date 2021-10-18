@@ -9,22 +9,17 @@ import { MainView, StatisticsView, AuthenticationView, DemoView } from '../views
 const Routes = () => {
   return (
     <Switch>
-      <Redirect
+      <PublicRoute
         exact
         path="/"
-        to="/map"
+        layout={BasicLayout}
+        component={MainView}
       />
       <PublicRoute
         exact
         path="/login"
         layout={BasicLayout}
         component={AuthenticationView}
-      />
-      <PublicRoute
-        exact
-        path="/map"
-        layout={BasicLayout}
-        component={MainView}
       />
       <PublicRoute
         exact

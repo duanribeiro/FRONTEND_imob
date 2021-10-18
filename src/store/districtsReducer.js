@@ -18,7 +18,8 @@ export const districtsReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ACTIVE_DISTRICT':
             if (state.actives.includes(action.district)) {
-                return {...state, actives: [state.actives.filter(item => ![action.district].includes(item))]}
+                const new_houses = state.actives.filter(item => ![action.district].includes(item))
+                return {...state, actives: new_houses}
             } else {
                 state.actives.push(action.district)
                 return {...state, actives: state.actives}

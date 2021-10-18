@@ -17,7 +17,7 @@ export default function Topbar(props) {
           alignItems="center"
         >
           <Grid item>
-            <Link to='/map'>
+            <Link to='/'>
               <Button color="inherit">Mapa</Button>
             </Link>
             <Link to='/statistics'>
