@@ -25,6 +25,7 @@ export default function DrawerDistricts() {
   
   const dispatch = useDispatch()
   const places = useSelector(state => state.places)
+  const districts = useSelector(state => state.districts)
 
 
   const toggleDrawer = open => event => {
@@ -52,7 +53,7 @@ export default function DrawerDistricts() {
     'pirituba', 'são domingos', 'vila medeiros', 'tucuruvi', 'mandaqui', 'cachoerinha', 'brasilândia', 'jaraguá',
     'tremembé']
 
-  const make_districts_checkbox = districts => districts.map((district, idx) => {
+  const make_districts_checkbox = array_districts => array_districts.map((district, idx) => {
     return (
       <>
         <ListItemIcon key={`listicon_${idx}`}>
@@ -63,8 +64,8 @@ export default function DrawerDistricts() {
               key={`checkbox_${idx}`}
               size="small"
               style={{margin: "0 0 0 20px", width: 10, height: 1 }}
-              onClick={() => dispatch({"type": "active_district", "district": district})}
-              checked={places.active_districts.includes(district) ? true : false}
+              onClick={() => dispatch({"type": "ACTIVE_DISTRICT", "district": district})}
+              checked={districts.actives.includes(district) ? true : false}
               />
             }
           label={<Typography variant="body2" color="textSecondary">{district}</Typography>}

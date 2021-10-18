@@ -14,6 +14,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 export default function MapChart() {
 
   const [map, setMap] = React.useState()
+  const districts = useSelector(state => state.districts)
   const places = useSelector(state => state.places)
   const filters = useSelector(state => state.filters)
   const loading = useSelector(state => state.loading)
@@ -31,6 +32,7 @@ export default function MapChart() {
   const callDistricts = () => {
     api.post(`${process.env.REACT_APP_BACKEND_API}/maps/get_district`, {
         "places": places,
+        "districts": districts.actives
       })
       .then(response => {
         for (var key in response.data) {
@@ -48,12 +50,12 @@ export default function MapChart() {
       })
   }
 
-
   const callHouses = () => {
     dispatch({type: 'SET_LOADING_ON'})
     api.post(`${process.env.REACT_APP_BACKEND_API}/maps/get_houses`, {
        "places": places,
        "filters": filters,
+       "districts": districts.actives
      })
      .then(response => {
        dispatch({type: 'SET_LOADING_OFF'})
@@ -73,32 +75,34 @@ export default function MapChart() {
   }
 
   React.useEffect(() => {
-    // if (places.rent_houses) {
-    //   callHouses()
-    // }
-    callHouses()
     callDistricts()
 
     if (map){
+      map.clearPlaces()
+      map.bindLayerMap()
+    }
+  }, [places])
 
+  React.useEffect(() => {
+    
+    callHouses()
+    if (map){   
       map.clearMap()
-      map.makePolygon(places.active_districts)
+      map.makePolygon(districts.actives)
 
-      if (places.active_districts.length !== 0) {
+      if (districts.actives.length !== 0) {
         map.bindLayerMap()
       }
 
     }
-  }, [places])
-
-
+  }, [JSON.stringify(districts.actives)])
 
   React.useEffect(() => {
     let map = new LeafletMap()
     setMap(map)
     map.clearMap()
-    map.makePolygon(places.active_districts)
-    callWalletHouses()
+    map.makePolygon(districts.actives)
+    // callWalletHouses()
     dispatch({type: 'SET_MAP', payload: map})
   }, [])  
 
