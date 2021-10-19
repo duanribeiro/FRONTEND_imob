@@ -13,8 +13,9 @@ phases:
       - npm build
   artifacts:
     type: zip
-    paths:
+    files:
       - './build/**/*'
+    name: frontendbuild-$(date +%Y-%m-%d) 
   cache:
     paths:
-      - './node_modules/**/*'
+      - './node_modules/**/*' 
