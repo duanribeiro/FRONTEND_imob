@@ -6,17 +6,15 @@ phases:
       nodejs: 14
     commands:
       - echo Installing app dependencies...
-      - yarn install
+      - npm install
   build:
     commands:
       - echo Building static site...
-      - yarn build
-
-artifacts:
-  type: zip
-  paths:
-    - './build/**/*'
-
-cache:
-  paths:
-    - './node_modules/**/*'
+      - npm build
+  artifacts:
+    type: zip
+    paths:
+      - './build/**/*'
+  cache:
+    paths:
+      - './node_modules/**/*'
