@@ -1,21 +1,17 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      nodejs: 14
+  install: 
     commands:
-      - echo Installing app dependencies...
+      - npm i npm@latest -g
+      - pip install --upgrade pip
+      - pip install --upgrade awscli
+  pre_build:
+    commands:
       - npm install
   build:
     commands:
-      - echo Building static site...
-      - npm build
-  artifacts:
-    type: zip
-    files:
-      - './build/**/*'
-    name: frontendbuild-$(date +%Y-%m-%d) 
-  cache:
-    paths:
-      - './node_modules/**/*' 
+      - npm run build
+  post_build:
+    commands:
+      - aws s3 sync ./build $S3_BUCKET 
