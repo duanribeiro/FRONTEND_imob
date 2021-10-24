@@ -36,13 +36,10 @@ export default function ChartHouses() {
   return (
     <ResponsiveContainer height={300}>
       <BarChart
-        width={500}
-        height={300}
         data={housesPerDistrict}
         margin={{
           top: 5,
           right: 30,
-          left: 50,
           bottom: 5
         }}
       >
@@ -50,8 +47,8 @@ export default function ChartHouses() {
             <XAxis dataKey="_id" />
             <YAxis domain={[0, 'dataMax']}/>
             <Tooltip />
-            <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '20px', color: "white", paddingBottom: "30px"}}/>
-            <Bar dataKey="count_houses" name="Quantidade de imóveis cadastrados" fill="#B3B3B3">
+            <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '20px', color: "white",  paddingBottom: "30px"}}/>
+            <Bar dataKey="count_houses" name="Quantidade de imóveis cadastrados" fill="#B3B3B3" wrapperStyle={{ paddingTop: '20px'}}>
               <LabelList dataKey="amountLabel" content={renderCustomizedLabel} position="insideRight" style={{ fill: "white" }} />
             </Bar>
       </BarChart>

@@ -49,7 +49,6 @@ export default function ScatterChartAvgPriceRent() {
             margin={{
               top: 5,
               right: 30,
-              left: 50,
               bottom: 5
             }}
           >
@@ -57,7 +56,7 @@ export default function ScatterChartAvgPriceRent() {
             <XAxis dataKey="_id" />
             <YAxis tickFormatter={yAxisTickFormatter} domain={[0, 'dataMax']}/>
             <Tooltip formatter={yAxisTickFormatter}/>
-            <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
+            <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white", paddingBottom: "30px"}}/>
             <Bar dataKey="average_area" name={"Área média"} fill="#B3B3B3">
               <LabelList dataKey="amountLabel" content={renderCustomizedLabel} position="insideRight" style={{ fill: "white" }} />
             </Bar>

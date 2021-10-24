@@ -102,14 +102,11 @@ export class LeafletMap {
         <PopupNonHouse item={item}/>
         ), {minWidth: 100}).addTo(this.layer_places)
       }
-
-    // this.markers.addLayer(marker)
     }
 
     clearMap() {
       this.layer_group.clearLayers();
     }
-
     clearPlaces() {
       this.layer_places.clearLayers();
     }

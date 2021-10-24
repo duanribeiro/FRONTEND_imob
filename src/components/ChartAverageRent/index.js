@@ -47,13 +47,11 @@ export default function ChartAverageRent() {
   return (
     <ResponsiveContainer height={300}>
       <BarChart
-            width={500}
-            height={300}
             data={chartData}
             margin={{
               top: 5,
               right: 30,
-              left: 50,
+              left: 20,
               bottom: 5
             }}
           >
@@ -61,8 +59,8 @@ export default function ChartAverageRent() {
             <XAxis dataKey="_id" />
             <YAxis tickFormatter={yAxisTickFormatter} domain={[0, 'dataMax']}/>
             <Tooltip formatter={yAxisTickFormatter}/>
-            <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white", paddingBottom: "30px"}}/>
-            <Bar dataKey="average_rent" name='Preço médio do aluguel' fill="#B3B3B3">
+            <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '20px', color: "white", paddingBottom: "30px"}}/>
+            <Bar dataKey="average_rent" name='Preço médio do aluguel' fill="#B3B3B3" wrapperStyle={{ paddingTop: '20px'}}>
               <LabelList dataKey="amountLabel" content={renderCustomizedLabel} position="insideRight" style={{ fill: "white" }} />
             </Bar>
           </BarChart>

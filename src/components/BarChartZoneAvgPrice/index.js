@@ -37,7 +37,7 @@ export default function BarChartZoneAvgPrice() {
     {/* <div>Preço do aluguel / m² por zona</div> */}
     <ComposedChart
       layout="vertical"
-      width={400}
+      width={300}
       height={300}
       data={chartData}
       margin={{

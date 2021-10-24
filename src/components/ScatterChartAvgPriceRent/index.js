@@ -94,7 +94,7 @@ export default function ScatterChartAvgPriceRent() {
 
   return (
     <ScatterChart
-      width={400}
+      width={300}
       height={300}
       margin={{
         top: 20,

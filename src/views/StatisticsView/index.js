@@ -13,7 +13,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from "@material-ui/core/styles";
-
 import "./styles.scss"
 
 const WhiteTextTypography = withStyles({
@@ -35,16 +34,16 @@ export default function StatisticsView() {
         direction="row"
         justifyContent="center"
         alignItems="center"
-        spacing={3}
+        spacing={1}
       >
         <Grid item>
-          <Card className="small_card">
+          <Card className="small_card" style={{"width": 350}}>
             <CardContent>
               <WhiteTextTypography variant="body1">
-              O preço médio da cidade está em R$ 9.278/m², 0.4% acima do mês anterior.
-              A tendência a partir de preço é para cima:
-              Os preços aumentaram 1.2% sobre 2018, 2.6% sobre 2019 e 3.4% em 2020.
-              Já em 2021 aumentou 1.3%, abaixo da inflação.
+                O preço médio da cidade está em R$ 9.278/m², 0.4% acima do mês anterior.
+                A tendência a partir de preço é para cima:
+                Os preços aumentaram 1.2% sobre 2018, 2.6% sobre 2019 e 3.4% em 2020.
+                Já em 2021 aumentou 1.3%, abaixo da inflação.
               </WhiteTextTypography>
             <div className="chart">
               <ScatterChartAvgPriceRent/>
@@ -54,7 +53,7 @@ export default function StatisticsView() {
         </Grid>
         
         <Grid item>
-          <Card className="small_card">
+          <Card className="small_card" style={{"width": 350}}>
             <CardContent>
               <WhiteTextTypography variant="body1">
               O valor do metro quadrado em São Paulo também se baseia na proximidade dos imóveis com a região central e
@@ -67,31 +66,33 @@ export default function StatisticsView() {
             </CardContent>
           </Card>
         </Grid>
+
       </Grid>
       
-      <Grid item>
-        <Card className="big_card">
-          <CardContent>
+      <Grid
+        direction="column"
+        justifyContent="center"
+        spacing={4}
+      >
+        <Grid item >
+          <Card className="big_card" style={{"width": "95%", "margin": "0 auto"}}>
             <ChartHouses/>
-          </CardContent>
-        </Card>
+          </Card>
+        </Grid>
+        <br/>
+        <Grid item>
+          <Card className="big_card"  style={{"width": "95%", "margin": "0 auto"}}>
+            <ChartAverageRent/>
+          </Card>
+        </Grid>
+        <br/>
+        <Grid item>
+          <Card className="big_card"  style={{"width": "95%", "margin": "0 auto"}}>
+            <ChartAverageArea/>
+          </Card>
+        </Grid>
       </Grid>
 
-      <Grid item>
-        <Card className="big_card">
-          <CardContent>
-          <ChartAverageRent/>
-          </CardContent>
-        </Card>
-      </Grid>
-
-      <Grid item>
-        <Card className="big_card">
-          <CardContent>
-          <ChartAverageArea/>
-          </CardContent>
-        </Card>
-      </Grid>
     </>
   )
 }

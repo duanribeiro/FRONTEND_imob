@@ -1,5 +1,4 @@
 .card {
-    width: 500px;
     position: 'relative';
     background: linear-gradient(0deg, rgba(43,43,43,1) 5%, rgba(34,34,34,1) 100%);
     border-radius: 5px;
@@ -13,7 +12,7 @@
 
 .small_card {
     @extend .card;
-    width: 500px;
+    width: 400px;
 }
 
 .big_card {

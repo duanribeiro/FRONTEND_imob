@@ -18,8 +18,6 @@ export default function MapChart() {
   const places = useSelector(state => state.places)
   const filters = useSelector(state => state.filters)
   const loading = useSelector(state => state.loading)
-
-
   const dispatch = useDispatch()
 
   const callWalletHouses = () => {
@@ -53,7 +51,6 @@ export default function MapChart() {
   const callHouses = () => {
       if (districts.actives.length !== 0){
         dispatch({type: 'SET_LOADING_ON'})
-
       }
     api.post(`${process.env.REACT_APP_BACKEND_API}/maps/get_houses`, {
        "places": places,
@@ -71,8 +68,6 @@ export default function MapChart() {
             dispatch
           )
         })
-        
-
       }
     })
   }
