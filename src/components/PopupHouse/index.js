@@ -72,13 +72,13 @@ export default function PopupHouse(item) {
       >
         <Grid item style={{"margin": 0, "padding": 0}}>
           {/* O OnClick desse botão fica em  "src\components\MapChart\make_map.js" */}
-          <StarIcon className='myButton' style={{ "cursor": "pointer" }} variant="contained" color="inherit"/>
-          <HomeIcon className='myButton2' style={{ "cursor": "pointer" }} variant="contained" color="inherit"/>
+          {/* <StarIcon className='myButton' style={{ "cursor": "pointer" }} variant="contained" color="inherit"/> */}
+          {/* <HomeIcon className='myButton2' style={{ "cursor": "pointer" }} variant="contained" color="inherit"/> */}
         </Grid>
 
         <Grid item style={{"margin": 0, "padding": 0}} className="capitalize">
           <Typography gutterBottom variant="body2">
-          {house["real_estate"].capitalize()} <br/>
+          {/* {house["real_estate"].capitalize()} <br/> */}
           {house["street"].toLowerCase().capitalize()},{house["number"]} - {house["district"].capitalize()} <br/>
           {makeHeaderCard(house)}              
           </Typography>

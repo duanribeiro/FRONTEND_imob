@@ -8,6 +8,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
   LabelList
 } from "recharts"
 import api from "./../../plugins/axios"
@@ -93,26 +94,24 @@ export default function ScatterChartAvgPriceRent() {
   }, [])
 
   return (
+    <ResponsiveContainer width="95%" height="80%" >
     <ScatterChart
-      width={300}
-      height={300}
       margin={{
-        top: 20,
-        right: 20,
         left: 20
       }}
     >
       <CartesianGrid />
       <XAxis type="number" dataKey="area" name="Área" unit="m²"/>
       <YAxis type="number" dataKey="bedroom" name="Quartos" unit=" quartos" ticks={[1, 2, 3, 4]}/>
-      <ZAxis dataKey="rent" name="Preço do aluguel por mês"/>
-      <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-      <Legend wrapperStyle={{ lineHeight: '40px', color: "white" }}/>
+      <ZAxis dataKey="rent" name="Aluguel"/>
+      <Tooltip cursor={{ strokeDasharray: "3 3" }} wrapperStyle={{ fontSize: 10}} />
+      <Legend wrapperStyle={{ lineHeight: '20px', color: "white"}}/>
       <Scatter name="Norte" data={northData} color="red" fill= 'red' />
       <Scatter name="Oeste" data={westData} color="red" fill= 'green' />
       <Scatter name="Sul" data={southData} color="red" fill= 'purple' />
       <Scatter name="Leste" data={eastData} color="red" fill= 'yellow' />
       <Scatter name="Centro" data={centerData} color="red" fill= 'blue' />
     </ScatterChart>
+    </ResponsiveContainer>
   );
 }

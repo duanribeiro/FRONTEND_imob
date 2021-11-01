@@ -6,10 +6,10 @@ import {
   Bar,
   XAxis,
   YAxis,
-  CartesianGrid,
+  Cell,
   Tooltip,
   Legend,
-  Area
+  ResponsiveContainer
 } from "recharts";
 import api from "../../plugins/axios";
 
@@ -32,24 +32,36 @@ export default function BarChartZoneAvgPrice() {
         })
     }
 
+  const barColors = ["red", "yellow", "green", "purple", "blue"]
   return (
     <>
     {/* <div>Preço do aluguel / m² por zona</div> */}
+    <ResponsiveContainer width="90%" height="80%" >
     <ComposedChart
       layout="vertical"
-      width={300}
-      height={300}
+      width={450}
+      height={320}
       data={chartData}
       margin={{
         top: 20,
+        right: 20
       }}
     >
       <XAxis type="number" tickFormatter={xAxisTickFormatter}/>
       <YAxis dataKey="name" type="category"/>
-      <Tooltip />
+      <Tooltip wrapperStyle={{ fontSize: 10}}/>
       <Legend wrapperStyle={{ lineHeight: '40px', color: "white" }} />
-      <Bar dataKey="avg_rent" name="Preço médio aluguel por m²" fill="#B3B3B3" formatter={xAxisTickFormatter}/>
+      <Bar dataKey="avg_rent" name="Preço médio aluguel por m²" fill="#B3B3B3" formatter={xAxisTickFormatter}>
+      {
+          chartData.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={barColors[index % 20]} />
+          ))
+      }
+      </Bar>
+
+      {/* <Bar dataKey="avg_rent" name="Preço médio aluguel por m²" fill="#B3B3B3" formatter={xAxisTickFormatter}/> */}
     </ComposedChart>
+    </ResponsiveContainer>
   </>
 
   );

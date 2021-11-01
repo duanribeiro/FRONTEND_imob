@@ -1,4 +1,13 @@
 .card {
+    background: linear-gradient(0deg, rgba(43,43,43,1) 5%, rgba(34,34,34,1) 100%);
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    height: 400px;
+}
+
+.graph_card {
     position: 'relative';
     background: linear-gradient(0deg, rgba(43,43,43,1) 5%, rgba(34,34,34,1) 100%);
     border-radius: 5px;
@@ -6,22 +15,5 @@
     text-align: justify;
     font-weight: 200;
     font-family: 'Montserrat', sans-serif;
-    margin: 10px 0px 10px 0px;
-
+    height: 300px;
 }
-
-.small_card {
-    @extend .card;
-    width: 400px;
-}
-
-.big_card {
-    @extend .card;
-    width: 100%;
-}
-
-.chart {  
-    padding-left: 10px;
-}
-
-

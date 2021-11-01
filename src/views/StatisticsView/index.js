@@ -35,59 +35,55 @@ export default function StatisticsView() {
         justifyContent="center"
         alignItems="center"
         spacing={1}
+        
       >
-        <Grid item>
-          <Card className="small_card" style={{"width": 350}}>
+        <Grid item xs={12} md={4}>
+          <Card className="card">
             <CardContent>
               <WhiteTextTypography variant="body1">
-                O preço médio da cidade está em R$ 9.278/m², 0.4% acima do mês anterior.
-                A tendência a partir de preço é para cima:
-                Os preços aumentaram 1.2% sobre 2018, 2.6% sobre 2019 e 3.4% em 2020.
-                Já em 2021 aumentou 1.3%, abaixo da inflação.
+                Médias de metragem e valor de aluguel para casas com 2 ou 3 quartos.
               </WhiteTextTypography>
-            <div className="chart">
-              <ScatterChartAvgPriceRent/>
-            </div>
             </CardContent>
+            <ScatterChartAvgPriceRent/>
           </Card>
         </Grid>
         
-        <Grid item>
-          <Card className="small_card" style={{"width": 350}}>
+        <Grid item xs={12} md={4}>
+          <Card className="card">
             <CardContent>
               <WhiteTextTypography variant="body1">
-              O valor do metro quadrado em São Paulo também se baseia na proximidade dos imóveis com a região central e
-              sul da cidade. Bairros como Pinheiros, Vila Madalena e Itaim Bibi concentram boa parte dos prédios
-              empresariais da capital, o que faz o valor dos imóveis ser mais alto.
+                Média do valor do aluguel do m² de cada região de São Paulo.
               </WhiteTextTypography>
-              <div>
-                <BarChartDistrictAvgPrice/>
-              </div>
             </CardContent>
+            <BarChartDistrictAvgPrice/>
           </Card>
         </Grid>
+              
+        {/* <Grid item xs={12} md={4}>
+          <Card className="card">
+            <CardContent>
+              <WhiteTextTypography variant="body1">
+                Média do valor do aluguel do m² de cada região de São Paulo.
+              </WhiteTextTypography>
+            </CardContent>
+            <BarChartDistrictAvgPrice/>
+          </Card>
+        </Grid> */}
 
-      </Grid>
-      
-      <Grid
-        direction="column"
-        justifyContent="center"
-        spacing={4}
-      >
-        <Grid item >
-          <Card className="big_card" style={{"width": "95%", "margin": "0 auto"}}>
+        <Grid item xs={12}>
+          <Card className="graph_card">
             <ChartHouses/>
           </Card>
         </Grid>
-        <br/>
-        <Grid item>
-          <Card className="big_card"  style={{"width": "95%", "margin": "0 auto"}}>
+
+        <Grid item xs={12}>
+          <Card className="graph_card">
             <ChartAverageRent/>
           </Card>
         </Grid>
-        <br/>
-        <Grid item>
-          <Card className="big_card"  style={{"width": "95%", "margin": "0 auto"}}>
+
+        <Grid item xs={12}>
+          <Card className="graph_card">
             <ChartAverageArea/>
           </Card>
         </Grid>
