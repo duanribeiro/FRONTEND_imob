@@ -91,8 +91,8 @@ export default function PopupHouse(item) {
         <YAxis ticks={yTicks} interval={0} tickFormatter={formatYAxis} width={80}/>
         <XAxis dataKey='last_update' ticks={house["last_update"]} tickFormatter={formatXAxis}/>
         <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
-        <Line type="monotone" dataKey="rent" stroke="green" />
-        <Line type="monotone" dataKey="price" stroke="red" />
+        <Line type="monotone" dataKey="rent" name="Aluguel" stroke="green" />
+        <Line type="monotone" dataKey="price" name="Venda" stroke="red" />
         <Tooltip />
           <Legend width={300}/>
       </LineChart>

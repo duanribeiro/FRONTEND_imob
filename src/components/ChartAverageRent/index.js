@@ -6,14 +6,8 @@ import "./styles.scss"
 import api from "./../../plugins/axios";
 
 
-var formatter = new Intl.NumberFormat([], {
-  style: 'currency',
-  currency: 'BRL',
-  minimumFractionDigits: 0,
-})
-
 const yAxisTickFormatter = number =>  {
-  return formatter.format(number)
+  return `R$ ${number}`
 }
 
 export default function ChartAverageRent() {

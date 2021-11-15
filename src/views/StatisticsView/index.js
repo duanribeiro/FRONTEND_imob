@@ -32,12 +32,12 @@ export default function StatisticsView() {
       <Grid
         container
         direction="row"
-        justifyContent="center"
-        alignItems="center"
+        justifyContent="flex-start"
+        alignItems="flex-start"
         spacing={1}
       >
-        <Grid item xs={12} sm={3}>
-          <Card className="card" style={{width: 360}}>
+        <Grid item xs={12} sm={6} md={3}>
+          <Card className="card" style={{width: 350}}>
             <CardContent>
               <WhiteTextTypography variant="body1">
                 Médias de metragem e valor de aluguel para casas com 2 ou 3 quartos.
@@ -47,8 +47,8 @@ export default function StatisticsView() {
           </Card>
         </Grid>
         
-        <Grid item xs={12} sm={3}>
-          <Card className="card" style={{width: 360}}>
+        <Grid item xs={12} sm={6} md={3}>
+          <Card className="card" style={{width: 350}}>
             <CardContent>
               <WhiteTextTypography variant="body1">
                 Média do valor do aluguel do m² de cada região de São Paulo.
@@ -57,6 +57,27 @@ export default function StatisticsView() {
             <BarChartDistrictAvgPrice/>
           </Card>
         </Grid>
+
+        <Grid item xs={12} sm={6} md={3}>
+          <Card className="card" style={{width: 350}}>
+            <CardContent>
+              <WhiteTextTypography variant="body1">
+                Em breve....
+              </WhiteTextTypography>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={3}>
+          <Card className="card" style={{width: 350}}>
+            <CardContent>
+              <WhiteTextTypography variant="body1">
+                Em breve....
+              </WhiteTextTypography>
+            </CardContent>
+          </Card>
+        </Grid>
+
 
         <Grid item xs={12}>
           <Card className="graph_card">
