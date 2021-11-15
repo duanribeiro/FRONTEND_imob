@@ -39,7 +39,7 @@ export default function BarChartZoneAvgPrice() {
     <ResponsiveContainer width="90%" height="80%" >
     <ComposedChart
       layout="vertical"
-      width={450}
+      // width={450}
       height={320}
       data={chartData}
       margin={{

@@ -29,6 +29,18 @@ const marks = [
     value: 9,
     label: 'Set.',
   },
+  {
+    value: 10,
+    label: 'Out.',
+  },
+  {
+    value: 11,
+    label: 'Nov.',
+  },
+  // {
+  //   value: 12,
+  //   label: 'Dez.',
+  // },
 ];
 
 export default function SliderDates() {
@@ -54,7 +66,7 @@ export default function SliderDates() {
         valueLabelDisplay="auto"
         disableSwap
         min={4}
-        max={9}
+        max={11}
         marks={marks}
         step={1} 
       />

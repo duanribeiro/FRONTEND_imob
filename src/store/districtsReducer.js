@@ -24,7 +24,6 @@ export const districtsReducer = (state = initialState, action) => {
                 state.actives.push(action.district)
                 return {...state, actives: state.actives}
             }
-            
         default:
             return state
 }

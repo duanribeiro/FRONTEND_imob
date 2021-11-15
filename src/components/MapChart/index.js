@@ -105,6 +105,13 @@ export default function MapChart() {
     dispatch({type: 'SET_MAP', payload: map})
   }, [])  
 
+  const checkDistrictsArray = () => {
+    if (districts.actives.length > 0) {
+      return false
+    } else{
+      return true
+    }
+  }
 
   let wallet_button = null;
   if (isAuthenticated) {
@@ -133,13 +140,15 @@ export default function MapChart() {
       <div id="districts_button">
         <DrawerDistricts/>
       </div>
+
+      { checkDistrictsArray() ? <></> : <>
       <div id="places_button">
         <DrawerPlaces/>
       </div>
       <div id="filters_button">
         <DrawerFilters/>
-      </div>
-
+      </div></>
+    }
       <div id="loading">
         {loading_button}
       </div>

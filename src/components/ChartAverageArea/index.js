@@ -34,7 +34,7 @@ export default function ScatterChartAvgPriceRent() {
     })
     const result = (total / counter).toFixed(2)
     return (
-        <text x={"53%"} y={50} fill="white" textAnchor="end">
+        <text x={"50%"} y={48} fill="white" textAnchor="middle">
           {result} m²
         </text>
     );
@@ -58,7 +58,7 @@ export default function ScatterChartAvgPriceRent() {
             <Tooltip formatter={yAxisTickFormatter}/>
             <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px', color: "white", paddingBottom: "30px"}}/>
             <Bar dataKey="average_area" name={"Área média"} fill="#B3B3B3">
-              <LabelList dataKey="amountLabel" content={renderCustomizedLabel} position="insideRight" style={{ fill: "white" }} />
+              <LabelList dataKey="amountLabel" content={renderCustomizedLabel} position="center" style={{ fill: "white" }} />
             </Bar>
           </BarChart>
     </ResponsiveContainer>

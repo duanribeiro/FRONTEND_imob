@@ -27,7 +27,7 @@ export default function ChartHouses() {
       total += item['count_houses']
     })
     return (
-        <text x={"52%"} y={40} fill="white" textAnchor="end">
+        <text x={"50%"} y={40} fill="white" textAnchor="middle">
           {total}
         </text>
     );
@@ -49,7 +49,7 @@ export default function ChartHouses() {
             <Tooltip />
             <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '20px', color: "white",  paddingBottom: "30px"}}/>
             <Bar dataKey="count_houses" name="Quantidade de imóveis cadastrados" fill="#B3B3B3" wrapperStyle={{ paddingTop: '20px'}}>
-              <LabelList dataKey="amountLabel" content={renderCustomizedLabel} position="insideRight" style={{ fill: "white" }} />
+              <LabelList dataKey="amountLabel" content={renderCustomizedLabel} position="center" style={{ fill: "white" }} />
             </Bar>
       </BarChart>
     </ResponsiveContainer>

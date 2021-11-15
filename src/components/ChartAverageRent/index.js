@@ -39,7 +39,7 @@ export default function ChartAverageRent() {
     })
     const result = (total / counter).toFixed(2)
     return (
-        <text x={"53%"} y={50} fill="white" textAnchor="end">
+        <text x={"50%"} y={40} fill="white" textAnchor="middle">
           R$ {result}
         </text>
     );
@@ -61,7 +61,7 @@ export default function ChartAverageRent() {
         <Tooltip formatter={yAxisTickFormatter}/>
         <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '20px', color: "white", paddingBottom: "30px"}}/>
         <Bar dataKey="average_rent" name='Preço médio do aluguel' fill="#B3B3B3" wrapperStyle={{ paddingTop: '20px'}}>
-          <LabelList dataKey="amountLabel" content={renderCustomizedLabel} position="insideRight" style={{ fill: "white" }} />
+          <LabelList dataKey="amountLabel" content={renderCustomizedLabel} position="center" style={{ fill: "white" }} />
         </Bar>
       </BarChart>
     </ResponsiveContainer>

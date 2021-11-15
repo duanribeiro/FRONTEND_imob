@@ -4,13 +4,14 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { Grid } from '@material-ui/core'
 import StarIcon from '@material-ui/icons/Star';
 import HomeIcon from '@material-ui/icons/Home';
+import Chip from '@material-ui/core/Chip';
 import "./styles.scss"
 
 const formatYAxis = (tickItem) => {
   if (tickItem >= 1000 && tickItem < 1000000) {
-    return `R$ ${tickItem / 1000}K`
+    return `R$ ${(tickItem / 1000).toFixed(1)}K`
   } else {
-    return `R$ ${tickItem / 1000000}M`
+    return `R$ ${(tickItem / 1000000).toFixed(1)}M`
   }
 }
 
@@ -47,20 +48,21 @@ export default function PopupHouse(item) {
       })
   }
  
-  const makeHeaderCard = (house) => {
-    let headertext = ''
+    const makeChips = house => {
+    let chips = []
     if (house["area"]) {
-      headertext += `${house["area"]}m²`
+      chips.push(<Chip label={`${house["area"]}m²`} variant="outlined" size="small" style={{marginRight: 5}}/>)
     }
     if (house["bedroom"]) {
-      headertext += ` - ${house["bedroom"]} quartos`
+      let suffix = house["bedroom"] == 1 ? 'quarto'  : 'quartos'
+      chips.push(<Chip label={`${house["bedroom"]} ${suffix}`} variant="outlined" size="small" style={{marginRight: 5}}/>)
     }
     if (house["garage"]) {
-      headertext += ` - ${house["garage"]} vaga`
+      let suffix = house["garage"] == 1 ? 'vaga' : 'vagas'
+      chips.push(<Chip label={`${house["garage"]} ${suffix}`} variant="outlined" size="small" style={{marginRight: 5}}/>)
     }
-    return headertext
+    return chips
   }
-
   return (
     <>
       <Grid
@@ -76,17 +78,17 @@ export default function PopupHouse(item) {
           {/* <HomeIcon className='myButton2' style={{ "cursor": "pointer" }} variant="contained" color="inherit"/> */}
         </Grid>
 
-        <Grid item style={{"margin": 0, "padding": 0}} className="capitalize">
+        <Grid item style={{"margin": 0, "padding": 0}} className="capitalize"> 
           <Typography gutterBottom variant="body2">
           {/* {house["real_estate"].capitalize()} <br/> */}
-          {house["street"].toLowerCase().capitalize()},{house["number"]} - {house["district"].capitalize()} <br/>
-          {makeHeaderCard(house)}              
+          {house["street"].toLowerCase().capitalize()}{house["number"] ? `, ${house["number"]}` : ''} - {house["district"].capitalize()}
+          {makeChips(house)}              
           </Typography>
         </Grid>
       </Grid>
 
-      <LineChart width={250} height={200} data={graphData}>
-        <YAxis ticks={yTicks} interval={0} tickFormatter={formatYAxis}/>
+      <LineChart width={300} height={200} data={graphData} style={{"marginLeft": -30, "padding": 0}} >
+        <YAxis ticks={yTicks} interval={0} tickFormatter={formatYAxis} width={80}/>
         <XAxis dataKey='last_update' ticks={house["last_update"]} tickFormatter={formatXAxis}/>
         <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
         <Line type="monotone" dataKey="rent" stroke="green" />

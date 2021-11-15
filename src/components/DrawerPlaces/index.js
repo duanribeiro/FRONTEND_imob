@@ -34,6 +34,7 @@ export default function DrawerPlaces() {
   };
 
   const places = useSelector(state => state.places)
+  const districts = useSelector(state => state.districts)
 
   const list = () => (
     <div
@@ -152,16 +153,17 @@ export default function DrawerPlaces() {
     </div>
   );
 
+ 
   return (
     <div>
+      <Button
+        color={"green"}
+        variant={"contained"}
+        onClick={toggleDrawer(true)}
+        style={{"fontWeight": "bold", "width": "100px"}}>
+          Locais
+        </Button> 
         <React.Fragment key='left'>
-          <Button
-          variant={"contained"}
-          onClick={toggleDrawer(true)}
-          style={{"fontWeight": "bold", "width": "100px"}}>
-            Locais
-          </Button>
-
           <Drawer anchor='left' open={open} onClose={toggleDrawer(false)} BackdropProps={{ invisible: true }}>
             {list()}
           </Drawer>

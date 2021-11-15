@@ -18,8 +18,8 @@ export default function Bottombar(props) {
           justifyContent="center"
           alignItems="flex-start"
         >
-          <Typography align="justify" variant="overline" gutterBottom component="div" style={{"padding": "5px 0px 0px 0px"}}>
-            Contato através de &nbsp;<Mailto email="DUAN.RIBEIRO@HOTMAIL.COM" subject="Contato de usuário RADAR IMOVEL" body="">
+          <Typography align="center" variant="overline" gutterBottom component="div" style={{"padding": "5px 0px 0px 0px"}}>
+            Contato através de <Mailto email="DUAN.RIBEIRO@HOTMAIL.COM" subject="Contato de usuário Radar Imóvel" body="">
                duan.ribeiro@hotmail.com
             </Mailto>
           </Typography>

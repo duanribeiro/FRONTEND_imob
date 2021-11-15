@@ -25,9 +25,9 @@ export default function Topbar(props) {
             </Link>
           </Grid>
           <Grid item>
-            <Link to='/login'>
+            {/* <Link to='/login'>
               <Button color="inherit">ACESSE SUA CONTA</Button>
-            </Link>
+            </Link> */}
           </Grid>
         </Grid>
       </AppBar>

@@ -35,10 +35,9 @@ export default function StatisticsView() {
         justifyContent="center"
         alignItems="center"
         spacing={1}
-        
       >
-        <Grid item xs={12} md={4}>
-          <Card className="card">
+        <Grid item xs={12} sm={3}>
+          <Card className="card" style={{width: 360}}>
             <CardContent>
               <WhiteTextTypography variant="body1">
                 Médias de metragem e valor de aluguel para casas com 2 ou 3 quartos.
@@ -48,8 +47,8 @@ export default function StatisticsView() {
           </Card>
         </Grid>
         
-        <Grid item xs={12} md={4}>
-          <Card className="card">
+        <Grid item xs={12} sm={3}>
+          <Card className="card" style={{width: 360}}>
             <CardContent>
               <WhiteTextTypography variant="body1">
                 Média do valor do aluguel do m² de cada região de São Paulo.
@@ -58,17 +57,6 @@ export default function StatisticsView() {
             <BarChartDistrictAvgPrice/>
           </Card>
         </Grid>
-              
-        {/* <Grid item xs={12} md={4}>
-          <Card className="card">
-            <CardContent>
-              <WhiteTextTypography variant="body1">
-                Média do valor do aluguel do m² de cada região de São Paulo.
-              </WhiteTextTypography>
-            </CardContent>
-            <BarChartDistrictAvgPrice/>
-          </Card>
-        </Grid> */}
 
         <Grid item xs={12}>
           <Card className="graph_card">
@@ -86,7 +74,7 @@ export default function StatisticsView() {
           <Card className="graph_card">
             <ChartAverageArea/>
           </Card>
-        </Grid>
+        </Grid> 
       </Grid>
 
     </>

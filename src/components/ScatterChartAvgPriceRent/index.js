@@ -94,24 +94,23 @@ export default function ScatterChartAvgPriceRent() {
   }, [])
 
   return (
-    <ResponsiveContainer width="95%" height="80%" >
-    <ScatterChart
-      margin={{
-        left: 20
-      }}
-    >
-      <CartesianGrid />
-      <XAxis type="number" dataKey="area" name="Área" unit="m²"/>
-      <YAxis type="number" dataKey="bedroom" name="Quartos" unit=" quartos" ticks={[1, 2, 3, 4]}/>
-      <ZAxis dataKey="rent" name="Aluguel"/>
-      <Tooltip cursor={{ strokeDasharray: "3 3" }} wrapperStyle={{ fontSize: 10}} />
-      <Legend wrapperStyle={{ lineHeight: '20px', color: "white"}}/>
-      <Scatter name="Norte" data={northData} color="red" fill= 'red' />
-      <Scatter name="Oeste" data={westData} color="red" fill= 'green' />
-      <Scatter name="Sul" data={southData} color="red" fill= 'purple' />
-      <Scatter name="Leste" data={eastData} color="red" fill= 'yellow' />
-      <Scatter name="Centro" data={centerData} color="red" fill= 'blue' />
-    </ScatterChart>
-    </ResponsiveContainer>
+      <ScatterChart
+       width={300} height={250}
+        margin={{
+          left: 20
+        }}
+      >
+        <CartesianGrid />
+        <XAxis type="number" dataKey="area" name="Área" unit="m²"/>
+        <YAxis type="number" dataKey="bedroom" name="Quartos" unit=" quartos" ticks={[1, 2, 3, 4]}/>
+        <ZAxis dataKey="rent" name="Aluguel"/>
+        <Tooltip cursor={{ strokeDasharray: "3 3" }} wrapperStyle={{ fontSize: 10}} />
+        <Legend wrapperStyle={{ lineHeight: '20px', color: "white"}}/>
+        <Scatter name="Norte" data={northData} color="red" fill= 'red' />
+        <Scatter name="Oeste" data={westData} color="red" fill= 'green' />
+        <Scatter name="Sul" data={southData} color="red" fill= 'purple' />
+        <Scatter name="Leste" data={eastData} color="red" fill= 'yellow' />
+        <Scatter name="Centro" data={centerData} color="red" fill= 'blue' />
+      </ScatterChart>
   );
 }
