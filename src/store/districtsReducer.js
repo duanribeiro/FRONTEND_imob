@@ -11,7 +11,8 @@ const initialState =  {
         'cidade tiradentes','bela vista', 'consolação', 'liberdade', 'santa cecília', 'cambuci', 'bom retiro', 'sé',
         'república','santana', 'vila guilherme', 'vila maria', 'casa verde', 'limão', 'freguesia do ó',
         'pirituba', 'são domingos', 'vila medeiros', 'tucuruvi', 'mandaqui', 'cachoerinha', 'brasilândia', 'jaraguá',
-        'tremembé']
+        'tremembé'
+    ]
 }
 
 export const districtsReducer = (state = initialState, action) => {

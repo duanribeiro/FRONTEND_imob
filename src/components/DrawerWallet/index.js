@@ -23,7 +23,7 @@ import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 300,
+    width: 330,
   }
 }));
 

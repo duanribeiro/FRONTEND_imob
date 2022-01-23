@@ -31,12 +31,12 @@ export default function SliderSellPrices() {
   };
 
   return (
-    <Box sx={{ width: 300 }} style={{"paddingLeft": 0}}>
+    <Box sx={{ width: 330 }} style={{"paddingLeft": 0}}>
       <Typography id="input-slider" gutterBottom>
         Preço de Venda
       </Typography>
       <Slider
-        style={{"width": 200}}
+        style={{"width": 240}}
         value={filters.slider_sell_prices}
         onChange={handleChange}
         valueLabelDisplay="auto"

@@ -31,12 +31,12 @@ export default function SliderRentPrices() {
   };
 
   return (
-    <Box sx={{ width: 300 }} style={{"paddingLeft": 0}}>
+    <Box sx={{ width: 330 }} style={{"paddingLeft": 0}}>
       <Typography id="input-slider" gutterBottom>
         Preço do Aluguel
       </Typography>
       <Slider
-        style={{"width": 200}}
+        style={{"width": 240}}
         value={filters.slider_rent_prices}
         onChange={handleChange}
         valueLabelDisplay="auto"

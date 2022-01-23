@@ -10,7 +10,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import {useSelector, useDispatch} from 'react-redux'
-import SliderDates from '../SliderDates'
+import TextfieldFilterDates from '../TextfieldFilterDates'
 import SliderRentPrices from '../SliderRentPrices'
 import SliderSellPrices from '../SliderSellPrices'
 import api from "./../../plugins/axios";
@@ -18,7 +18,7 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   list: {
-    width: 300,
+    width: 330,
   },
 });
 
@@ -99,12 +99,12 @@ export default function DrawerFilters() {
               style={{"marginLeft": "20px"}}
               checked={filters.checked[0]}
               onChange={() => handleChange(0)}
-              name="slider_dates"/>
+              name="textfield_dates"/>
               }
             />
-            <SliderDates/>
+            <TextfieldFilterDates/>
           </ListItemIcon>
-          
+          <br></br><br></br>
           <ListItemIcon>
             <FormControlLabel control={
               <Checkbox
