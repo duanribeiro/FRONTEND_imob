@@ -3,6 +3,7 @@ import { LeafletMap } from './make_map'
 import DrawerDistricts from './../DrawerDistricts'
 import DrawerWallet from './../DrawerWallet'
 import DrawerPlaces from './../DrawerPlaces'
+import DrawerIndicators from './../DrawerIndicators'
 import api from "./../../plugins/axios"
 import {isAuthenticated} from "./../../plugins/auth"
 import DrawerFilters from './../DrawerFilters'
@@ -20,12 +21,12 @@ export default function MapChart() {
   const loading = useSelector(state => state.loading)
   const dispatch = useDispatch()
 
-  const callWalletHouses = () => {
-    api.get(`${process.env.REACT_APP_BACKEND_API}/wallet/get_houses`)
-    .then(response => {
-      dispatch({type: 'GET_HOUSES', payload: response.data["message"]});
-    })
-  }
+  // const callWalletHouses = () => {
+  //   api.get(`${process.env.REACT_APP_BACKEND_API}/wallet/get_houses`)
+  //   .then(response => {
+  //     dispatch({type: 'GET_HOUSES', payload: response.data["message"]});
+  //   })
+  // }
 
   const callDistricts = () => {
     api.post(`${process.env.REACT_APP_BACKEND_API}/maps/get_district`, {
@@ -49,9 +50,9 @@ export default function MapChart() {
   }
 
   const callHouses = () => {
-      if (districts.actives.length !== 0){
-        dispatch({type: 'SET_LOADING_ON'})
-      }
+    if (districts.actives.length !== 0){
+      dispatch({type: 'SET_LOADING_ON'})
+    }
     api.post(`${process.env.REACT_APP_BACKEND_API}/maps/get_houses`, {
        "places": places,
        "filters": filters,
@@ -82,6 +83,7 @@ export default function MapChart() {
   }, [places])
 
   React.useEffect(() => {
+    
     callHouses()
     if (map){   
       map.clearMap()
@@ -97,12 +99,14 @@ export default function MapChart() {
   }, [JSON.stringify(districts.actives)])
 
   React.useEffect(() => {
+
     let map = new LeafletMap()
     setMap(map)
     map.clearMap()
     map.makePolygon(districts.actives)
     // callWalletHouses()
     dispatch({type: 'SET_MAP', payload: map})
+
   }, [])  
 
   const checkDistrictsArray = () => {
@@ -144,6 +148,9 @@ export default function MapChart() {
       { checkDistrictsArray() ? <></> : <>
       <div id="places_button">
         <DrawerPlaces/>
+      </div>
+      <div id="indicators_button">
+        <DrawerIndicators/>
       </div>
       <div id="filters_button">
         <DrawerFilters/>

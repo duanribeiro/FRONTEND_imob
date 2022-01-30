@@ -68,7 +68,7 @@ export default function DrawerDistricts() {
               checked={districts.actives.includes(district) ? true : false}
               />
             }
-          label={<Typography variant="body2" color="textSecondary">{district}</Typography>}
+          label={<Typography variant="body2"  color="textSecondary">{district}</Typography>}
           />
         </ListItemIcon>
         <br/>
@@ -154,7 +154,7 @@ export default function DrawerDistricts() {
           <Button 
             variant={"contained"}
             onClick={toggleDrawer(true)}
-            style={{"fontWeight": "bold", "width": "100px"}}>
+            style={{"fontWeight": "bold", "width": "120px"}}>
               Bairros
             </Button>
           <Drawer anchor='left' open={open} onClose={toggleDrawer(false)} BackdropProps={{ invisible: true }}>

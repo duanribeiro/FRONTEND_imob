@@ -13,6 +13,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from "@material-ui/core/styles";
+import {useSelector, useDispatch} from 'react-redux'
+
 import "./styles.scss"
 
 const WhiteTextTypography = withStyles({
@@ -21,8 +23,14 @@ const WhiteTextTypography = withStyles({
   }
 })(Typography);
 
+
+
 export default function StatisticsView() {
 
+  const dispatch = useDispatch()
+  React.useEffect(() => {
+    dispatch({"type": "RESET_DISTRICT"})
+  }, [])
   return (
     <>
       {/* <ChartHousesStdDeviation/> */}
@@ -36,6 +44,25 @@ export default function StatisticsView() {
         alignItems="flex-start"
         spacing={1}
       >
+        
+        <Grid item xs={12}>
+          <Card className="graph_card">
+            <ChartHouses/>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Card className="graph_card">
+            <ChartAverageRent/>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Card className="graph_card">
+            <ChartAverageArea/>
+          </Card>
+        </Grid> 
+
         <Grid item xs={12} sm={6} md={3}>
           <Card className="card" style={{width: 350}}>
             <CardContent>
@@ -58,46 +85,7 @@ export default function StatisticsView() {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
-          <Card className="card" style={{width: 350}}>
-            <CardContent>
-              <WhiteTextTypography variant="body1">
-                Em breve....
-              </WhiteTextTypography>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12} sm={6} md={3}>
-          <Card className="card" style={{width: 350}}>
-            <CardContent>
-              <WhiteTextTypography variant="body1">
-                Em breve....
-              </WhiteTextTypography>
-            </CardContent>
-          </Card>
-        </Grid>
-
-
-        <Grid item xs={12}>
-          <Card className="graph_card">
-            <ChartHouses/>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12}>
-          <Card className="graph_card">
-            <ChartAverageRent/>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12}>
-          <Card className="graph_card">
-            <ChartAverageArea/>
-          </Card>
-        </Grid> 
       </Grid>
-
     </>
   )
 }

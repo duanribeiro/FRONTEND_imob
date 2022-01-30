@@ -9,6 +9,12 @@ import { MainView, StatisticsView, AuthenticationView, DemoView } from '../views
 const Routes = () => {
   return (
     <Switch>
+      {/* <PublicRoute
+        exact
+        path="/"
+        layout={BasicLayout}
+        component={DemoView}
+      /> */}
       <PublicRoute
         exact
         path="/"

@@ -73,11 +73,24 @@ export default function DrawerPlaces() {
             <FormControlLabel control={
               <Checkbox
               style={{"marginLeft": "20px"}}
+              checked={places.police_station_filter ? true : false}
+              onClick={() => dispatch({ type: "police_station_filter"})}
+              name="police_station_filter"/>
+              }
+            label="Delegacias"
+            />
+          </ListItemIcon>
+          <br/>
+
+          <ListItemIcon>
+            <FormControlLabel control={
+              <Checkbox
+              style={{"marginLeft": "20px"}}
               checked={places.subway_station_filter ? true : false}
               onClick={() => dispatch({ type: "subway_station_filter"})}
               name="subway_station_filter"/>
               }
-            label="Metro"
+            label="Metrôs"
             />
           </ListItemIcon>
           <br/>
@@ -117,7 +130,7 @@ export default function DrawerPlaces() {
               onClick={() => dispatch({ type: "bank_filter"})}
               name="bank_filter"/>
               }
-            label="Agência Bancária"
+            label="Agências Bancárias"
             />
           </ListItemIcon>
           <br/>
@@ -144,7 +157,7 @@ export default function DrawerPlaces() {
               onClick={() => dispatch({ type: "gym_filter"})}
               name="gym_filter"/>
               }
-            label="Academia"
+            label="Academias"
             />
           </ListItemIcon>
           <br/>
@@ -160,7 +173,7 @@ export default function DrawerPlaces() {
         color={"green"}
         variant={"contained"}
         onClick={toggleDrawer(true)}
-        style={{"fontWeight": "bold", "width": "100px"}}>
+        style={{"fontWeight": "bold", "width": "120px"}}>
           Locais
         </Button> 
         <React.Fragment key='left'>

@@ -13,7 +13,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from "@material-ui/core/styles";
-import PopupHouse from "./../../components/PopupHouse"
+import PopupPoliceStation from "./../../components/PopupPoliceStation"
 import "./styles.scss"
 
 
@@ -43,7 +43,7 @@ export default function DemoView() {
         alignItems="center"
         spacing={3}
       >
-        <PopupHouse item={item}/>
+        <PopupPoliceStation item={item}/>
       </Grid>
     </div>
   )

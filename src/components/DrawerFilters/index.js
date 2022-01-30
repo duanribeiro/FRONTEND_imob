@@ -166,7 +166,7 @@ export default function DrawerFilters() {
           <Button
           variant={"contained"}
           onClick={toggleDrawer(true)}
-          style={{"fontWeight": "bold", "width": "100px"}}>
+          style={{"fontWeight": "bold", "width": "120px"}}>
             Filtros
           </Button>
 

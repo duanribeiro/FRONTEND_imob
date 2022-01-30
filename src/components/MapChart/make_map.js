@@ -4,6 +4,7 @@ import ReactDOMServer from "react-dom/server";
 import {dict_polygon_names, dict_polygon_colors} from './polygon_dicts'
 import PopupHouse from "./../../components/PopupHouse"
 import PopupNonHouse from "./../../components/PopupNonHouse"
+import PopupPoliceStation from "./../../components/PopupPoliceStation"
 import api from "./../../plugins/axios"
 import $ from "jquery"
 import { LocalConvenienceStoreOutlined } from '@material-ui/icons';
@@ -14,6 +15,7 @@ import shoppingmall from './../../assets/map_icons/shoppingmall.png'
 import gazstation from './../../assets/map_icons/gazstation.png'
 import gym from './../../assets/map_icons/gym.png'
 import home from './../../assets/map_icons/home.png'
+import police from './../../assets/map_icons/police.png'
 import 'leaflet.markercluster';
 
 
@@ -38,7 +40,26 @@ export class LeafletMap {
     flyTo(latitude, longitude) {
       this.map.flyTo([latitude, longitude], 18)  
     }
-    
+
+    sizeRadiusPolice(data) {
+      const arr = [
+        data["ocorrências de porte de entorpecentes"],
+        data["ocorrências de tráfico de entorpecentes"],
+        data["ocorrências de apreensão de entorpecentes(1)"],
+        data["ocorrências de porte de entorpecentes"],
+        data["nº de armas de fogo apreendidas"],
+        data["nº de flagrantes lavrados"],
+        data["nº de infratores apreendidos em flagrante"],
+        data["nº de infratores apreendidos por mandado"],
+        data["nº de pessoas presas em flagrante"],
+        data["nº de infratores apreendidos por mandado"],
+        data["nº de prisões efetuadas"],
+        data["nº de veículos recuperados"],
+        data["tot. de inquéritos policiais instaurados"]
+      ]
+      const reducer = (accumulator, curr) => accumulator + curr;
+      return arr.reduce(reducer)
+    }
     
     makePolygon(active_districts) {
       active_districts.forEach(district => {
@@ -71,6 +92,8 @@ export class LeafletMap {
         icon_url = gym
       } else if (icon === 'rent_house') {
         icon_url = home
+      } else if (icon === 'police_station') {
+        icon_url = police
       }
       let myIcon = new LeafIcon({iconUrl: icon_url})
 
@@ -97,10 +120,22 @@ export class LeafletMap {
             window.open(item["url"], "_blank")
           })
         }).addTo(this.layer_group)
+
+      } else if (icon === 'police_station') {
+        L.marker(icon_position, {icon: myIcon}).bindPopup(ReactDOMServer.renderToString(
+        <PopupPoliceStation item={item}/>,
+        ), {minWidth: 100}).addTo(this.layer_places)
+        
+        L.circle(icon_position, {
+          radius: this.sizeRadiusPolice(item["data"]),
+          color: 'gray',
+          fillColor: 'light gray',
+          fillOpacity: 0.2,
+        }).addTo(this.layer_places)
       } else {
         L.marker(icon_position, {icon: myIcon}).bindPopup(ReactDOMServer.renderToString(
-        <PopupNonHouse item={item}/>
-        ), {minWidth: 100}).addTo(this.layer_places)
+          <PopupNonHouse item={item}/>
+          ), {minWidth: 100}).addTo(this.layer_places)
       }
     }
 

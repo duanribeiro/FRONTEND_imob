@@ -1,7 +1,8 @@
 const initialState =  {
     'user': null,
-    'rent_houses': true,
+    'rent_houses': false,
     'school_filter': false,
+    'police_station_filter': false,
     'subway_station_filter': false,
     'shopping_mall_filter': false,
     'bank_filter': false,
@@ -28,6 +29,8 @@ export const placesReducer = (state = initialState, action) => {
             return {...state, rent_houses: !state.rent_houses}
         case 'school_filter':
             return {...state, school_filter: !state.school_filter}
+        case 'police_station_filter':
+            return {...state, police_station_filter: !state.police_station_filter}
         case 'subway_station_filter':
             return {...state, subway_station_filter: !state.subway_station_filter}
         case 'shopping_mall_filter':
