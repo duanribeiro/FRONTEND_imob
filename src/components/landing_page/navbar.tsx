@@ -5,6 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Logo } from "./logo";
+import { SignInButton, SignUpButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   return (
@@ -22,23 +23,28 @@ export default function Navbar() {
 
           {/* Botões no lado direito */}
           <Box>
-            <Button
-              variant="text"
-              sx={{ color: "black", textTransform: "none", marginRight: 2 }}
-            >
-              Cadastrar
-            </Button>
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: "black",
-                color: "white",
-                textTransform: "none",
-                "&:hover": { backgroundColor: "#333" }, // Cor de hover mais escura
-              }}
-            >
-              Entrar
-            </Button>
+            <SignUpButton forceRedirectUrl="/radar">
+              <Button
+                variant="text"
+                sx={{ color: "black", textTransform: "none", marginRight: 2 }}
+              >
+                Cadastrar
+              </Button>
+            </SignUpButton>
+
+            <SignInButton forceRedirectUrl="/radar">
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "black",
+                  color: "white",
+                  textTransform: "none",
+                  "&:hover": { backgroundColor: "#333" },
+                }}
+              >
+                Entrar
+              </Button>
+            </SignInButton>
           </Box>
         </Toolbar>
       </AppBar>

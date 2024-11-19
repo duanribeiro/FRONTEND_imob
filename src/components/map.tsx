@@ -10,7 +10,12 @@ import {
 import { Box } from "@mui/material";
 
 import { fetchHouses } from "@/api";
-import { DrawerDistricts, DrawerFilters, HouseMarker } from "@/components";
+import {
+  DrawerDistricts,
+  DrawerFilters,
+  HouseMarker,
+  BugReport,
+} from "@/components";
 import {
   useDistrictsContext,
   useFiltersContext,
@@ -19,6 +24,7 @@ import {
 import { House, MyMapProps } from "@/types";
 import { colors, positions } from "@/utils/polygons/mg_juiz_de_fora";
 import { getPolygonCenter } from "@/utils/polygons";
+import { UserButton } from "@clerk/nextjs";
 
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
@@ -77,6 +83,29 @@ const MyMap: React.FC<MyMapProps> = ({
 
   return (
     <>
+      {/* User Profile */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 25,
+          right: 25,
+          zIndex: 1000,
+        }}
+      >
+        <UserButton />
+      </Box>
+
+      <Box
+        sx={{
+          position: "absolute",
+          top: 24,
+          right: 95,
+          zIndex: 1000,
+        }}
+      >
+        <BugReport />
+      </Box>
+
       {/* Drawer Districts */}
       <Box sx={{ position: "absolute", top: 115, left: 10, zIndex: 1000 }}>
         <DrawerDistricts />

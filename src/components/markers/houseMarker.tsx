@@ -176,6 +176,7 @@ export const HouseMarker: React.FC<HouseMarkerProps> = ({ house }) => {
           <Grid item>{makeChips(house)}</Grid>
           <br />
           <br />
+
           {/* Chart */}
           <Grid item>
             <LineChart

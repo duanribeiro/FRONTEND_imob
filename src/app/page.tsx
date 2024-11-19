@@ -1,20 +1,24 @@
 "use client";
-import dynamic from "next/dynamic";
-import React, { useEffect, useState } from "react";
+import {
+  Navbar,
+  Hero,
+  Features,
+  Pricing,
+  FAQ,
+  Footer,
+} from "@/components/landing_page";
 
-const MyMap = dynamic(() => import("@/components/map"), {
-  loading: () => <p>A map is loading</p>,
-  ssr: false,
-});
-
-const MapComponent: React.FC = () => {
-  const [mapLoaded, setMapLoaded] = useState(false);
-
-  useEffect(() => {
-    setMapLoaded(true);
-  }, []);
-
-  return <div>{mapLoaded && <MyMap />}</div>;
+const IndexPage = () => {
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <Features />
+      <Pricing />
+      <FAQ />
+      <Footer />
+    </>
+  );
 };
 
-export default MapComponent;
+export default IndexPage;

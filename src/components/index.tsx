@@ -5,3 +5,4 @@ export * from "./datePickerFilters";
 export * from "./sliderRentPrices";
 export * from "./sliderSellPrices";
 export * from "./markers";
+export * from "./bugReport";

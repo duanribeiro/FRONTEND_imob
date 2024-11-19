@@ -1,5 +1,6 @@
 import { Box, Typography, Grid, Paper } from "@mui/material";
 import { Section } from "@/components/landing_page";
+import HomeIcon from "@mui/icons-material/Home";
 
 export default function Features() {
   return (
@@ -11,22 +12,7 @@ export default function Features() {
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
             <FeatureCard
-              icon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  width="40"
-                  height="40"
-                >
-                  <path d="M0 0h24v24H0z" stroke="none" />
-                  <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3M12 12l8-4.5M12 12v9M12 12L4 7.5" />
-                </svg>
-              }
+              icon={<HomeIcon sx={{ fontSize: 40, color: "#fff" }} />}
               title="Monitoramento de Preços em Tempo Real"
             >
               Acompanhe as mudanças no mercado com atualizações semanais sobre
@@ -34,7 +20,26 @@ export default function Features() {
               sobre as tendências mais recentes.
             </FeatureCard>
           </Grid>
-          {/* Adicione mais FeatureCards aqui conforme necessário */}
+          <Grid item xs={12} sm={6} md={4}>
+            <FeatureCard
+              icon={<HomeIcon sx={{ fontSize: 40, color: "#fff" }} />}
+              title="Histórico de Preços"
+            >
+              Acesse o histórico completo de preços de aluguel e venda de
+              imóveis, permitindo que você acompanhe a evolução dos valores e as
+              movimentações de preços ao longo do tempo.
+            </FeatureCard>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <FeatureCard
+              icon={<HomeIcon sx={{ fontSize: 40, color: "#fff" }} />}
+              title="Análise de Tendências de Mercado em Juiz de Fora"
+            >
+              Descubra padrões de comportamento no mercado imobiliário de Juiz
+              de Fora e aproveite insights estratégicos para tomar decisões mais
+              embasadas na compra ou venda de imóveis.
+            </FeatureCard>
+          </Grid>
         </Grid>
       </Section>
     </Box>
@@ -55,6 +60,7 @@ export const FeatureCard = (props: {
       alignItems: "center",
       boxShadow: 3,
       backgroundColor: "background.paper",
+      height: "100%", // Adicionado para garantir altura uniforme
     }}
   >
     <Box

@@ -50,7 +50,7 @@ export default function Hero() {
               backgroundColor: "black",
             },
           }}
-          href="https://github.com/ixartz/SaaS-Boilerplate"
+          href="/radar"
         >
           Acesse o APP
         </Button>

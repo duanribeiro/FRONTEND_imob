@@ -1,0 +1,17 @@
+body {
+  background-color: #333333;
+}
+
+/* Estilos para o UserButton */
+.user-button-wrapper .clerk-user-button {
+  font-size: 24px; /* Aumenta o tamanho do texto */
+  padding: 10px; /* Ajuste o padding para aumentar a área clicável */
+}
+
+/* Adicionando borda branca e efeito de foco */
+.user-button-wrapper .clerk-user-button:focus,
+.user-button-wrapper .clerk-user-button:hover {
+  border: 2px solid white; /* Borda branca */
+  outline: none; /* Remove o outline padrão */
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* Efeito sutil de borda */
+}
