@@ -29,10 +29,9 @@ export function BugReport() {
     }
     try {
       const response = await postBug(bugDescription);
-      // Feedback de sucesso
       alert("Bug reportado com sucesso!");
-      setOpen(false); // Fecha o modal
-      setBugDescription(""); // Limpa a descrição
+      setOpen(false);
+      setBugDescription("");
     } catch (error) {
       alert("Erro ao enviar o bug. Por favor, tente novamente.");
     }

@@ -55,23 +55,29 @@ export const fetchDistricts = async () => {
 
 // ENDPOINT PARA ENVIAR UM BUG
 export const postBug = async (description: string) => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_API}/maps/post_bug`,
-    {
+  if (!description || typeof description !== "string") {
+    throw new Error("Invalid description");
+  }
+
+  const endpoint = `${process.env.NEXT_PUBLIC_BACKEND_API}/maps/post_bug`;
+
+  try {
+    const response = await fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        description: description,
-      }),
+      body: JSON.stringify({ description }),
+    });
+
+    if (!response.ok) {
+      console.error("API error response:", await response.text());
+      throw new Error(`Failed to post bug: ${response.status}`);
     }
-  );
 
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
+    return await response.json();
+  } catch (error) {
+    console.error("Error posting bug:", error);
+    throw error;
   }
-
-  const data: DistrictResponse = await response.json();
-  return data;
 };
