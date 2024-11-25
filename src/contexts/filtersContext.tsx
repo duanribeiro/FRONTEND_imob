@@ -22,7 +22,7 @@ const initialState: FiltersState = {
   end_date: "2022-01-01",
   slider_rent_prices: [1000, 5000],
   slider_sell_prices: [0, 2_500_000],
-  checked: [false, false, false, false, false],
+  checked: [true, false, false, false, false],
 };
 
 // Constantes para os tipos de ações

@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
 
 const MyMap = dynamic(() => import("@/components/map"), {
-  loading: () => <p>A map is loading</p>,
+  loading: () => <p>Caregando o APP...</p>,
   ssr: false,
 });
 

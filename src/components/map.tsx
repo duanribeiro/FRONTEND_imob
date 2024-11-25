@@ -31,8 +31,8 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet/dist/leaflet.css";
 
 const MyMap: React.FC<MyMapProps> = ({
-  position = [-21.773375, -43.333146],
-  zoom = 13,
+  position = [-21.76147969399659, -43.348360061645515],
+  zoom = 13.5,
 }) => {
   const [houses, setHouses] = useState<House[]>([]);
 

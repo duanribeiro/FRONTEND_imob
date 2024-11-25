@@ -1055,15 +1055,15 @@ export const colors: Record<DistrictName, string> = {
   "costa carvalho": "yellow",
 
   // SOUTH
-  salvaterra: "gray",
-  "sagrado coração": "gray",
-  "são geraldo": "gray",
-  "santa efigênia": "gray",
-  ipiranga: "gray",
-  "santa luzia": "gray",
-  "bomba de fogo": "gray",
-  graminha: "gray",
-  cascatinha: "gray",
+  salvaterra: "magenta",
+  "sagrado coração": "magenta",
+  "são geraldo": "magenta",
+  "santa efigênia": "magenta",
+  ipiranga: "magenta",
+  "santa luzia": "magenta",
+  "bomba de fogo": "magenta",
+  graminha: "magenta",
+  cascatinha: "magenta",
 
   // CENTER
   fábrica: "orange",

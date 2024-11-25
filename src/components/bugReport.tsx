@@ -95,7 +95,18 @@ export function BugReport() {
             onChange={(e) => setBugDescription(e.target.value)}
             sx={{ marginBottom: 2 }}
           />
-          <Button variant="contained" color="primary" onClick={handleSubmit}>
+          <Button
+            variant="contained"
+            color="inherit"
+            onClick={handleSubmit}
+            sx={{
+              backgroundColor: "black",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "#333", // Cor mais clara no hover
+              },
+            }}
+          >
             Enviar
           </Button>
         </Box>
