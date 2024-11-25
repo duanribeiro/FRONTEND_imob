@@ -60,6 +60,33 @@ export default function FAQ() {
           </Typography>
         </AccordionDetails>
       </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel3a-content"
+          id="panel3a-header"
+        >
+          <Typography>Como posso entrar em contato com vocês?</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Pode enviar suas dúvidas ou sugestões para o nosso grupo do
+            WhatsApp:
+            <a
+              href="https://chat.whatsapp.com/F90jVGBKjL22hFiqOD29iM"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                marginLeft: 5,
+              }}
+            >
+              https://chat.whatsapp.com/F90jVGBKjL22hFiqOD29iM
+            </a>
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
     </Section>
   );
 }

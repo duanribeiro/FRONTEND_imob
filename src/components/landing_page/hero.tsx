@@ -2,7 +2,7 @@ import { Button, Typography, Box } from "@mui/material";
 
 export default function Hero() {
   return (
-    <Box sx={{ py: 10, textAlign: "center" }}>
+    <Box sx={{ py: 35, textAlign: "center" }}>
       {/* Título */}
       <Typography
         variant="h4" // Título menor

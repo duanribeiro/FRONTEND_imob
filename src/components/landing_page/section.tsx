@@ -6,7 +6,7 @@ interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({ title, children }) => (
-  <Box sx={{ maxWidth: "1200px", margin: "0 auto", paddingX: 2 }}>
+  <Box sx={{ maxWidth: "1200px", margin: "0 auto", paddingX: 2, marginTop: 5 }}>
     <Typography
       variant="h4"
       sx={{

@@ -4,7 +4,7 @@ import HomeIcon from "@mui/icons-material/Home";
 
 export default function Features() {
   return (
-    <Box sx={{ backgroundColor: "#f5f5f5", py: 10 }}>
+    <Box sx={{ backgroundColor: "#f5f5f5", py: 8, paddingBottom: 22 }}>
       <Section
         title="Funcionalidades"
         // description={t('section_description')}
