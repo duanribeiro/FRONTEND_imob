@@ -9,10 +9,14 @@ export default function Features() {
         title="Funcionalidades"
         // description={t('section_description')}
       >
-        <Grid container spacing={4}>
+        <Grid container spacing={{ xs: 6, sm: 4 }}>
           <Grid item xs={12} sm={6} md={4}>
             <FeatureCard
-              icon={<HomeIcon sx={{ fontSize: 40, color: "#fff" }} />}
+              icon={
+                <HomeIcon
+                  sx={{ fontSize: { xs: 30, sm: 40 }, color: "#fff" }}
+                />
+              }
               title="Monitoramento de Preços em Tempo Real"
             >
               Acompanhe as mudanças no mercado com atualizações semanais sobre
@@ -22,7 +26,11 @@ export default function Features() {
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <FeatureCard
-              icon={<HomeIcon sx={{ fontSize: 40, color: "#fff" }} />}
+              icon={
+                <HomeIcon
+                  sx={{ fontSize: { xs: 30, sm: 40 }, color: "#fff" }}
+                />
+              }
               title="Histórico de Preços"
             >
               Acesse o histórico completo de preços de aluguel e venda de
@@ -32,7 +40,11 @@ export default function Features() {
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <FeatureCard
-              icon={<HomeIcon sx={{ fontSize: 40, color: "#fff" }} />}
+              icon={
+                <HomeIcon
+                  sx={{ fontSize: { xs: 30, sm: 40 }, color: "#fff" }}
+                />
+              }
               title="Análise de Tendências de Mercado em Juiz de Fora"
             >
               Descubra padrões de comportamento no mercado imobiliário de Juiz
@@ -54,7 +66,7 @@ export const FeatureCard = (props: {
   <Paper
     sx={{
       borderRadius: 3,
-      p: 3,
+      p: { xs: 2, sm: 3 }, // Menor padding em dispositivos móveis
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -67,7 +79,7 @@ export const FeatureCard = (props: {
       sx={{
         borderRadius: "50%",
         background: "linear-gradient(to bottom right, #3f51b5, #9c27b0)",
-        padding: 2,
+        padding: { xs: 1, sm: 2 }, // Menor padding nos ícones em dispositivos móveis
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -82,6 +94,7 @@ export const FeatureCard = (props: {
         mt: 2,
         fontWeight: "bold",
         textAlign: "center",
+        fontSize: { xs: "1rem", sm: "1.25rem" }, // Ajusta o tamanho da fonte nos títulos
       }}
     >
       {props.title}
