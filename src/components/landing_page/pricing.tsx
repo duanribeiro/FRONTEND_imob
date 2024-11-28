@@ -1,4 +1,6 @@
-import Link from "next/link";
+import React from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import {
   Box,
   Button,
@@ -10,17 +12,19 @@ import {
 } from "@mui/material";
 import { Section } from "@/components/landing_page";
 
+const stripePromise = loadStripe(
+  "pk_test_51QPOu3CKdNLiy4hXAjxjfj01CxLvfaurbyzaoTLgVDFUVMtoEFtGNmEfLirLMJkWDlSAMA9cowI5lz82AWGLoDLh00DxZzoGdG"
+);
+
 export default function Pricing() {
   return (
     <Section title="Preços">
       <PricingInformation
         buttonList={{
           teste: (
-            <Link href="/sign-up" passHref>
-              <Button variant="contained" fullWidth sx={{ mt: 2 }}>
-                entrar
-              </Button>
-            </Link>
+            <Button variant="contained" fullWidth sx={{ mt: 2 }}>
+              Entrar
+            </Button>
           ),
         }}
       />
@@ -34,10 +38,7 @@ export const PricingInformation = (props: {
   <Box sx={{ display: "grid", placeItems: "center" }}>
     <Grid container spacing={4} justifyContent="center">
       <Grid item xs={12} sm={6} md={4}>
-        <PricingCard
-          price={0}
-          button="Para usuários que querem testar e contribuir com sugestões."
-        >
+        <PricingCard price={19.99} button={<StripeCheckoutButton />}>
           <PricingFeature>Acesso ao Rádar Imóvel APP.</PricingFeature>
           <PricingFeature>
             Monitoramento de mais de 2000 imóveis.
@@ -59,7 +60,7 @@ export const PricingCard = (props: {
   return (
     <Paper sx={{ p: 3, borderRadius: 2, boxShadow: 3, textAlign: "center" }}>
       <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-        Fase de Testes
+        Assinatura Premium
       </Typography>
 
       <Box
@@ -73,16 +74,10 @@ export const PricingCard = (props: {
         <Typography variant="h4" sx={{ fontWeight: "bold" }}>
           {`R$${props.price}`}
         </Typography>
-        <Typography
-          variant="body2"
-          sx={{ ml: 1, color: "text.secondary" }}
-        ></Typography>
+        <Typography variant="body2" sx={{ ml: 1, color: "text.secondary" }}>
+          /mês
+        </Typography>
       </Box>
-
-      <Typography
-        variant="body2"
-        sx={{ mt: 2, color: "text.secondary" }}
-      ></Typography>
 
       <Box sx={{ mt: 3 }}>{props.button}</Box>
 
@@ -113,3 +108,37 @@ export const PricingFeature = (props: { children: React.ReactNode }) => (
     {props.children}
   </ListItem>
 );
+
+// Botão do Stripe Checkout
+const StripeCheckoutButton = () => {
+  const handleCheckout = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_API}/stripe/create-checkout-session`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      const { sessionId } = await response.json();
+
+      const stripe = await stripePromise;
+      await stripe?.redirectToCheckout({ sessionId });
+    } catch (error) {
+      console.error("Erro ao redirecionar para o checkout:", error);
+    }
+  };
+
+  return (
+    <Button
+      variant="contained"
+      fullWidth
+      color="primary"
+      sx={{ mt: 2 }}
+      onClick={handleCheckout}
+    >
+      Assinar Agora
+    </Button>
+  );
+};

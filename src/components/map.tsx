@@ -25,6 +25,7 @@ import { House, MyMapProps } from "@/types";
 import { colors, positions } from "@/utils/polygons/mg_juiz_de_fora";
 import { getPolygonCenter } from "@/utils/polygons";
 import { UserButton } from "@clerk/nextjs";
+import { useAuth } from "@clerk/clerk-react";
 
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
@@ -34,8 +35,8 @@ const MyMap: React.FC<MyMapProps> = ({
   position = [-21.76147969399659, -43.348360061645515],
   zoom = 13.5,
 }) => {
+  const { userId } = useAuth();
   const [houses, setHouses] = useState<House[]>([]);
-
   const { state: placesState, dispatch: placesDispatch } = usePlacesContext();
   const { state: filtersState, dispatch: filtersDispatch } =
     useFiltersContext();
@@ -47,13 +48,14 @@ const MyMap: React.FC<MyMapProps> = ({
       const fetchedHouses = await fetchHouses(
         placesState,
         filtersState,
-        districtsState
+        districtsState,
+        userId
       );
       setHouses(fetchedHouses);
     };
 
     fetchAndUpdateHouses();
-  }, [placesState, filtersState, districtsState]);
+  }, [placesState, filtersState, districtsState, userId]);
 
   const MapEvents = () => {
     useMapEvents({
