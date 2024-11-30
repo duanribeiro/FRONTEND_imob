@@ -156,7 +156,16 @@ export function DrawerDistricts() {
       >
         Bairros
       </Button>
-      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+      <Drawer
+        anchor="left"
+        open={drawerOpen}
+        onClose={toggleDrawer(false)}
+        slotProps={{
+          backdrop: {
+            invisible: true,
+          },
+        }}
+      >
         {createDrawerContent()}
       </Drawer>
     </div>

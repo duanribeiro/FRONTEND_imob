@@ -11,18 +11,18 @@ const SliderSx: SxProps = {
 
 const marks = [
   {
-    value: 0,
-    label: "R$0",
+    value: 1,
+    label: "1",
   },
   {
-    value: 5_000_000,
-    label: "R$5 milhões",
+    value: 10,
+    label: "10",
   },
 ];
 
-export const SliderSellPrices: React.FC = () => {
+export const SliderParkings: React.FC = () => {
   const { state, dispatch } = useFiltersContext();
-  const [sliderState, setSliderState] = useState<number[]>([0, 2_500_000]);
+  const [sliderState, setSliderState] = useState<number[]>([1, 3]);
 
   const handleChange = (
     event: Event,
@@ -38,15 +38,15 @@ export const SliderSellPrices: React.FC = () => {
     event: React.SyntheticEvent | Event,
     newValue: number | number[]
   ) => {
-    if (Array.isArray(newValue) && state.actives["slider_sell_prices"]) {
-      dispatch({ type: "CHANGE_SLIDER_SELL_PRICES", payload: newValue });
+    if (Array.isArray(newValue) && state.actives["slider_parkings"]) {
+      dispatch({ type: "CHANGE_SLIDER_PARKINGS", payload: newValue });
     }
   };
 
   return (
     <Box>
       <Typography id="input-slider" gutterBottom>
-        Preço de Venda
+        Vagas de garagem
       </Typography>
       <Slider
         sx={SliderSx}
@@ -56,8 +56,8 @@ export const SliderSellPrices: React.FC = () => {
         valueLabelDisplay="auto"
         disableSwap
         marks={marks}
-        min={0}
-        max={5_000_000}
+        min={1}
+        max={10}
       />
     </Box>
   );

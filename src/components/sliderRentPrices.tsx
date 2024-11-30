@@ -13,11 +13,11 @@ const SliderSx: SxProps = {
 const marks = [
   {
     value: 1000,
-    label: "R$1K",
+    label: "R$1 mil",
   },
   {
     value: 30000,
-    label: "R$30K",
+    label: "R$30 mil",
   },
 ];
 
@@ -43,7 +43,7 @@ export const SliderRentPrices: React.FC = () => {
     if (!Array.isArray(newValue)) {
       return;
     }
-    if (state.checked[1]) {
+    if (state.actives["slider_rent_prices"]) {
       dispatch({ type: "CHANGE_SLIDER_RENT_PRICES", payload: newValue });
     }
   };

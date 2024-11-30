@@ -38,8 +38,8 @@ export const PricingInformation = (props: {
   <Box sx={{ display: "grid", placeItems: "center" }}>
     <Grid container spacing={4} justifyContent="center">
       <Grid item xs={12} sm={6} md={4}>
-        <PricingCard price={19.99} button={<StripeCheckoutButton />}>
-          <PricingFeature>Acesso ao Rádar Imóvel APP.</PricingFeature>
+        <PricingCard price={0} button={<MyButton />}>
+          <PricingFeature>Acesso ao Radar Imóvel APP.</PricingFeature>
           <PricingFeature>
             Monitoramento de mais de 2000 imóveis.
           </PricingFeature>
@@ -47,6 +47,15 @@ export const PricingInformation = (props: {
             Imóveis em mais de 70 bairros da cidade.
           </PricingFeature>
         </PricingCard>
+        {/* <PricingCard price={19.99} button={<StripeCheckoutButton />}>
+          <PricingFeature>Acesso ao Radar Imóvel APP.</PricingFeature>
+          <PricingFeature>
+            Monitoramento de mais de 2000 imóveis.
+          </PricingFeature>
+          <PricingFeature>
+            Imóveis em mais de 70 bairros da cidade.
+          </PricingFeature>
+        </PricingCard> */}
       </Grid>
     </Grid>
   </Box>
@@ -60,7 +69,7 @@ export const PricingCard = (props: {
   return (
     <Paper sx={{ p: 3, borderRadius: 2, boxShadow: 3, textAlign: "center" }}>
       <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-        Assinatura Premium
+        Fase de testes
       </Typography>
 
       <Box
@@ -109,7 +118,6 @@ export const PricingFeature = (props: { children: React.ReactNode }) => (
   </ListItem>
 );
 
-// Botão do Stripe Checkout
 const StripeCheckoutButton = () => {
   const handleCheckout = async () => {
     try {
@@ -134,11 +142,35 @@ const StripeCheckoutButton = () => {
     <Button
       variant="contained"
       fullWidth
-      color="primary"
-      sx={{ mt: 2 }}
+      sx={{
+        backgroundColor: "black",
+        color: "white",
+        "&:hover": {
+          backgroundColor: "black",
+        },
+      }}
       onClick={handleCheckout}
     >
       Assinar Agora
+    </Button>
+  );
+};
+
+const MyButton = () => {
+  return (
+    <Button
+      variant="contained"
+      size="large"
+      sx={{
+        backgroundColor: "black",
+        color: "white",
+        "&:hover": {
+          backgroundColor: "black",
+        },
+      }}
+      href="/radar"
+    >
+      Acesse o APP
     </Button>
   );
 };
