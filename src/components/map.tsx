@@ -148,8 +148,8 @@ const MyMap: React.FC<MyMapProps> = ({
             </React.Fragment>
           );
         })}
-        {houses.map((house) => (
-          <HouseMarker house={house} key={house.code} />
+        {houses.map((house, index) => (
+          <HouseMarker house={house} key={`${house.code}-${index}`} />
         ))}
       </MapContainer>
     </>

@@ -41,7 +41,7 @@ const initialState: FiltersState = {
   slider_area: [0, 200],
   slider_rooms: [1, 3],
   slider_bathrooms: [1, 2],
-  slider_parkings: [1, 1],
+  slider_parkings: [1, 2],
   actives: {
     slider_rent_prices: false,
     slider_sell_prices: false,

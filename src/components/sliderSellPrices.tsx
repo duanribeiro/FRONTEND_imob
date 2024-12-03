@@ -22,7 +22,9 @@ const marks = [
 
 export const SliderSellPrices: React.FC = () => {
   const { state, dispatch } = useFiltersContext();
-  const [sliderState, setSliderState] = useState<number[]>([0, 2_500_000]);
+  const [sliderState, setSliderState] = useState<number[]>(
+    state.slider_sell_prices
+  );
 
   const handleChange = (
     event: Event,
@@ -40,6 +42,7 @@ export const SliderSellPrices: React.FC = () => {
   ) => {
     if (Array.isArray(newValue) && state.actives["slider_sell_prices"]) {
       dispatch({ type: "CHANGE_SLIDER_SELL_PRICES", payload: newValue });
+      setSliderState(newValue);
     }
   };
 

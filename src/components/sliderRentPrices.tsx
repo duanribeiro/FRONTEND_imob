@@ -23,7 +23,9 @@ const marks = [
 
 export const SliderRentPrices: React.FC = () => {
   const { state, dispatch } = useFiltersContext();
-  const [sliderState, setSliderState] = useState([1000, 5000]);
+  const [sliderState, setSliderState] = useState<number[]>(
+    state.slider_rent_prices
+  );
 
   const handleChange = (
     event: Event,
@@ -45,6 +47,7 @@ export const SliderRentPrices: React.FC = () => {
     }
     if (state.actives["slider_rent_prices"]) {
       dispatch({ type: "CHANGE_SLIDER_RENT_PRICES", payload: newValue });
+      setSliderState(newValue);
     }
   };
 

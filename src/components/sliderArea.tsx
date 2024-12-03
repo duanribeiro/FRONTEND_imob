@@ -22,7 +22,7 @@ const marks = [
 
 export const SliderArea: React.FC = () => {
   const { state, dispatch } = useFiltersContext();
-  const [sliderState, setSliderState] = useState<number[]>([0, 200]);
+  const [sliderState, setSliderState] = useState<number[]>(state.slider_area);
 
   const handleChange = (
     event: Event,
@@ -40,6 +40,7 @@ export const SliderArea: React.FC = () => {
   ) => {
     if (Array.isArray(newValue) && state.actives["slider_area"]) {
       dispatch({ type: "CHANGE_SLIDER_AREA", payload: newValue });
+      setSliderState(newValue);
     }
   };
 

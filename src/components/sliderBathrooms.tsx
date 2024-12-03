@@ -22,7 +22,9 @@ const marks = [
 
 export const SliderBathrooms: React.FC = () => {
   const { state, dispatch } = useFiltersContext();
-  const [sliderState, setSliderState] = useState<number[]>([1, 3]);
+  const [sliderState, setSliderState] = useState<number[]>(
+    state.slider_bathrooms
+  );
 
   const handleChange = (
     event: Event,
@@ -40,6 +42,7 @@ export const SliderBathrooms: React.FC = () => {
   ) => {
     if (Array.isArray(newValue) && state.actives["slider_bathrooms"]) {
       dispatch({ type: "CHANGE_SLIDER_BATHROOMS", payload: newValue });
+      setSliderState(newValue);
     }
   };
 
