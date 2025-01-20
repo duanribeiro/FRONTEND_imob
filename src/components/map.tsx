@@ -15,11 +15,13 @@ import {
   DrawerFilters,
   HouseMarker,
   BugReport,
+  DrawerTableHouses,
 } from "@/components";
 import {
   useDistrictsContext,
   useFiltersContext,
   usePlacesContext,
+  useHousesContext,
 } from "@/contexts";
 import { House, MyMapProps } from "@/types";
 import { colors, positions } from "@/utils/polygons/mg_juiz_de_fora";
@@ -36,7 +38,8 @@ const MyMap: React.FC<MyMapProps> = ({
   zoom = 13.5,
 }) => {
   const { userId } = useAuth();
-  const [houses, setHouses] = useState<House[]>([]);
+
+  const { state: housesState, dispatch: housesDispatch } = useHousesContext();
   const { state: placesState, dispatch: placesDispatch } = usePlacesContext();
   const { state: filtersState, dispatch: filtersDispatch } =
     useFiltersContext();
@@ -48,10 +51,9 @@ const MyMap: React.FC<MyMapProps> = ({
       const fetchedHouses = await fetchHouses(
         placesState,
         filtersState,
-        districtsState,
-        userId
+        districtsState
       );
-      setHouses(fetchedHouses);
+      housesDispatch({ type: "add_houses", payload: fetchedHouses });
     };
 
     fetchAndUpdateHouses();
@@ -96,7 +98,6 @@ const MyMap: React.FC<MyMapProps> = ({
       >
         <UserButton />
       </Box>
-
       <Box
         sx={{
           position: "absolute",
@@ -108,16 +109,6 @@ const MyMap: React.FC<MyMapProps> = ({
         <BugReport />
       </Box>
 
-      {/* Drawer Districts */}
-      <Box sx={{ position: "absolute", top: 115, left: 10, zIndex: 1000 }}>
-        <DrawerDistricts />
-      </Box>
-
-      {/* Botão Filtros */}
-      <Box sx={{ position: "absolute", top: 160, left: 10, zIndex: 1000 }}>
-        <DrawerFilters />
-      </Box>
-
       {/* Mapa */}
       <MapContainer
         key="unique-map-instance"
@@ -126,6 +117,18 @@ const MyMap: React.FC<MyMapProps> = ({
         scrollWheelZoom={true}
         style={{ width: "100%", height: "98vh", zIndex: 1 }}
       >
+        {/* Drawer Districts */}
+        <Box sx={{ position: "absolute", top: 80, left: 10, zIndex: 1000 }}>
+          <DrawerDistricts />
+        </Box>
+        {/* Botão Filtros */}
+        <Box sx={{ position: "absolute", top: 125, left: 10, zIndex: 1000 }}>
+          <DrawerFilters />
+        </Box>
+        {/* Botão Casas */}
+        <Box sx={{ position: "absolute", top: 170, left: 10, zIndex: 1000 }}>
+          <DrawerTableHouses />
+        </Box>
         <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=d7dce56d-10c6-4d8a-bd39-04f6e42c2683" />
         <MapEvents />
 
@@ -148,7 +151,7 @@ const MyMap: React.FC<MyMapProps> = ({
             </React.Fragment>
           );
         })}
-        {houses.map((house, index) => (
+        {housesState.map((house, index) => (
           <HouseMarker house={house} key={`${house.code}-${index}`} />
         ))}
       </MapContainer>

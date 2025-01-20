@@ -4,6 +4,7 @@ import {
   FiltersProvider,
   LoadingProvider,
   PlacesProvider,
+  HousesProvider,
 } from "@/contexts";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -24,7 +25,9 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => {
     <LoadingProvider>
       <DistrictsProvider>
         <PlacesProvider>
-          <FiltersProvider>{children}</FiltersProvider>
+          <HousesProvider>
+            <FiltersProvider>{children}</FiltersProvider>
+          </HousesProvider>
         </PlacesProvider>
       </DistrictsProvider>
     </LoadingProvider>
