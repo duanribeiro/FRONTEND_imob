@@ -12,14 +12,30 @@ const SliderSx: SxProps = {
 
 const marks = [
   {
-    value: 1000,
-    label: "R$1 mil",
+    value: 0,
+    label: "R$0 mil",
   },
   {
     value: 30000,
     label: "R$30 mil",
   },
 ];
+
+const formatValueLabel = (value: number) => {
+  if (value < 1_000) {
+    return `R$${value}`;
+  } else if (value < 1_000_000) {
+    return `R$${(value / 1_000).toLocaleString("pt-BR", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    })} mil`;
+  } else {
+    return `R$${(value / 1_000_000).toLocaleString("pt-BR", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    })} milhão`;
+  }
+};
 
 export const SliderRentPrices: React.FC = () => {
   const { state, dispatch } = useFiltersContext();
@@ -63,10 +79,12 @@ export const SliderRentPrices: React.FC = () => {
         onChange={handleChange}
         onChangeCommitted={handleChangeCommitted}
         valueLabelDisplay="auto"
+        valueLabelFormat={formatValueLabel}
         disableSwap
         marks={marks}
         min={0}
         max={30000}
+        step={1000}
       />
     </Box>
   );

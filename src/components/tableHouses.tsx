@@ -1,4 +1,8 @@
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridColDef,
+  GridValueFormatterParams,
+} from "@mui/x-data-grid";
 import { ptBR } from "@mui/x-data-grid/locales";
 import Paper from "@mui/material/Paper";
 import { useDistrictsContext, useHousesContext } from "@/contexts";
@@ -32,7 +36,7 @@ const drawerSx: SxProps = {
 };
 
 const drawerBoxSx: SxProps = {
-  width: "69vh",
+  width: "75vh",
 };
 
 const typographySx: SxProps = {
@@ -47,13 +51,14 @@ export function DrawerTableHouses() {
   const rows = Array.isArray(housesState)
     ? housesState.map((house) => ({
         id: house.id,
-        district: house.district ?? "-",
-        price: house.price ? house.price.join(" - ") : "-",
-        area: house.area ?? "-",
-        bedroom: house.bedroom ?? "-",
-        bathroom: house.bathroom ?? "-",
-        garage: house.garage ?? "-",
-        real_estate: house.real_estate ?? "-",
+        district: house.district ?? "",
+        price: house.price ? house.price[house.price.length - 1] : "",
+        rent: house.rent ? house.rent[house.rent.length - 1] : "",
+        area: house.area ?? "",
+        bedroom: house.bedroom ?? "",
+        bathroom: house.bathroom ?? "",
+        garage: house.garage ?? "",
+        real_estate: house.real_estate ?? "",
         latitude: house.latitude ?? null,
         longitude: house.longitude ?? null,
         url: house.url ?? null,
@@ -101,7 +106,34 @@ export function DrawerTableHouses() {
   };
 
   const columns: GridColDef[] = [
-    { field: "price", headerName: "Preço", width: 80 },
+    {
+      field: "price",
+      headerName: "Venda",
+      width: 90,
+      valueGetter: (value, row) => {
+        if (isNaN(value)) {
+          return "";
+        }
+        return new Intl.NumberFormat("pt-BR", {
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+        }).format(value);
+      },
+    },
+    {
+      field: "rent",
+      headerName: "Aluguel",
+      width: 70,
+      valueGetter: (value, row) => {
+        if (isNaN(value)) {
+          return "";
+        }
+        return new Intl.NumberFormat("pt-BR", {
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+        }).format(value);
+      },
+    },
     { field: "area", headerName: "Área (m²)", width: 80 },
     { field: "bedroom", headerName: "Quartos", width: 80 },
     { field: "bathroom", headerName: "Banheiros", width: 90 },

@@ -20,6 +20,8 @@ const housesReducer = (
       return state.map((house) =>
         house.id === action.payload.id ? { ...house, ...action.payload } : house
       );
+    case "set_houses":
+      return action.payload;
     default:
       return state;
   }

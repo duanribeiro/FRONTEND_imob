@@ -53,7 +53,7 @@ const MyMap: React.FC<MyMapProps> = ({
         filtersState,
         districtsState
       );
-      housesDispatch({ type: "add_houses", payload: fetchedHouses });
+      housesDispatch({ type: "set_houses", payload: fetchedHouses });
     };
 
     fetchAndUpdateHouses();

@@ -20,6 +20,23 @@ const marks = [
   },
 ];
 
+const formatValueLabel = (value: number) => {
+  if (value < 1_000) {
+    return `R$${value}`;
+  } else if (value < 100_000) {
+    return `R$${(value / 1_000).toLocaleString("pt-BR", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    })} mil`;
+  } else if (value < 1_000_000) {
+    return `R$${(value / 1_000).toLocaleString("pt-BR", {})} mil`;
+  } else if (value < 2_000_000) {
+    return `R$${(value / 1_000_000).toLocaleString("pt-BR", {})} milhão`;
+  } else {
+    return `R$${(value / 1_000_000).toLocaleString("pt-BR", {})} milhões`;
+  }
+};
+
 export const SliderSellPrices: React.FC = () => {
   const { state, dispatch } = useFiltersContext();
   const [sliderState, setSliderState] = useState<number[]>(
@@ -57,10 +74,12 @@ export const SliderSellPrices: React.FC = () => {
         onChange={handleChange}
         onChangeCommitted={handleChangeCommitted}
         valueLabelDisplay="auto"
+        valueLabelFormat={formatValueLabel}
         disableSwap
         marks={marks}
         min={0}
         max={5_000_000}
+        step={100_000}
       />
     </Box>
   );

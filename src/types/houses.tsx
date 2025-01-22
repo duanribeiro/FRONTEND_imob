@@ -23,4 +23,5 @@ export type HousesAction =
   | { type: "add_house"; payload: HousesState }
   | { type: "add_houses"; payload: HousesState[] }
   | { type: "remove_house"; payload: number }
-  | { type: "update_house"; payload: HousesState };
+  | { type: "update_house"; payload: HousesState }
+  | { type: "set_houses"; payload: HousesState[] };
