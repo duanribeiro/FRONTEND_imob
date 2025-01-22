@@ -39,7 +39,6 @@ export const SliderRooms: React.FC = () => {
     newValue: number | number[]
   ) => {
     if (Array.isArray(newValue) && state.actives["slider_rooms"]) {
-      console.log(newValue);
       dispatch({ type: "CHANGE_SLIDER_ROOMS", payload: newValue });
       setSliderState(newValue);
     }

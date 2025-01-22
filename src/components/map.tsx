@@ -63,7 +63,7 @@ const MyMap: React.FC<MyMapProps> = ({
     useMapEvents({
       click: (e) => {
         // Exibe as coordenadas do clique
-        console.log([e.latlng.lat, e.latlng.lng]);
+        // console.log([e.latlng.lat, e.latlng.lng]);
       },
     });
     return null;
