@@ -237,7 +237,7 @@ export function DrawerTableHouses() {
       {responseMessage && (
         <Box sx={{ mt: 2, textAlign: "center" }}>
           <Typography variant="body2" color="textSecondary">
-            {`https://radarimovel.com/radar/${responseMessage}`}
+            {`https://radarimovel.com/share/${responseMessage}`}
           </Typography>
         </Box>
       )}

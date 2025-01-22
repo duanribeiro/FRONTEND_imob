@@ -5,9 +5,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  experimental: {
-    middleware: true,
-  },
 };
 
 export default nextConfig;
