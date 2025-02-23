@@ -110,8 +110,10 @@ const MyMap: React.FC<MyMapProps> = ({
         sx={{
           position: "absolute",
           top: 20,
-          left: "45%",
+          left: "50%",
+          transform: "translateX(-50%)",
           zIndex: 1000,
+          display: { xs: "none", sm: "block" }, 
         }}
       >
         <Typography sx={{ backgroundColor: "white", color: "black", padding: 1 }}>
