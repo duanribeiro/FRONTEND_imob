@@ -7,7 +7,7 @@ import {
   Tooltip,
   useMapEvents,
 } from "react-leaflet";
-import { Box } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 
 import { fetchHouses } from "@/api";
 import {
@@ -40,20 +40,22 @@ const MyMap: React.FC<MyMapProps> = ({
   const { userId } = useAuth();
 
   const { state: housesState, dispatch: housesDispatch } = useHousesContext();
-  const { state: placesState, dispatch: placesDispatch } = usePlacesContext();
-  const { state: filtersState, dispatch: filtersDispatch } =
-    useFiltersContext();
-  const { state: districtsState, dispatch: districtsDispatch } =
-    useDistrictsContext();
+  const { state: placesState } = usePlacesContext();
+  const { state: filtersState } = useFiltersContext();
+  const { state: districtsState } = useDistrictsContext();
+  
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchAndUpdateHouses = async () => {
+      setLoading(true);
       const fetchedHouses = await fetchHouses(
         placesState,
         filtersState,
         districtsState
       );
       housesDispatch({ type: "set_houses", payload: fetchedHouses });
+      setLoading(false);
     };
 
     fetchAndUpdateHouses();
@@ -61,10 +63,7 @@ const MyMap: React.FC<MyMapProps> = ({
 
   const MapEvents = () => {
     useMapEvents({
-      click: (e) => {
-        // Exibe as coordenadas do clique
-        // console.log([e.latlng.lat, e.latlng.lng]);
-      },
+      click: (e) => {},
     });
     return null;
   };
@@ -87,7 +86,6 @@ const MyMap: React.FC<MyMapProps> = ({
 
   return (
     <>
-      {/* User Profile */}
       <Box
         sx={{
           position: "absolute",
@@ -108,8 +106,44 @@ const MyMap: React.FC<MyMapProps> = ({
       >
         <BugReport />
       </Box>
+      <Box
+        sx={{
+          position: "absolute",
+          top: 20,
+          left: "45%",
+          zIndex: 1000,
+        }}
+      >
+        <Typography sx={{ backgroundColor: "white", color: "black", padding: 1 }}>
+        {housesState.length} imóveis encontrados
+      </Typography>
+      </Box>
 
-      {/* Mapa */}
+      {loading && (
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 1500,
+          }}
+        >
+          <CircularProgress
+            sx={{
+              color: "white",
+              animation: "glow 1.5s infinite alternate",
+              "@keyframes glow": {
+                "0%": { filter: "drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5))" },
+                "100%": { filter: "drop-shadow(0px 0px 15px rgba(255, 255, 255, 1))" },
+              },
+            }}
+            size={70}
+            thickness={20}
+          />
+        </Box>
+      )}
+
       <MapContainer
         key="unique-map-instance"
         center={position}
@@ -117,15 +151,12 @@ const MyMap: React.FC<MyMapProps> = ({
         scrollWheelZoom={true}
         style={{ width: "100%", height: "98vh", zIndex: 1 }}
       >
-        {/* Drawer Districts */}
         <Box sx={{ position: "absolute", top: 80, left: 10, zIndex: 1000 }}>
           <DrawerDistricts />
         </Box>
-        {/* Botão Filtros */}
         <Box sx={{ position: "absolute", top: 125, left: 10, zIndex: 1000 }}>
           <DrawerFilters />
         </Box>
-        {/* Botão Casas */}
         <Box sx={{ position: "absolute", top: 170, left: 10, zIndex: 1000 }}>
           <DrawerTableHouses />
         </Box>

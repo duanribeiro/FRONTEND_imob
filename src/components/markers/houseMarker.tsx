@@ -88,6 +88,21 @@ export const HouseMarker: React.FC<HouseMarkerProps> = ({ house }) => {
     return value.toLocaleString("pt-BR", { minimumFractionDigits: 3 });
   }
 
+  const customYAxisTick = (props) => {
+    const { x, y, payload } = props;
+    const uniqueValues = new Set();
+    
+    if (!uniqueValues.has(payload.value)) {
+      uniqueValues.add(payload.value);
+      return (
+        <text x={x} y={y} dy={4} textAnchor="end" fill="#666">
+          {formatYAxis(payload.value)}
+        </text>
+      );
+    }
+    return null;
+  };
+
   const makeChips = (house: House) => {
     const chips: JSX.Element[] = [];
     if (house.area) {
@@ -179,34 +194,34 @@ export const HouseMarker: React.FC<HouseMarkerProps> = ({ house }) => {
 
           {/* Chart */}
           <Grid item>
-            <LineChart
-              width={300}
-              height={200}
-              data={graphData}
-              style={{ marginLeft: -30, padding: 0 }}
-            >
-              <YAxis
-                ticks={yTicks}
-                interval={0}
-                tickFormatter={formatYAxis}
-                width={80}
-              />
-              <XAxis
-                dataKey="last_update"
-                ticks={last_update}
-                tickFormatter={formatXAxis}
-              />
-              <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-              <Line
-                type="monotone"
-                dataKey="rent"
-                name="Aluguel"
-                stroke="green"
-              />
-              <Line type="monotone" dataKey="price" name="Venda" stroke="red" />
-              <Tooltip />
-              <Legend width={300} />
-            </LineChart>
+          <LineChart
+            width={300}
+            height={200}
+            data={graphData}
+            style={{ marginLeft: -30, padding: 0 }}
+          >
+            <YAxis
+              ticks={yTicks}
+              interval={0}
+              tick={customYAxisTick}
+              width={80}
+            />
+            <XAxis
+              dataKey="last_update"
+              ticks={last_update}
+              tickFormatter={formatXAxis}
+            />
+            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+            <Line
+              type="monotone"
+              dataKey="rent"
+              name="Aluguel"
+              stroke="green"
+            />
+            <Line type="monotone" dataKey="price" name="Venda" stroke="red" />
+            <Tooltip />
+            <Legend width={300} />
+          </LineChart>
           </Grid>
         </Grid>
       </Popup>
