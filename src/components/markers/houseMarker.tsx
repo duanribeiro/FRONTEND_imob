@@ -9,10 +9,11 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { Grid, Chip, Typography, Link } from "@mui/material";
+import { Grid, Chip, Typography, Link, Button, Box } from "@mui/material";
 import { House } from "@/types";
 import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
+import LinkIcon from "@mui/icons-material/Link";
 
 const customIcon = new L.Icon({
   iconUrl: "/assets/map_icons/home.png",
@@ -63,7 +64,6 @@ export const HouseMarker: React.FC<HouseMarkerProps> = ({ house }) => {
     last_update: string;
   }[] = [];
   const priceArray: (number | null)[] = [];
-  // const yTicks = house.rent.concat(house.price);
   const uniqueTicks = [];
   const yTicks = house.rent.concat(house.price).map((value, index, array) => {
     if (array.indexOf(value) === index) {
@@ -147,17 +147,22 @@ export const HouseMarker: React.FC<HouseMarkerProps> = ({ house }) => {
           spacing={0}
         >
           {/* Real estate */}
-          <Grid item className="capitalize">
-            <Typography variant="body2" style={{ margin: 0, padding: 0 }}>
-              <Link
-                href={house.url}
-                underline="hover"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LINK PARA O IMÓVEL
-              </Link>
-            </Typography>
+          <Grid item className="capitalize" >
+          <Button
+            fullWidth
+            sx={{
+              width: 300,
+              backgroundColor: "black",
+              color: "white",
+              marginBottom: 2,
+              padding: 1,
+              "&:hover": {
+                backgroundColor: "rgba(0, 0, 0, 0.8)",
+              },
+            }}
+            startIcon={<LinkIcon sx={{ color: "white" }} />}>
+            Ver o imóvel
+          </Button>
           </Grid>
 
           {/*Descrição */}
