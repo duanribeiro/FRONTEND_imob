@@ -23,6 +23,9 @@ const customIcon = new L.Icon({
 });
 
 const formatYAxis = (tickItem: number) => {
+  if (tickItem == 0) {
+    return "";
+  }
   if (tickItem >= 1000 && tickItem < 1000000) {
     return `R$ ${(tickItem / 1000).toFixed(1)}K`;
   } else {
@@ -65,13 +68,16 @@ export const HouseMarker: React.FC<HouseMarkerProps> = ({ house }) => {
   }[] = [];
   const priceArray: (number | null)[] = [];
   const uniqueTicks = [];
-  const yTicks = house.rent.concat(house.price).map((value, index, array) => {
-    if (array.indexOf(value) === index) {
-      uniqueTicks.push(value);
-      return value;
-    }
-    return "";
-  });
+  // const yTicks = house.rent.concat(house.price).map((value, index, array) => {
+  //   if (array.indexOf(value) === index) {
+  //     uniqueTicks.push(value);
+  //     return value;
+  //   }
+  //   return "";
+  // });
+  const yTicks = house.rent.concat(house.price).map((value, index, array) => 
+    index === array.length - 1 ? value : ""
+  );
   const priceArraySize = Array.isArray(house.price) ? house.price.length : 0;
   const rentArraySize = Array.isArray(house.rent) ? house.rent.length : 0;
   const biggerArray = rentArraySize - priceArraySize;
@@ -92,9 +98,6 @@ export const HouseMarker: React.FC<HouseMarkerProps> = ({ house }) => {
     });
   }
 
-  function formatNumber(value) {
-    return value.toLocaleString("pt-BR", { minimumFractionDigits: 3 });
-  }
 
   const makeChips = (house: House) => {
     const chips: JSX.Element[] = [];
@@ -160,7 +163,10 @@ export const HouseMarker: React.FC<HouseMarkerProps> = ({ house }) => {
                 backgroundColor: "rgba(0, 0, 0, 0.8)",
               },
             }}
-            startIcon={<LinkIcon sx={{ color: "white" }} />}>
+            startIcon={<LinkIcon sx={{ color: "white" }} />}
+            onClick={() => window.open(house.url, "_blank")}
+            >
+              
             Ver o imóvel
           </Button>
           </Grid>

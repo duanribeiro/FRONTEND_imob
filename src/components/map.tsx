@@ -16,6 +16,7 @@ import {
   HouseMarker,
   BugReport,
   DrawerTableHouses,
+  PremiumHouseMarker
 } from "@/components";
 import {
   useDistrictsContext,
@@ -184,9 +185,13 @@ const MyMap: React.FC<MyMapProps> = ({
             </React.Fragment>
           );
         })}
-        {housesState.map((house, index) => (
-          <HouseMarker house={house} key={`${house.code}-${index}`} />
-        ))}
+        {housesState.map((house, index) =>
+          index % 2 === 0 ? (
+            <HouseMarker house={house} key={`${house.code}-${index}`} />
+          ) : (
+            <PremiumHouseMarker house={house} key={`${house.code}-${index}`} />
+          )
+        )}
       </MapContainer>
     </>
   );
