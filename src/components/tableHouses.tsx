@@ -201,7 +201,7 @@ export function DrawerTableHouses() {
         component="div"
         sx={typographySx}
       >
-        NESTA ABA FILTRAMOS OS IMÓVEIS ATIVOS.
+        NESTA ABA FILTRAMOS OS ANÚNCIOS.
       </Typography>
 
       <Paper sx={{ height: 700, width: "100%" }}>
