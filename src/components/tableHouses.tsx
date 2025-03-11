@@ -256,7 +256,7 @@ export function DrawerTableHouses() {
         color="inherit"
         disabled={isDisabled}
       >
-        Imóveis
+        ANÚNCIOS
       </Button>
       <Drawer
         anchor="left"
