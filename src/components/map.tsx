@@ -118,7 +118,7 @@ const MyMap: React.FC<MyMapProps> = ({
         }}
       >
         <Typography sx={{ backgroundColor: "white", color: "black", padding: 1 }}>
-        {housesState.length} imóveis encontrados
+        {housesState.length} anúncios encontrados
       </Typography>
       </Box>
 
