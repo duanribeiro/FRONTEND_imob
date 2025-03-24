@@ -11,3 +11,6 @@ export * from "./sliderParkings";
 export * from "./markers";
 export * from "./bugReport";
 export * from "./tableHouses";
+export * from "./whatsAppButton";
+export * from "./stripeButton";
+export * from "./customUserButton";

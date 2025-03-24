@@ -9,26 +9,30 @@ import {
 } from "react-leaflet";
 import { Box, CircularProgress, Typography } from "@mui/material";
 
-import { fetchHouses } from "@/api";
+import { fetchHouses, fetchUser } from "@/api";
 import {
   DrawerDistricts,
   DrawerFilters,
   HouseMarker,
   BugReport,
   DrawerTableHouses,
-  PremiumHouseMarker
+  PremiumHouseMarker,
+  WhatsAppButton,
+  StripeButton,
+  CustomUserButton
 } from "@/components";
 import {
   useDistrictsContext,
   useFiltersContext,
   usePlacesContext,
   useHousesContext,
+  useUserContext,
 } from "@/contexts";
-import { House, MyMapProps } from "@/types";
+import {  MyMapProps } from "@/types";
 import { colors, positions } from "@/utils/polygons/mg_juiz_de_fora";
 import { getPolygonCenter } from "@/utils/polygons";
 import { UserButton } from "@clerk/nextjs";
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth, useUser } from "@clerk/clerk-react";
 
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
@@ -39,21 +43,39 @@ const MyMap: React.FC<MyMapProps> = ({
   zoom = 13.5,
 }) => {
   const { userId } = useAuth();
+  const { user } = useUser();
 
   const { state: housesState, dispatch: housesDispatch } = useHousesContext();
   const { state: placesState } = usePlacesContext();
   const { state: filtersState } = useFiltersContext();
   const { state: districtsState } = useDistrictsContext();
-  
+  const { state: userState, dispatch: userDispatch  } = useUserContext();
+
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const email = user?.emailAddresses[0]?.emailAddress;
+      if (userId) {
+        const user = await fetchUser(userId, email);
+        console.log({user})
+        userDispatch({ type: "SET_USER", payload: user });
+      }
+    };
+  
+    getUser();
+  }, [userId]);
+  
 
   useEffect(() => {
     const fetchAndUpdateHouses = async () => {
       setLoading(true);
+      
       const fetchedHouses = await fetchHouses(
         placesState,
         filtersState,
-        districtsState
+        districtsState,
+        userId
       );
       housesDispatch({ type: "set_houses", payload: fetchedHouses });
       setLoading(false);
@@ -87,26 +109,48 @@ const MyMap: React.FC<MyMapProps> = ({
 
   return (
     <>
+
       <Box
         sx={{
-          position: "absolute",
-          top: 25,
-          right: 25,
           zIndex: 1000,
+          position: "absolute",
+          top: 20,
+          left: 60,
+          color: "black",
+          backgroundColor: "white",
+          fontWeight: 500,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "60px",
+          width: "108px",
+          borderRadius: "4px",
         }}
       >
-        <UserButton />
+        <Box
+          sx={{
+            zIndex: 1000,
+          }}
+        >
+          <WhatsAppButton />
+        </Box>
+        <Box
+          sx={{
+            zIndex: 1000,
+          }}
+        >
+          <StripeButton />
+        </Box>
+        <Box
+          sx={{
+
+            zIndex: 1000,
+          }}
+        >
+          <CustomUserButton/>
+        </Box>
       </Box>
-      <Box
-        sx={{
-          position: "absolute",
-          top: 24,
-          right: 95,
-          zIndex: 1000,
-        }}
-      >
-        <BugReport />
-      </Box>
+      
       <Box
         sx={{
           position: "absolute",
@@ -168,7 +212,6 @@ const MyMap: React.FC<MyMapProps> = ({
 
         {districtsState.all.map((district: string) => {
           const districtPositions = positions[district];
-          const center = getPolygonCenter(districtPositions);
 
           return (
             <React.Fragment key={district}>
@@ -186,7 +229,7 @@ const MyMap: React.FC<MyMapProps> = ({
           );
         })}
         {housesState.map((house, index) =>
-          index % 2 === 0 ? (
+          house.code != null ? (
             <HouseMarker house={house} key={`${house.code}-${index}`} />
           ) : (
             <PremiumHouseMarker house={house} key={`${house.code}-${index}`} />

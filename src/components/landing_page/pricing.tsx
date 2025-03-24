@@ -1,6 +1,5 @@
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
 import {
   Box,
   Button,
@@ -12,8 +11,11 @@ import {
 } from "@mui/material";
 import { Section } from "@/components/landing_page";
 
+// const stripePromise = loadStripe(
+//   "pk_test_51QPOu3CKdNLiy4hXAjxjfj01CxLvfaurbyzaoTLgVDFUVMtoEFtGNmEfLirLMJkWDlSAMA9cowI5lz82AWGLoDLh00DxZzoGdG"
+// );
 const stripePromise = loadStripe(
-  "pk_test_51QPOu3CKdNLiy4hXAjxjfj01CxLvfaurbyzaoTLgVDFUVMtoEFtGNmEfLirLMJkWDlSAMA9cowI5lz82AWGLoDLh00DxZzoGdG"
+  "pk_live_51QPOu3CKdNLiy4hXJEapVcDHc9iEus6umk5eZpqm15iWWLORuD1z2JquyKUWcJuf4HUvn8OS7736pQENRG1IhyNu00Fuwv96c3"
 );
 
 export default function Pricing() {

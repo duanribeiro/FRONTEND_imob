@@ -27,7 +27,8 @@
       "@configs/*": ["./src/configs/*"],
       "@types/*": ["./src/types/*"],
       "@api/*": ["./src/api/*"],
-      "@markers/*": ["./src/components/markers/*"]
+      "@markers/*": ["./src/components/markers/*"],
+      "@assets/*": ["./src/public/assets/*"]
     },
     "target": "ES2017"
   },

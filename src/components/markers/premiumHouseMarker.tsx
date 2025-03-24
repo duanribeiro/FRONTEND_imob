@@ -3,6 +3,8 @@ import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { Paper, Typography, Box, List, Button, ListItem } from "@mui/material";
 import { House } from "@/types";
+import { createCheckoutSession } from "@/api";
+import { useAuth, useUser } from "@clerk/clerk-react";
 
 const customIcon = new L.Icon({
   iconUrl: "/assets/map_icons/locker.png",
@@ -19,6 +21,17 @@ interface HouseMarkerProps {
 }
 
 const MyButton = () => {
+  const { userId } = useAuth();
+  const { user } = useUser();
+  const email = user?.emailAddresses[0]?.emailAddress;
+
+  const handleSubscription = async () => {      
+    if (userId) {
+
+      await createCheckoutSession(userId, email);
+    }
+  }
+
   return (
     <Button
       variant="contained"
@@ -31,7 +44,7 @@ const MyButton = () => {
           color: "white !important",
         },
       }}
-      href="/radar"
+      onClick={handleSubscription}
     >
       Assine o Radar Imóvel
     </Button>
@@ -101,10 +114,10 @@ export const PremiumHouseMarker: React.FC<HouseMarkerProps> = ({ house, price, b
         <PricingCard  button={<MyButton />}>
           <PricingFeature>Acesso ao Radar Imóvel APP.</PricingFeature>
           <PricingFeature>
-            Monitoramento de mais de 50.000 imóveis.
+            Monitoramento de mais de 50.000 anúncios.
           </PricingFeature>
           <PricingFeature>
-            Imóveis em mais de 70 bairros da cidade.
+            70+ bairros monitorados na cidade.
           </PricingFeature>
         </PricingCard>
       </Popup>
