@@ -23,6 +23,7 @@ const customIcon = new L.Icon({
 
 const formatYAxis = (tickItem: number) => {
   if (tickItem == 0) return "";
+  if (tickItem >= 1 && tickItem < 1000) return `R$ ${(tickItem)}`;
   if (tickItem >= 1000 && tickItem < 1000000) return `R$ ${(tickItem / 1000).toFixed(1)}K`;
   return `R$ ${(tickItem / 1000000).toFixed(1)}M`;
 };
