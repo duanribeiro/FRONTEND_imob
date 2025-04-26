@@ -14,3 +14,4 @@ export * from "./tableHouses";
 export * from "./whatsAppButton";
 export * from "./stripeButton";
 export * from "./customUserButton";
+export * from "./videoContainer";

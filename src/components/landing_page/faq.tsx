@@ -16,21 +16,6 @@ export default function FAQ() {
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>Por quanto tempo vai durar a fase de testes?</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Acreditamos que ainda existem muitas melhorias a serem feitas,
-            portanto, ainda não existe uma data para o fim de testes.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2a-content"
           id="panel2a-header"
         >

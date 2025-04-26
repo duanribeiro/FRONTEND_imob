@@ -11,17 +11,14 @@ export default function Navbar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
-        position="static"
+        position="fixed"
         sx={{ backgroundColor: "white", boxShadow: "none" }}
       >
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          {/* Logo no lado esquerdo */}
           <Box display="flex" alignItems="center">
             <Logo />
             <Typography color="text.primary">Radar Imóvel</Typography>
           </Box>
-
-          {/* Botões no lado direito */}
           <Box>
             <SignUpButton forceRedirectUrl="/radar">
               <Button
@@ -31,7 +28,6 @@ export default function Navbar() {
                 Cadastrar
               </Button>
             </SignUpButton>
-
             <SignInButton forceRedirectUrl="/radar">
               <Button
                 variant="contained"
@@ -48,6 +44,7 @@ export default function Navbar() {
           </Box>
         </Toolbar>
       </AppBar>
+      <Toolbar />
     </Box>
   );
 }
