@@ -109,7 +109,7 @@ const MyMap: React.FC<MyMapProps> = ({
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const buttonWidth = isMobile ? '90px' : '150px';
+  const buttonWidth = isMobile ? '90px' : '135px';
 
   return (
     <>
