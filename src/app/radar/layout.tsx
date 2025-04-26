@@ -17,7 +17,6 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => {
   const { isSignedIn } = useUser();
 
   if (!isSignedIn) {
-    // Redireciona para a página de cadastro se o usuário não estiver autenticado
     return <RedirectToSignUp />;
   }
 
@@ -40,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={inter.className}>
         <ClerkProvider localization={ptBR} afterSignOutUrl="/">
           <AppProviders>{children}</AppProviders>
