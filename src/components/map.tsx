@@ -58,7 +58,7 @@ const MyMap: React.FC<MyMapProps> = ({
       const email = user?.emailAddresses[0]?.emailAddress;
       if (userId) {
         const user = await fetchUser(userId, email);
-        console.log({user})
+        // console.log({user})
         userDispatch({ type: "SET_USER", payload: user });
       }
     };

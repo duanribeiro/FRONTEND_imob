@@ -63,7 +63,6 @@ export const ShareHouseMarker: React.FC<HouseMarkerProps> = ({ house }) => {
     last_update: string;
   }[] = [];
   const priceArray: (number | null)[] = [];
-  const yTicks = house.rent.concat(house.price);
   const priceArraySize = Array.isArray(house.price) ? house.price.length : 0;
   const rentArraySize = Array.isArray(house.rent) ? house.rent.length : 0;
   const biggerArray = rentArraySize - priceArraySize;
