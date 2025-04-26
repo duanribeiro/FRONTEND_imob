@@ -40,13 +40,19 @@ export const PricingInformation = (props: {
   <Box sx={{ display: "grid", placeItems: "center" }}>
     <Grid container spacing={4} justifyContent="center">
       <Grid item xs={12} sm={6} md={4}>
-        <PricingCard price={9.99} button={<MyButton />}>
-          <PricingFeature>Acesso ao Radar Imóvel APP.</PricingFeature>
+        <PricingCard price={0} button={<MyButton />}>
+          <PricingFeature>Acesso ao Radar Imóvel.</PricingFeature>
           <PricingFeature>
             Monitoramento de mais de 2000 imóveis.
           </PricingFeature>
+        </PricingCard>
+      </Grid>
+      
+      <Grid item xs={12} sm={6} md={4}>
+        <PricingCard price={9.99} button={<MyButton />}>
+          <PricingFeature>Acesso ao Radar Imóvel Premium.</PricingFeature>
           <PricingFeature>
-            Imóveis em mais de 70 bairros da cidade.
+            Monitoramento de mais de 5000 imóveis.
           </PricingFeature>
         </PricingCard>
       </Grid>
@@ -61,9 +67,6 @@ export const PricingCard = (props: {
 }) => {
   return (
     <Paper sx={{ p: 3, borderRadius: 2, boxShadow: 3, textAlign: "center" }}>
-      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-        Fase de testes
-      </Typography>
 
       <Box
         sx={{
