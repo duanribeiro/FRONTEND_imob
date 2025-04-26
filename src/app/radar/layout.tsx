@@ -8,12 +8,18 @@ import {
 } from "@/contexts";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider, RedirectToSignUp } from "@clerk/nextjs";
+import { ClerkProvider, useUser, RedirectToSignUp } from "@clerk/nextjs";
 import { ptBR } from "@clerk/localizations";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const AppProviders = ({ children }: { children: React.ReactNode }) => {
+  const { isSignedIn } = useUser();
+
+  if (!isSignedIn) {
+    return <RedirectToSignUp />;
+  }
+
   return (
     <LoadingProvider>
       <DistrictsProvider>
@@ -36,7 +42,6 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={inter.className}>
         <ClerkProvider localization={ptBR} afterSignOutUrl="/">
-          <RedirectToSignUp />
           <AppProviders>{children}</AppProviders>
         </ClerkProvider>
       </body>
