@@ -51,21 +51,24 @@ export function DrawerTableHouses() {
   const map = useMap();
 
   const rows = Array.isArray(housesState)
-    ? housesState.map((house) => ({
-        id: house.id,
-        district: house.district ?? "",
-        price: house.price ? house.price[house.price.length - 1] : "",
-        rent: house.rent ? house.rent[house.rent.length - 1] : "",
-        area: house.area ?? "",
-        bedroom: house.bedroom ?? "",
-        bathroom: house.bathroom ?? "",
-        garage: house.garage ?? "",
-        real_estate: house.real_estate ?? "",
-        latitude: house.latitude ?? null,
-        longitude: house.longitude ?? null,
-        url: house.url ?? null,
-      }))
+    ? housesState
+        .filter((house) => house.real_estate)
+        .map((house) => ({
+          id: house.id,
+          district: house.district ?? "",
+          price: house.price ? house.price[house.price.length - 1] : "",
+          rent: house.rent ? house.rent[house.rent.length - 1] : "",
+          area: house.area ?? "",
+          bedroom: house.bedroom ?? "",
+          bathroom: house.bathroom ?? "",
+          garage: house.garage ?? "",
+          real_estate: house.real_estate,
+          latitude: house.latitude ?? null,
+          longitude: house.longitude ?? null,
+          url: house.url ?? null,
+        }))
     : [];
+
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [responseMessage, setResponseMessage] = React.useState<string | null>(
