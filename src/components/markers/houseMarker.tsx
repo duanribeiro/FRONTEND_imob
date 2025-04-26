@@ -7,9 +7,8 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
 } from "recharts";
-import { Grid, Chip, Typography, Link, Button } from "@mui/material";
+import { Grid, Chip, Typography, Button } from "@mui/material";
 import { House } from "@/types";
 import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
@@ -30,41 +29,23 @@ const formatYAxis = (tickItem: number) => {
 
 const formatXAxis = (tickItem: any) => tickItem;
 
-declare global {
-  interface String {
-    capitalize(): string;
-  }
-}
-
-String.prototype.capitalize = function () {
-  return this.charAt(0).toUpperCase() + this.slice(1);
-};
-
 interface HouseMarkerProps {
   house: House;
 }
 
 export const HouseMarker: React.FC<HouseMarkerProps> = ({ house }) => {
-  const { latitude, longitude, real_estate, district, street, number, last_update } = house;
-  const graphData: { rent: number; price: number | null; last_update: string }[] = [];
-  const priceArray: (number | null)[] = [];
-  const rents = house.rent || [];
-  const prices = house.price || [];
-  const priceArraySize = Array.isArray(house.price) ? house.price.length : 0;
-  const rentArraySize = Array.isArray(house.rent) ? house.rent.length : 0;
-  const biggerArray = rentArraySize - priceArraySize;
+  const { latitude, longitude, last_update = [], rent = [], price = [] } = house;
+  const updates = Array.isArray(last_update) ? last_update : [];
+  const rents = Array.isArray(rent) ? rent : [];
+  const prices = Array.isArray(price) ? price : [];
+  const maxLength = Math.max(updates.length, rents.length, prices.length);
+  const graphData = Array.from({ length: maxLength }).map((_, index) => ({
+    last_update: updates[index] ?? "",
+    rent: rents[index] ?? null,
+    price: prices[index] ?? null,
+  }));
 
-  for (let i = 0; i < biggerArray; i++) priceArray.push(null);
-  for (let i = 0; i < priceArraySize; i++) priceArray.push(house.price[i]);
-  for (let i in house.last_update) {
-    graphData.push({
-      rent: house.rent[i],
-      price: priceArray[i],
-      last_update: house.last_update[i],
-    });
-  }
-
-  const allValues = (house.rent || []).concat(house.price || []).filter(v => v !== null);
+  const allValues = graphData.flatMap(item => [item.rent, item.price]).filter(v => v !== null) as number[];
   const yTicks = [...new Set(allValues)].sort((a, b) => a - b);
 
   const makeChips = (house: House) => {
@@ -84,8 +65,8 @@ export const HouseMarker: React.FC<HouseMarkerProps> = ({ house }) => {
   return (
     <Marker position={[latitude, longitude]} icon={customIcon}>
       <Popup>
-        <Grid container direction="column" justifyContent="flex-start" alignItems="flex-start" spacing={0}>
-          <Grid item className="capitalize">
+        <Grid container direction="column" spacing={1}>
+          <Grid item>
             <Button
               fullWidth
               sx={{
@@ -102,26 +83,23 @@ export const HouseMarker: React.FC<HouseMarkerProps> = ({ house }) => {
               Ver o imóvel
             </Button>
           </Grid>
-          <Grid item className="capitalize">
-            <Typography variant="body2" style={{ margin: 0, padding: 0 }}>
+          <Grid item>
+            <Typography variant="body2">
               {house.description && house.description.length > 200
                 ? `${house.description.slice(0, 200)}...`
                 : house.description || "Descrição indisponível"}
             </Typography>
           </Grid>
-          <br />
           <Grid item>{makeChips(house)}</Grid>
-          <br />
-          <br />
           <Grid item>
-            <LineChart width={300} height={200} data={graphData} style={{ marginLeft: -30, padding: 0 }}>
+            <LineChart width={300} height={200} data={graphData} style={{ marginLeft: -30 }}>
               <YAxis ticks={yTicks} interval={0} tickFormatter={formatYAxis} width={80} />
-              <XAxis dataKey="last_update" ticks={last_update} tickFormatter={formatXAxis} />
+              <XAxis dataKey="last_update" tickFormatter={formatXAxis} />
               <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
               <Line type="monotone" dataKey="rent" name="Aluguel" stroke="green" />
               <Line type="monotone" dataKey="price" name="Venda" stroke="red" />
               <Tooltip />
-              <Legend width={300} />
+              <Legend />
             </LineChart>
           </Grid>
         </Grid>
