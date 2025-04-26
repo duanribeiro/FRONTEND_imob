@@ -22,6 +22,8 @@ import {
   IconButton,
   SxProps,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { useMap } from "react-leaflet";
 import { url } from "inspector";
@@ -244,12 +246,17 @@ export function DrawerTableHouses() {
     </Box>
   );
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const buttonWidth = isMobile ? '106px' : '150px';
+
   return (
     <div>
       <Button
         sx={{
           ...drawerSx,
           opacity: isDisabled ? 1 : 1,
+          width: buttonWidth
         }}
         variant="contained"
         onClick={toggleDrawer(true)}

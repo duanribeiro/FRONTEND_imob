@@ -11,6 +11,8 @@ import {
   SxProps,
   Typography,
   Divider,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 
 import {
@@ -75,6 +77,7 @@ export function DrawerFilters() {
     // Impede o fechamento do drawer ao interagir com o slider
     e.stopPropagation();
   };
+  
 
   const createDrawerContent = () => (
     <Box role="presentation" className="drawer-districts" sx={drawerBoxSx}>
@@ -210,12 +213,17 @@ export function DrawerFilters() {
     </Box>
   );
 
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const buttonWidth = isMobile ? '106px' : '150px';
+
   return (
     <div>
       <Button
         sx={{
           ...drawerSx,
           opacity: isDisabled ? 1 : 1,
+          width: buttonWidth,
         }}
         variant="contained"
         onClick={toggleDrawer(true)}

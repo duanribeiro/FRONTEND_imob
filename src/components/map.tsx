@@ -7,7 +7,7 @@ import {
   Tooltip,
   useMapEvents,
 } from "react-leaflet";
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 import { fetchHouses, fetchUser } from "@/api";
 import {
@@ -107,47 +107,38 @@ const MyMap: React.FC<MyMapProps> = ({
     );
   };
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const buttonWidth = isMobile ? '90px' : '150px';
+
   return (
     <>
-
       <Box
         sx={{
           zIndex: 1000,
           position: "absolute",
           top: 20,
-          left: 60,
+          left: 18,
           color: "black",
           backgroundColor: "white",
           fontWeight: 500,
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: 'space-between', // ou 'space-around'
           height: "60px",
-          width: "108px",
+          width: buttonWidth,
           borderRadius: "4px",
+          padding: '0 8px', // Adicionei um pequeno padding para evitar que os botões toquem as bordas
         }}
       >
-        <Box
-          sx={{
-            zIndex: 1000,
-          }}
-        >
+        <Box sx={{ zIndex: 1000 }}>
           <WhatsAppButton />
         </Box>
-        <Box
-          sx={{
-            zIndex: 1000,
-          }}
-        >
+        <Box sx={{ zIndex: 1000 }}>
           <StripeButton />
         </Box>
-        <Box
-          sx={{
-
-            zIndex: 1000,
-          }}
-        >
-          <CustomUserButton/>
+        <Box sx={{ zIndex: 1000 }}>
+          <CustomUserButton />
         </Box>
       </Box>
       
@@ -195,6 +186,7 @@ const MyMap: React.FC<MyMapProps> = ({
         key="unique-map-instance"
         center={position}
         zoom={zoom}
+        zoomControl={false}
         scrollWheelZoom={true}
         style={{ width: "100%", height: "98vh", zIndex: 1 }}
       >
@@ -207,6 +199,7 @@ const MyMap: React.FC<MyMapProps> = ({
         <Box sx={{ position: "absolute", top: 170, left: 10, zIndex: 1000 }}>
           <DrawerTableHouses />
         </Box>
+        
         <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=d7dce56d-10c6-4d8a-bd39-04f6e42c2683" />
         <MapEvents />
 

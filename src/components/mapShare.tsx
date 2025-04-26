@@ -57,6 +57,7 @@ const MyMap: React.FC<MyMapProps> = ({
         key="unique-map-instance"
         center={position}
         zoom={zoom}
+        zoomControl={false}
         scrollWheelZoom={true}
         style={{ width: "100%", height: "98vh", zIndex: 1 }}
       >

@@ -12,6 +12,8 @@ import {
   ListSubheader,
   TextField,
   Typography,
+  useMediaQuery,
+  useTheme
 } from "@mui/material";
 import * as React from "react";
 
@@ -130,6 +132,10 @@ export function DrawerDistricts() {
       </List>
     </Box>
   );
+  
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const buttonWidth = isMobile ? '106px' : '150px';
 
   return (
     <div>
@@ -138,7 +144,7 @@ export function DrawerDistricts() {
           color: "black",
           backgroundColor: "white",
           fontWeight: 500,
-          width: "150px",
+          width: buttonWidth,
         }}
         variant="contained"
         onClick={toggleDrawer(true)}
