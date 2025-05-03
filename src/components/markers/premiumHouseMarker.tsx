@@ -66,7 +66,7 @@ export const PricingCard = (props: {
         }}
       >
         <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-          R$9.90
+          R$9.99
         </Typography>
         <Typography variant="body2" sx={{ ml: 1, color: "text.secondary" }}>
           /mês

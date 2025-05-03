@@ -153,7 +153,7 @@ export const createCheckoutSession = async (customerID: string, email: string | 
         customer_id: customerID,
         email: email,
         // price_id: "price_1QPPFxCKdNLiy4hX7sV6pwcW",
-        price_id: "price_1R1ZlOCKdNLiy4hXgCKtSS9A",
+        price_id: "price_1RKiFKCKdNLiy4hXwJzFS6pC",
         success_url: `${window.location.origin}/radar`,
         cancel_url: `${window.location.origin}/radar`,
       }),

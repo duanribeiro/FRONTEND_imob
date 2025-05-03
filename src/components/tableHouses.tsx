@@ -1,7 +1,6 @@
 import {
   DataGrid,
   GridColDef,
-  GridValueFormatterParams,
 } from "@mui/x-data-grid";
 import { ptBR } from "@mui/x-data-grid/locales";
 import Paper from "@mui/material/Paper";
@@ -26,7 +25,6 @@ import {
   useTheme,
 } from "@mui/material";
 import { useMap } from "react-leaflet";
-import { url } from "inspector";
 
 const paginationModel = { page: 0, pageSize: 25 };
 
