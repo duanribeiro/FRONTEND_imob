@@ -152,8 +152,7 @@ export const createCheckoutSession = async (customerID: string, email: string | 
       body: JSON.stringify({
         customer_id: customerID,
         email: email,
-        // price_id: "price_1QPPFxCKdNLiy4hX7sV6pwcW",
-        price_id: "price_1RKiFKCKdNLiy4hXwJzFS6pC",
+        price_id: "price_1RSIIHCKdNLiy4hXMLsvCpuQ",
         success_url: `${window.location.origin}/radar`,
         cancel_url: `${window.location.origin}/radar`,
       }),
