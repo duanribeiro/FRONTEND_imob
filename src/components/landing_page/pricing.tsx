@@ -49,7 +49,7 @@ export const PricingInformation = (props: {
       </Grid>
       
       <Grid item xs={12} sm={6} md={4}>
-        <PricingCard price={9.99} button={<MyButton />}>
+        <PricingCard price={49.99} button={<MyButton />}>
           <PricingFeature>Acesso ao Radar Imóvel Premium.</PricingFeature>
           <PricingFeature>
             Monitoramento de mais de 5000 imóveis.
